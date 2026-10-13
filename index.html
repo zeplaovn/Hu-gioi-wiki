@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Wiki cộng đồng cho Thiên Vân Đại Lục — hệ thống tu luyện, linh căn, bí cảnh, tông môn, nghề phụ và mẹo chơi.">
+  <title>Thiên Vân Đại Lục Wiki</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home">
+      <span class="brand-mark">天</span>
+      <span><b>Thiên Vân Đại Lục</b><small>Wiki</small></span>
+    </a>
+    <button id="menuBtn" class="icon-btn" aria-label="Mở menu">☰</button>
+    <label class="search">
+      <span>⌕</span>
+      <input id="searchInput" type="search" placeholder="Tìm cảnh giới, bí cảnh, công pháp…" autocomplete="off">
+    </label>
+  </header>
+
+  <div class="layout">
+    <aside id="sidebar" class="sidebar" aria-label="Mục lục">
+      <nav>
+        <a href="#home">Tổng quan</a>
+        <a href="#new-player">Người mới</a>
+        <a href="#realms">Cảnh giới</a>
+        <a href="#races">Chủng tộc</a>
+        <a href="#roots">Linh căn</a>
+        <a href="#elements">Nguyên tố</a>
+        <a href="#skills">Công pháp</a>
+        <a href="#sects">Tông môn</a>
+        <a href="#secrets">Bí cảnh</a>
+        <a href="#farm">Linh điền & nghề phụ</a>
+        <a href="#shop">Cửa hàng</a>
+        <a href="#idle">Nhập định & vắng mặt</a>
+        <a href="#meta">Thiên Mệnh & thành tựu</a>
+        <a href="#cloud">Tài khoản & đồng bộ</a>
+      </nav>
+      <div class="side-note">Dữ liệu wiki được biên soạn từ mã nguồn game <code>Hu-gioi</code>.</div>
+    </aside>
+
+    <main id="content">
+      <section id="home" class="hero searchable" data-title="Tổng quan">
+        <div class="eyebrow">WIKI CHÍNH THỨC • BẢN WEB</div>
+        <h1>Thiên Vân Đại Lục</h1>
+        <p class="lead">Cẩm nang hệ thống cho game tu tiên idle chạy trên trình duyệt: tu luyện theo thời gian thật, linh căn ngũ hành, bí cảnh, tông môn, linh điền, nghề phụ, Thiên Mệnh và nhiều vòng luân hồi.</p>
+        <div class="chips">
+          <span>HTML/CSS/JS thuần</span><span>Idle</span><span>Tu tiên</span><span>Ngũ hành</span><span>Cloud save tùy chọn</span>
+        </div>
+        <div class="hero-grid">
+          <article><b>9</b><span>cảnh giới</span></article>
+          <article><b>8</b><span>nguyên tố</span></article>
+          <article><b>8</b><span>bí cảnh</span></article>
+          <article><b>3</b><span>tông môn</span></article>
+        </div>
+      </section>
+
+      <section id="new-player" class="card searchable" data-title="Người mới">
+        <h2>Khởi đầu cho người mới</h2>
+        <div class="steps">
+          <div><i>1</i><p><b>Tạo nhân vật</b><br>Chọn giới tính/chủng tộc, phân bổ chỉ số và gieo linh căn.</p></div>
+          <div><i>2</i><p><b>Nhập định</b><br>Tu vi tăng theo thời gian thật. Đủ tu vi thì chuẩn bị đột phá.</p></div>
+          <div><i>3</i><p><b>Học công pháp</b><br>Dưỡng Khí Quyết là lựa chọn nền tảng để tăng tốc tu luyện sớm.</p></div>
+          <div><i>4</i><p><b>Lịch luyện & bí cảnh</b><br>Tích lũy linh thạch, vật phẩm và Tinh Hoa để tôi luyện linh căn.</p></div>
+          <div><i>5</i><p><b>Gia nhập tông môn</b><br>Từ Luyện Khí, cân nhắc bonus tu luyện, chiến lực hoặc kinh tế.</p></div>
+          <div><i>6</i><p><b>Chuẩn bị cho luân hồi</b><br>Thiên Mệnh giúp những kiếp sau mạnh hơn khi nhân vật chết hoặc phi thăng.</p></div>
+        </div>
+        <div class="tip"><b>Mẹo:</b> đừng chỉ nhìn chiến lực. Thọ nguyên, tốc độ tu luyện, khí huyết và tỉ lệ đột phá đều ảnh hưởng trực tiếp đến việc bạn có sống đủ lâu để tiến cảnh giới hay không.</div>
+      </section>
+
+      <section id="realms" class="card searchable" data-title="Cảnh giới">
+        <h2>Cảnh giới tu luyện</h2>
+        <p>Mỗi cảnh giới gồm nhiều tầng tiến triển; đại đột phá đưa nhân vật sang cảnh giới kế tiếp và thường là nút thắt lớn về tu vi, thọ nguyên và sinh tồn.</p>
+        <div class="realm-track">
+          <span>Phàm Nhân</span><span>Luyện Khí</span><span>Trúc Cơ</span><span>Kim Đan</span><span>Nguyên Anh</span><span>Hóa Thần</span><span>Luyện Hư</span><span>Đại Thừa</span><span>Độ Kiếp</span>
+        </div>
+        <p class="muted">Càng lên cao, nhu cầu tu vi tăng mạnh. Từ các cảnh giới cao, Thiên Kiếp trở thành rủi ro lớn khi đại đột phá.</p>
+      </section>
+
+      <section id="races" class="card searchable" data-title="Chủng tộc">
+        <h2>Chủng tộc</h2>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Chủng tộc</th><th>Thọ nguyên gốc</th><th>Điều chỉnh chỉ số</th></tr></thead>
+          <tbody>
+            <tr><td>Nhân</td><td>80</td><td>Cân bằng</td></tr>
+            <tr><td>Ma</td><td>90</td><td>Căn Cốt +2, Tướng Mạo -1</td></tr>
+            <tr><td>Yêu</td><td>120</td><td>Căn Cốt +1, Ngộ Tính -1</td></tr>
+            <tr><td>Linh</td><td>100</td><td>Ngộ Tính +2, Căn Cốt -1</td></tr>
+            <tr><td>Tiên Duệ</td><td>150</td><td>Phúc Duyên +2, Vận Khí +1, Căn Cốt -2</td></tr>
+            <tr><td>Thú</td><td>70</td><td>Căn Cốt +3, Ngộ Tính -2</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section id="roots" class="card searchable" data-title="Linh căn">
+        <h2>Linh căn</h2>
+        <p>Linh căn quyết định tốc độ tu luyện và cách nhân vật tương tác với nguyên tố. Linh căn càng ít nguyên tố thường tu càng nhanh, còn linh căn nhiều nguyên tố linh hoạt hơn.</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Loại</th><th>Số nguyên tố</th><th>Tu luyện</th><th>Hiệu quả mỗi nguyên tố</th><th>Trọng số gieo</th></tr></thead>
+          <tbody>
+            <tr><td>Thiên Linh Căn</td><td>1</td><td>+40%</td><td>100%</td><td>6</td></tr>
+            <tr><td>Song Linh Căn</td><td>2</td><td>+20%</td><td>80%</td><td>18</td></tr>
+            <tr><td>Tam Linh Căn</td><td>3</td><td>0%</td><td>62%</td><td>34</td></tr>
+            <tr><td>Tứ Linh Căn</td><td>4</td><td>-10%</td><td>50%</td><td>27</td></tr>
+            <tr><td>Ngũ Linh Căn</td><td>5</td><td>-20%</td><td>40%</td><td>12</td></tr>
+            <tr><td>Dị Linh Căn</td><td>1</td><td>+55%</td><td>100%</td><td>3% tổng tỉ lệ</td></tr>
+          </tbody>
+        </table></div>
+        <div class="tip"><b>Tôi luyện:</b> mỗi nguyên tố có thể tăng tối đa 10 cấp; mỗi cấp tăng 8% hiệu quả nguyên tố đó.</div>
+      </section>
+
+      <section id="elements" class="card searchable" data-title="Nguyên tố ngũ hành">
+        <h2>Nguyên tố & ngũ hành</h2>
+        <div class="element-grid">
+          <article><b>Kim</b><span>Công +12%, chí mạng +2%</span></article>
+          <article><b>Mộc</b><span>Khí huyết +10%, hồi phục</span></article>
+          <article><b>Thủy</b><span>Tu luyện +10%, né tránh +3%</span></article>
+          <article><b>Hỏa</b><span>Công +6%, chí mạng +6%</span></article>
+          <article><b>Thổ</b><span>Thủ +15%, khí huyết +5%</span></article>
+          <article><b>Lôi</b><span>Công +18%, chí mạng +8%</span></article>
+          <article><b>Băng</b><span>Thủ +15%, tu luyện +10%</span></article>
+          <article><b>Phong</b><span>Né +10%, tu luyện +10%, chí mạng +2%</span></article>
+        </div>
+        <p class="muted">Tương khắc cơ bản: <b>Kim → Mộc → Thổ → Thủy → Hỏa → Kim</b>. Bí cảnh cùng nguyên tố hoặc bị linh căn của bạn khắc sẽ thuận lợi hơn; bị bí cảnh khắc sẽ bất lợi.</p>
+      </section>
+
+      <section id="skills" class="card searchable" data-title="Công pháp">
+        <h2>Công pháp</h2>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Công pháp</th><th>Mở từ</th><th>Giá</th><th>Hiệu ứng</th></tr></thead>
+          <tbody>
+            <tr><td>Dưỡng Khí Quyết</td><td>Phàm Nhân</td><td>30</td><td>Tu luyện +20%</td></tr>
+            <tr><td>Thanh Phong Kiếm Pháp</td><td>Luyện Khí</td><td>60</td><td>Chiến lực +12</td></tr>
+            <tr><td>Kim Cang Thể</td><td>Luyện Khí</td><td>100</td><td>Khí huyết tối đa +80</td></tr>
+            <tr><td>Huyền Thiên Chân Kinh</td><td>Trúc Cơ</td><td>250</td><td>Tu luyện +35%, chiến lực +8</td></tr>
+            <tr><td>Cửu Thiên Lôi Pháp</td><td>Kim Đan</td><td>500</td><td>Tu luyện +20%, chiến lực +30, khí huyết +40</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section id="sects" class="card searchable" data-title="Tông môn">
+        <h2>Tông môn</h2>
+        <div class="three">
+          <article><h3>Thanh Vân Tông</h3><p>Chính đạo cân bằng.</p><ul><li>Tu luyện +10%</li><li>Chiến lực +5</li><li>Lương 8 linh thạch/năm</li></ul></article>
+          <article><h3>Huyết Sát Môn</h3><p>Thiên về chiến đấu.</p><ul><li>Chiến lực +20</li><li>Lương 4 linh thạch/năm</li></ul></article>
+          <article><h3>Vạn Dược Cốc</h3><p>Thiên về kinh tế/đan đạo.</p><ul><li>Tu luyện +5%</li><li>Mua đồ giảm 30%</li><li>Lương 15 linh thạch/năm</li></ul></article>
+        </div>
+        <p class="muted">Hệ thống tông môn nâng cao còn có nhiệm vụ thời gian thật, cống hiến, chức vị và kho tông môn.</p>
+      </section>
+
+      <section id="secrets" class="card searchable" data-title="Bí cảnh">
+        <h2>Bí cảnh</h2>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Bí cảnh</th><th>Hệ</th><th>Mở từ</th><th>Tầng</th><th>Thời gian</th><th>Chiến lực địch tầng 1</th></tr></thead>
+          <tbody>
+            <tr><td>Thanh Mộc Lâm</td><td>Mộc</td><td>Phàm Nhân</td><td>5</td><td>60s</td><td>38</td></tr>
+            <tr><td>Huyền Thủy Đàm</td><td>Thủy</td><td>Phàm Nhân</td><td>5</td><td>60s</td><td>40</td></tr>
+            <tr><td>Xích Viêm Động</td><td>Hỏa</td><td>Luyện Khí</td><td>6</td><td>90s</td><td>70</td></tr>
+            <tr><td>Kim Phong Cốc</td><td>Kim</td><td>Trúc Cơ</td><td>6</td><td>90s</td><td>110</td></tr>
+            <tr><td>Hậu Thổ Thiên Cung</td><td>Thổ</td><td>Trúc Cơ</td><td>7</td><td>120s</td><td>98</td></tr>
+            <tr><td>Cửu U Ma Uyên</td><td>Vô</td><td>Kim Đan</td><td>8</td><td>150s</td><td>135</td></tr>
+            <tr><td>Lôi Đình Cổ Điện</td><td>Vô</td><td>Hóa Thần</td><td>9</td><td>180s</td><td>168</td></tr>
+            <tr><td>Thái Cổ Tiên Phủ</td><td>Vô</td><td>Đại Thừa</td><td>10</td><td>240s</td><td>185</td></tr>
+          </tbody>
+        </table></div>
+        <div class="tip">Tầng cuối là <b>Thủ Lĩnh</b>, mạnh hơn đáng kể. Tinh Hoa nhận từ bí cảnh dùng để tôi luyện nguyên tố của linh căn.</div>
+      </section>
+
+      <section id="farm" class="card searchable" data-title="Linh điền nghề phụ luyện đan vẽ phù luyện khí">
+        <h2>Linh điền & nghề phụ</h2>
+        <div class="two">
+          <article><h3>Linh điền</h3><p>1 “tháng linh điền” = 60 giây thật. Linh Thảo chín sau 6 tháng linh điền, tức khoảng <b>6 phút</b>. Cây tiếp tục lớn khi đóng game; khi vắng mặt cây chỉ lớn đến chín và chờ thu hoạch.</p></article>
+          <article><h3>Nghề phụ</h3><p>Luyện đan, vẽ phù và luyện khí dùng minigame thao tác. Chất lượng thành phẩm có 5 bậc: Phế phẩm → Hạ phẩm → Trung phẩm → Thượng phẩm → Cực phẩm.</p></article>
+        </div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Nhóm</th><th>Ví dụ</th><th>Nguyên liệu/công dụng</th></tr></thead>
+          <tbody>
+            <tr><td>Luyện đan</td><td>Tụ Khí Đan, Hồi Huyết Đan, Phá Cảnh Đan</td><td>Dùng Linh Thảo; hỗ trợ tu vi, hồi phục và đột phá.</td></tr>
+            <tr><td>Vẽ phù</td><td>Cường Lực Phù, Hộ Thân Phù, Phá Cảnh Phù</td><td>Dùng Giấy Phù; hỗ trợ chiến đấu/đột phá.</td></tr>
+            <tr><td>Luyện khí</td><td>Phi Kiếm, Pháp Bào, Linh Giới</td><td>Dùng Quặng Linh Thiết; tăng công, HP hoặc tốc độ tu luyện.</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section id="shop" class="card searchable" data-title="Cửa hàng đan dược">
+        <h2>Cửa hàng</h2>
+        <p>Cửa hàng nhập lại sau <b>30 phút thật</b>. Giá tăng 50% theo mỗi cảnh giới hiện tại; nhiều vật phẩm mạnh có giới hạn mua mỗi kỳ nhập hàng.</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Vật phẩm</th><th>Mở từ</th><th>Giá gốc</th><th>Tác dụng</th></tr></thead>
+          <tbody>
+            <tr><td>Tụ Khí Đan</td><td>Phàm Nhân</td><td>20</td><td>+6% tu vi cần cho tầng kế</td></tr>
+            <tr><td>Hồi Huyết Đan</td><td>Phàm Nhân</td><td>15</td><td>Hồi 60% khí huyết tối đa</td></tr>
+            <tr><td>Phá Cảnh Đan</td><td>Luyện Khí</td><td>90</td><td>+12% tỉ lệ đột phá kế tiếp</td></tr>
+            <tr><td>Trường Thọ Quả</td><td>Luyện Khí</td><td>160</td><td>+6 năm thọ nguyên, tăng theo cảnh giới</td></tr>
+            <tr><td>Ngưng Nguyên Đan</td><td>Trúc Cơ</td><td>140</td><td>+5% tu vi cần cho tầng kế</td></tr>
+            <tr><td>Dịch Cân Đan</td><td>Kim Đan</td><td>420</td><td>+1 chỉ số gốc ngẫu nhiên</td></tr>
+            <tr><td>Thiên Cơ Đan</td><td>Hóa Thần</td><td>1600</td><td>+20% tỉ lệ đột phá kế tiếp</td></tr>
+            <tr><td>Độ Kiếp Đan</td><td>Độ Kiếp</td><td>9000</td><td>+25% tỉ lệ đột phá kế tiếp</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section id="idle" class="card searchable" data-title="Nhập định vắng mặt offline">
+        <h2>Nhập định & vắng mặt</h2>
+        <div class="stats-list">
+          <div><b>1 giây</b><span>1 tick idle</span></div>
+          <div><b>10 giây</b><span>1 tháng trong game</span></div>
+          <div><b>2 phút đầu</b><span>vắng mặt tính 100%</span></div>
+          <div><b>sau 2 phút</b><span>vắng mặt tính 50%</span></div>
+          <div><b>2 giờ</b><span>giới hạn quy đổi mỗi lần vắng mặt</span></div>
+          <div><b>10 giây</b><span>hồi chiêu Lịch luyện / Nghỉ ngơi</span></div>
+        </div>
+        <p>Tu vi dừng ở mức viên mãn để người chơi tự quyết định thời điểm đột phá. Thời gian vẫn trôi khi đóng game nên <b>tọa hóa vì hết thọ nguyên</b> là một phần của gameplay.</p>
+      </section>
+
+      <section id="meta" class="card searchable" data-title="Thiên Mệnh Mảnh Phi Thăng thành tựu luân hồi">
+        <h2>Thiên Mệnh, Mảnh Phi Thăng & thành tựu</h2>
+        <div class="two">
+          <article><h3>Thiên Mệnh</h3><p>Điểm tiến triển xuyên kiếp nhận khi chết hoặc phi thăng. Dùng cho các nâng cấp vĩnh viễn như Thiên Tư, Túi Càn Khôn, Trường Sinh, Đạo Tâm và Thiên Vận.</p></article>
+          <article><h3>Mảnh Phi Thăng</h3><p>Có 12 mảnh với giá tăng dần; mở danh hiệu ở các mốc 3/6/9/12. Dữ liệu này gắn với tiến trình meta.</p></article>
+        </div>
+        <p>Game có hơn 85 thành tựu chia nhiều nhóm: cảnh giới, chiến đấu, kỳ ngộ, bí cảnh, linh căn, tông môn, nghề phụ… Thành tựu thưởng Thiên Mệnh và có tiến độ theo dõi.</p>
+      </section>
+
+      <section id="cloud" class="card searchable" data-title="Tài khoản Supabase cloud save đồng bộ">
+        <h2>Tài khoản & đồng bộ</h2>
+        <p>Khi được cấu hình Supabase, game hỗ trợ đăng ký/đăng nhập bằng email, đồng bộ save giữa thiết bị, xử lý xung đột phiên bản và bảng xếp hạng. Khi không cấu hình, game vẫn chạy ngoại tuyến bằng <code>localStorage</code>.</p>
+        <div class="tip">Wiki chỉ mô tả tính năng ở mức người chơi. Chi tiết khóa, biến môi trường và cơ chế bảo mật nên xem trong repo phát triển thay vì công khai trong hướng dẫn gameplay.</div>
+      </section>
+
+      <section id="searchEmpty" class="empty" hidden>
+        <h2>Không tìm thấy nội dung</h2>
+        <p>Thử từ khóa khác như “Luyện Khí”, “Lôi”, “bí cảnh”, “tông môn”, “đan”.</p>
+      </section>
+
+      <footer>
+        <p>Thiên Vân Đại Lục Wiki • dữ liệu biên soạn từ repo game.</p>
+        <p class="muted">Wiki có thể cần cập nhật khi thông số cân bằng trong game thay đổi.</p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
