@@ -4,143 +4,93 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#07120f">
-<meta name="description" content="Developer roadmap của Thiên Vân Đại Lục: mục tiêu thiết kế, scope, dependency, rủi ro, tiêu chí hoàn thành và backlog dài hạn.">
-<title>Developer Roadmap — Thiên Vân Đại Lục Wiki</title>
+<meta name="description" content="Roadmap phát triển Thiên Vân Đại Lục, viết từ góc nhìn nhà phát triển: game đang đi đâu, vì sao ưu tiên từng hệ thống và những ý tưởng nào vẫn còn ở backlog.">
+<title>Roadmap phát triển — Thiên Vân Đại Lục Wiki</title>
 <style>
-:root{--bg:#06100d;--panel:#0b1813;--panel2:#10251d;--line:#203c31;--line2:#315747;--text:#edf5f0;--muted:#91a9a0;--jade:#72e3ae;--gold:#e9c46a;--red:#ff9b8e;--blue:#86c8ff;--violet:#c5a3ff}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:82px}body{margin:0;background:radial-gradient(circle at 82% 4%,#173a2c55,transparent 32rem),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65}a{color:inherit}.top{position:sticky;top:0;z-index:20;background:#07120feb;border-bottom:1px solid var(--line);backdrop-filter:blur(16px)}.topin{max-width:1240px;margin:auto;min-height:68px;padding:10px 20px;display:flex;align-items:center;gap:12px}.brand{text-decoration:none;font-weight:800}.brand small{display:block;color:var(--gold);font-size:9px;letter-spacing:.2em}.spacer{flex:1}.btn{display:inline-flex;align-items:center;text-decoration:none;padding:9px 13px;border:1px solid var(--line2);border-radius:10px}.play{background:linear-gradient(135deg,#78e8b5,#4ccf94);color:#052319;border:0;font-weight:800}.wrap{max-width:1180px;margin:auto;padding:42px 20px 80px}.hero{padding:42px;border:1px solid var(--line2);border-radius:22px;background:linear-gradient(145deg,#10261ddd,#0a1713ed);box-shadow:0 24px 80px #0005}.kicker{color:var(--gold);font-size:11px;font-weight:900;letter-spacing:.18em;text-transform:uppercase}.hero h1{font:500 clamp(40px,6vw,68px)/1 Georgia,serif;margin:10px 0 16px}.hero h1 span{color:var(--jade)}.lead{max-width:920px;color:#c2d5cd;font-size:17px}.callout{margin-top:17px;padding:14px 16px;border:1px solid #2d5545;border-left:3px solid var(--jade);border-radius:10px;background:#0b1e17;color:#bfd2ca}.section{padding:38px 0;border-top:1px solid #183127}.section h2{font:500 34px/1.15 Georgia,serif;margin:5px 0 10px}.section h3{margin:5px 0}.intro{color:var(--muted);max-width:920px}.legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:17px}.badge{display:inline-flex;align-items:center;padding:4px 9px;border:1px solid var(--line2);border-radius:999px;font-size:10px;font-weight:900;letter-spacing:.06em}.done{color:var(--jade);background:#0b2119}.active{color:#ffe6a0;background:#2a210b}.planned{color:var(--blue);background:#0c1a24}.candidate{color:var(--violet);background:#191124}.hold{color:#c8c8c8;background:#171717}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card{padding:18px;border:1px solid var(--line);border-radius:13px;background:linear-gradient(180deg,#0d1d17,#091510)}.card p,.card li{color:#adc2b9;font-size:13px}.card ul{padding-left:18px}.table{overflow:auto;border:1px solid var(--line);border-radius:13px;background:#081510}.table table{width:100%;border-collapse:collapse;min-width:900px}.table th,.table td{padding:12px 13px;text-align:left;border-bottom:1px solid #173027;vertical-align:top}.table th{background:#10251d;color:var(--jade);font-size:10px;letter-spacing:.09em;text-transform:uppercase}.table td{color:#bfd0c9;font-size:13px}.milestones{display:grid;gap:14px;margin-top:22px}.milestone{border:1px solid var(--line);border-radius:14px;background:#091712;overflow:hidden}.mhead{display:grid;grid-template-columns:115px 1fr auto;gap:14px;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}.ver{font:600 23px Georgia,serif;color:var(--gold)}.mtitle{font-size:18px;font-weight:850}.mbody{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:0}.mbody>div{padding:16px 18px;border-right:1px solid var(--line)}.mbody>div:last-child{border-right:0}.mbody b{display:block;margin-bottom:7px;color:var(--jade);font-size:11px;letter-spacing:.08em;text-transform:uppercase}.mbody p,.mbody li{color:#aebfb9;font-size:13px}.mbody ul{padding-left:18px;margin:7px 0}.deps{color:#c8b6ff}.risk{color:#ffbcad}.donecrit{color:#9fe9c7}.principles{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.principles article{padding:18px;border:1px solid var(--line);border-radius:13px;background:#0a1813}.principles p{color:var(--muted);font-size:13px}.backlog{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.backlog article{padding:17px;border:1px dashed #3b554c;border-radius:13px;background:#08130f}.backlog p{color:#9fb2ab;font-size:13px}.backlog small{color:var(--violet);font-weight:900;letter-spacing:.1em}.foot{margin-top:30px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:20px}@media(max-width:900px){.grid,.backlog{grid-template-columns:1fr 1fr}.mbody{grid-template-columns:1fr}.mbody>div{border-right:0;border-bottom:1px solid var(--line)}.mbody>div:last-child{border-bottom:0}.mhead{grid-template-columns:90px 1fr}.mhead .badge{grid-column:2;justify-self:start}.principles{grid-template-columns:1fr}}@media(max-width:620px){.topin{padding:9px 12px}.play{display:none}.wrap{padding:28px 12px 60px}.hero{padding:28px 20px}.hero h1{font-size:44px}.grid,.backlog{grid-template-columns:1fr}.mhead{grid-template-columns:1fr;gap:6px}.mhead .badge{grid-column:auto}.section h2{font-size:30px}.foot{display:block}}
+:root{--bg:#06100d;--panel:#0b1813;--line:#203c31;--line2:#315747;--text:#edf5f0;--muted:#91a9a0;--jade:#72e3ae;--gold:#e9c46a;--blue:#86c8ff;--violet:#c5a3ff}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:82px}body{margin:0;background:radial-gradient(circle at 82% 4%,#173a2c55,transparent 32rem),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.68}a{color:inherit}.top{position:sticky;top:0;z-index:20;background:#07120feb;border-bottom:1px solid var(--line);backdrop-filter:blur(16px)}.topin{max-width:1180px;margin:auto;min-height:68px;padding:10px 20px;display:flex;align-items:center;gap:12px}.brand{text-decoration:none;font-weight:800}.brand small{display:block;color:var(--gold);font-size:9px;letter-spacing:.18em}.spacer{flex:1}.btn{display:inline-flex;align-items:center;text-decoration:none;padding:9px 13px;border:1px solid var(--line2);border-radius:10px}.play{background:linear-gradient(135deg,#78e8b5,#4ccf94);color:#052319;border:0;font-weight:800}.wrap{max-width:1120px;margin:auto;padding:42px 20px 80px}.hero{padding:42px;border:1px solid var(--line2);border-radius:22px;background:linear-gradient(145deg,#10261ddd,#0a1713ed);box-shadow:0 24px 80px #0005}.kicker{color:var(--gold);font-size:11px;font-weight:900;letter-spacing:.16em;text-transform:uppercase}.hero h1{font:500 clamp(40px,6vw,66px)/1 Georgia,serif;margin:10px 0 16px}.hero h1 span{color:var(--jade)}.lead{max-width:880px;color:#c2d5cd;font-size:17px}.note{margin-top:18px;padding:14px 16px;border-left:3px solid var(--jade);background:#0b1e17;border-radius:0 10px 10px 0;color:#bfd2ca}.section{padding:38px 0;border-top:1px solid #183127}.section h2{font:500 34px/1.15 Georgia,serif;margin:5px 0 10px}.intro{color:var(--muted);max-width:880px}.status{display:inline-flex;padding:4px 9px;border:1px solid var(--line2);border-radius:999px;font-size:10px;font-weight:900;letter-spacing:.06em}.now{color:#ffe6a0;background:#2a210b}.next{color:var(--blue);background:#0c1a24}.later{color:var(--violet);background:#191124}.idea{color:#ccc;background:#171717}.roadmap{display:grid;gap:14px;margin-top:22px}.item{padding:21px;border:1px solid var(--line);border-radius:14px;background:#091712}.item-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}.ver{font:600 22px Georgia,serif;color:var(--gold)}.item h3{margin:4px 0 8px;font-size:20px}.item p{color:#b7c9c2;margin:7px 0}.item ul{margin:10px 0 0;padding-left:20px;color:#aebfb9}.why{margin-top:14px;padding-top:13px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}.why b{color:var(--jade)}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.card{padding:18px;border:1px solid var(--line);border-radius:13px;background:#0a1813}.card h3{margin:5px 0 8px}.card p{margin:0;color:#aebfb9;font-size:13px}.backlog{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.backlog article{padding:17px;border:1px dashed #3b554c;border-radius:13px;background:#08130f}.backlog h3{margin:5px 0}.backlog p{margin:0;color:#9fb2ab;font-size:13px}.foot{margin-top:30px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:20px}@media(max-width:720px){.grid,.backlog{grid-template-columns:1fr}.item-head{display:block}.item-head .status{margin-top:8px}.topin{padding:9px 12px}.play{display:none}.wrap{padding:28px 12px 60px}.hero{padding:28px 20px}.hero h1{font-size:44px}.section h2{font-size:30px}.foot{display:block}}
 </style>
 </head>
 <body>
-<header class="top"><div class="topin"><a class="brand" href="index.html">Thiên Vân Đại Lục<small>WIKI · DEVELOPER ROADMAP</small></a><div class="spacer"></div><a class="btn" href="index.html">← Wiki</a><a class="btn play" href="https://hugioi.vercel.app" target="_blank" rel="noopener noreferrer">Chơi game ↗</a></div></header>
+<header class="top"><div class="topin"><a class="brand" href="index.html">Thiên Vân Đại Lục<small>WIKI · ROADMAP</small></a><div class="spacer"></div><a class="btn" href="index.html">← Wiki</a><a class="btn play" href="https://hugioi.vercel.app" target="_blank" rel="noopener noreferrer">Chơi game ↗</a></div></header>
 <main class="wrap">
 <section class="hero">
-  <div class="kicker">Developer roadmap</div>
-  <h1>Phát triển theo hệ thống.<br><span>Không chạy theo danh sách feature.</span></h1>
-  <p class="lead">Roadmap này mô tả thứ tự phát triển kỹ thuật và thiết kế của Thiên Vân Đại Lục. Mỗi mốc được đánh giá theo mục tiêu sản phẩm, scope, dependency, rủi ro và tiêu chí hoàn thành. Phiên bản chỉ được coi là hoàn tất khi vòng lặp gameplay hoạt động ổn định, có dữ liệu để cân bằng và không tạo thêm technical debt vượt kiểm soát.</p>
-  <div class="callout"><b>North star:</b> xây một game tu tiên theo thời gian thật, nơi mỗi nhân vật là một kiếp có lịch sử, lựa chọn, nhân quả và di sản; mở rộng quy mô chỉ sau khi vòng lặp này đủ mạnh.</div>
-  <div class="legend"><span class="badge done">SHIPPED / FOUNDATION</span><span class="badge active">ACTIVE PRIORITY</span><span class="badge planned">PLANNED</span><span class="badge candidate">CANDIDATE</span><span class="badge hold">BACKLOG / NO ETA</span></div>
+  <div class="kicker">Roadmap phát triển</div>
+  <h1>Mình muốn mỗi nhân vật<br><span>thật sự có một đời tu hành.</span></h1>
+  <p class="lead">Thiên Vân Đại Lục đã có phần khung: tu luyện theo thời gian thật, thọ nguyên, bí cảnh, tông môn, nghề phụ, cloud save, leaderboard và chat. Phần tiếp theo mình muốn tập trung vào thứ còn thiếu nhất: cảm giác nhân vật đã sống qua một kiếp, chứ không chỉ tăng chỉ số rồi reset.</p>
+  <div class="note">Roadmap này là hướng phát triển hiện tại, không phải lịch hứa cứng. Nếu một hệ thống chưa đủ vui hoặc làm hỏng nhịp game, mình sẽ sửa hoặc đổi thứ tự thay vì cố nhét nó vào đúng số phiên bản.</div>
 </section>
 
-<section class="section" id="strategy">
-  <div class="kicker">Development strategy</div><h2>Nguyên tắc ra quyết định</h2>
-  <div class="principles">
-    <article><h3>1. Depth before breadth</h3><p>Ưu tiên làm sâu Tiên Sử, Nhân Quả, Luân Hồi, Bí Cảnh và Tông Môn trước khi mở world map lớn, PvP hoặc economy phức tạp.</p></article>
-    <article><h3>2. Server-authoritative khi có cạnh tranh</h3><p>PvP, Auction/Trade, tài sản có giá trị và reward cạnh tranh không được dựa vào state do browser tự quyết định.</p></article>
-    <article><h3>3. Một mốc phải có Definition of Done</h3><p>Không coi feature là xong chỉ vì UI đã xuất hiện. Phải có state model, persistence, balancing hooks, error handling và regression coverage phù hợp.</p></article>
-    <article><h3>4. Không phá save vì refactor</h3><p>Schema save và database migration cần backward compatibility hoặc migration rõ ràng. Refactor kiến trúc không được làm mất tiến trình người chơi.</p></article>
-    <article><h3>5. Content dựa trên system</h3><p>Ưu tiên hệ thống tạo ra nhiều biến thể nội dung thay vì hard-code hàng trăm event không có khả năng tái sử dụng.</p></article>
-    <article><h3>6. Scope có thể đổi, mục tiêu không đổi</h3><p>Phiên bản có thể cắt bớt feature phụ nếu dependency hoặc chất lượng chưa đạt. Không đẩy feature chưa ổn chỉ để giữ số version.</p></article>
+<section class="section">
+  <div class="kicker">Hướng chính</div>
+  <h2>Trước v1.0, mình muốn làm sâu hơn thay vì làm rộng hơn</h2>
+  <p class="intro">Map lớn, PvP, đấu giá hay tông môn người chơi đều là những thứ mình vẫn muốn thử. Nhưng nếu phần cốt lõi của một kiếp tu hành còn mỏng thì thêm nhiều khu vực hay nhiều người chơi hơn cũng chưa giải quyết được vấn đề đó.</p>
+  <div class="grid">
+    <article class="card"><h3>Tiên Sử</h3><p>Game nhớ những chuyện đáng nhớ của nhân vật: lúc nhập đạo, vào tông môn, phá cảnh, nhặt được bảo vật, thắng boss, thất bại và tọa hóa.</p></article>
+    <article class="card"><h3>Nhân Quả</h3><p>Một lựa chọn có thể quay lại nhiều năm sau. Cứu một người, cướp một món đồ hay gây thù với ai đó không nên kết thúc ngay sau một hộp thoại.</p></article>
+    <article class="card"><h3>Đạo và lối chơi</h3><p>Hai nhân vật cùng cảnh giới vẫn nên chơi khác nhau. Kiếm Đạo, Đan Đạo, Thể Tu hay các con đường khác sẽ dần tạo thành build thật sự.</p></article>
+    <article class="card"><h3>Luân Hồi và Di Sản</h3><p>Khi một kiếp kết thúc, mình không muốn mọi thứ biến mất. Một phần ký ức, danh hiệu, công pháp hay di sản sẽ nối các kiếp lại với nhau.</p></article>
   </div>
-</section>
-
-<section class="section" id="foundation">
-  <div class="kicker">Current foundation</div><h2>Hệ thống đang làm nền</h2>
-  <div class="table"><table><thead><tr><th>Area</th><th>Trạng thái</th><th>Đang có</th><th>Vai trò về sau</th></tr></thead><tbody>
-    <tr><td>Core progression</td><td><span class="badge done">Foundation</span></td><td>Tu luyện thời gian thật, cảnh giới, tuổi, thọ nguyên, đột phá.</td><td>Nền cho Thiên Kiếp, Phi Thăng, Luân Hồi.</td></tr>
-    <tr><td>World systems</td><td><span class="badge done">Foundation</span></td><td>Linh căn, ngũ hành, bí cảnh, kỳ ngộ, tông môn.</td><td>Nền cho Nhân Quả, Bí Cảnh Sống và world expansion.</td></tr>
-    <tr><td>Crafting</td><td><span class="badge done">Foundation</span></td><td>Linh điền, luyện đan, vẽ phù, luyện khí.</td><td>Nền cho economy, Thiên Kiếp preparation và trade.</td></tr>
-    <tr><td>Online</td><td><span class="badge done">Foundation</span></td><td>Auth, cloud save, leaderboard, World Chat.</td><td>Nền cho social layer, PvP profile và economy.</td></tr>
-    <tr><td>Operations</td><td><span class="badge done">Foundation</span></td><td>Admin dashboard, presence, banner, maintenance, audit.</td><td>Nền để vận hành event, moderation và economy sau này.</td></tr>
-    <tr><td>Meta progression</td><td><span class="badge done">Foundation</span></td><td>Thành tựu, Thiên Mệnh, các dữ liệu xuyên kiếp ban đầu.</td><td>Nền trực tiếp cho Di Sản và Luân Hồi Phổ.</td></tr>
-  </tbody></table></div>
 </section>
 
 <section class="section" id="roadmap">
-  <div class="kicker">Version plan</div><h2>v0.9 → v1.0</h2>
-  <p class="intro">Đây là roadmap ưu tiên. Số version biểu diễn thứ tự dependency nhiều hơn là lịch phát hành cố định.</p>
-  <div class="milestones">
+  <div class="kicker">Các mốc hiện tại</div>
+  <h2>v0.9 → v1.0</h2>
+  <p class="intro">Các phiên bản dưới đây chủ yếu thể hiện thứ tự mình muốn làm. Tên và phạm vi có thể đổi trong quá trình phát triển.</p>
+  <div class="roadmap">
+    <article class="item"><div class="item-head"><div><div class="ver">v0.9</div><h3>Tiên Sử</h3></div><span class="status now">Đang ưu tiên</span></div><p>Bắt đầu ghi lại cuộc đời của nhân vật theo những mốc thật sự có ý nghĩa.</p><ul><li>Timeline theo tuổi và cảnh giới.</li><li>Ghi lại tông môn, boss, bảo vật và các biến cố lớn.</li><li>Có phần tổng kết khi nhân vật tọa hóa.</li></ul><div class="why"><b>Vì sao làm trước:</b> đây là nền để Nhân Quả, Di Sản và Luân Hồi có dữ liệu để dựa vào.</div></article>
 
-    <article class="milestone">
-      <div class="mhead"><div class="ver">v0.9</div><div class="mtitle">Tiên Sử / Character History</div><span class="badge active">ACTIVE PRIORITY</span></div>
-      <div class="mbody"><div><b>Scope</b><ul><li>Event log có schema rõ ràng.</li><li>Timeline theo tuổi/cảnh giới.</li><li>Ghi tông môn, boss, bảo vật, biến cố, tọa hóa.</li><li>Death recap và hồ sơ một kiếp.</li></ul></div><div><b class="deps">Dependencies</b><p>Player state ổn định, event IDs bền vững, persistence tương thích cloud save.</p><b class="risk">Risk</b><p>Log quá chi tiết sẽ phình save; log quá ít thì không tạo được câu chuyện.</p></div><div><b class="donecrit">Definition of Done</b><p>Một kiếp hoàn chỉnh có thể dựng lại các mốc chính mà không dựa vào text log rời rạc; save cũ vẫn load được.</p></div></div>
-    </article>
+    <article class="item"><div class="item-head"><div><div class="ver">v0.10</div><h3>Nhân Quả</h3></div><span class="status next">Tiếp theo</span></div><p>Cho các lựa chọn có hậu quả dài hơn một sự kiện.</p><ul><li>Ân, oán, cứu mệnh, đoạt bảo, sát nghiệp.</li><li>Một số sự kiện quay lại sau nhiều năm.</li><li>NPC và cơ duyên có thể nhớ chuyện cũ.</li></ul><div class="why"><b>Mình muốn đạt được:</b> người chơi có lý do nhớ những gì mình đã chọn, thay vì chỉ chọn đáp án có phần thưởng tốt nhất.</div></article>
 
-    <article class="milestone">
-      <div class="mhead"><div class="ver">v0.10</div><div class="mtitle">Nhân Quả / Persistent Consequences</div><span class="badge planned">PLANNED</span></div>
-      <div class="mbody"><div><b>Scope</b><ul><li>Flag nhân quả có namespace.</li><li>Event chain nhiều năm.</li><li>Ân/oán, cứu mệnh, đoạt bảo, sát nghiệp.</li><li>NPC/event đọc lịch sử quyết định trước đó.</li></ul></div><div><b class="deps">Dependencies</b><p>Tiên Sử/event model của v0.9; deterministic event selection ở mức đủ kiểm soát.</p><b class="risk">Risk</b><p>State explosion và event khó debug nếu flag không có lifecycle.</p></div><div><b class="donecrit">Definition of Done</b><p>Cùng một event đầu vào có thể dẫn đến hậu quả khác nhau dựa trên lịch sử; có tooling/debug view để truy vết flag.</p></div></div>
-    </article>
+    <article class="item"><div class="item-head"><div><div class="ver">v0.11</div><h3>Đạo của riêng mình</h3></div><span class="status next">Kế hoạch</span></div><p>Biến các hướng tu luyện thành lối chơi rõ ràng hơn.</p><ul><li>Kiếm Đạo, Đan Đạo, Thể Tu, Trường Sinh Đạo và các hướng khác.</li><li>Mỗi Đạo có cách tăng tiến và thế mạnh riêng.</li><li>Cảnh giới cao mở thêm nhánh phát triển.</li></ul><div class="why"><b>Mục tiêu:</b> nhìn build của một nhân vật là biết người chơi đã đi theo con đường nào.</div></article>
 
-    <article class="milestone">
-      <div class="mhead"><div class="ver">v0.11</div><div class="mtitle">Hệ Đạo / Build Identity</div><span class="badge planned">PLANNED</span></div>
-      <div class="mbody"><div><b>Scope</b><ul><li>Kiếm Đạo, Đan Đạo, Thể Tu, Ma Đạo, Trường Sinh, Thiên Cơ.</li><li>Progression riêng và unlock theo cảnh giới.</li><li>Synergy với combat/crafting/Thiên Kiếp.</li></ul></div><div><b class="deps">Dependencies</b><p>Combat stat contract, crafting hooks, save versioning.</p><b class="risk">Risk</b><p>Power creep và build giả khác biệt nhưng thực tế cùng một DPS curve.</p></div><div><b class="donecrit">Definition of Done</b><p>Hai nhân vật cùng cảnh giới nhưng khác Đạo có quyết định build và vòng lặp tối ưu khác nhau, không chỉ khác tên bonus.</p></div></div>
-    </article>
+    <article class="item"><div class="item-head"><div><div class="ver">v0.12</div><h3>Bí cảnh sống</h3></div><span class="status next">Kế hoạch</span></div><p>Bí cảnh sẽ bớt giống một nút “đủ chiến lực thì thắng”.</p><ul><li>Có đường đi, sự kiện, bẫy, thương nhân và boss.</li><li>Có lựa chọn đi sâu hay rút lui.</li><li>Ngũ hành và build ảnh hưởng nhiều hơn tới cách xử lý.</li></ul><div class="why"><b>Mục tiêu:</b> mỗi lần vào bí cảnh có một chút căng thẳng và khác biệt, không chỉ kiểm tra chỉ số.</div></article>
 
-    <article class="milestone">
-      <div class="mhead"><div class="ver">v0.12</div><div class="mtitle">Bí Cảnh Sống / Roguelite Expedition</div><span class="badge planned">PLANNED</span></div>
-      <div class="mbody"><div><b>Scope</b><ul><li>Node graph: combat, event, merchant, trap, boss.</li><li>Risk/reward và quyền rút lui.</li><li>Ngũ hành ảnh hưởng route/combat.</li><li>Boss có mechanic riêng.</li></ul></div><div><b class="deps">Dependencies</b><p>Combat modular hơn, encounter data tách khỏi UI, reward generation có kiểm soát.</p><b class="risk">Risk</b><p>Content cost cao nếu mỗi bí cảnh phải hard-code toàn bộ.</p></div><div><b class="donecrit">Definition of Done</b><p>Một run có nhiều quyết định chiến thuật và có thể tạo biến thể từ data/config thay vì viết logic riêng cho từng node.</p></div></div>
-    </article>
+    <article class="item"><div class="item-head"><div><div class="ver">v0.13</div><h3>Tông môn có người sống trong đó</h3></div><span class="status next">Kế hoạch</span></div><p>Tông môn hiện tại vẫn còn giống một hệ thống bonus. Mình muốn nó có con người và biến cố riêng.</p><ul><li>Tông chủ, trưởng lão, sư phụ, đồng môn.</li><li>NPC có tuổi, cảnh giới và quan hệ.</li><li>Có thể đột phá, thất bại, rời đi hoặc tọa hóa.</li></ul><div class="why"><b>Mục tiêu:</b> khi đổi tông môn hoặc một NPC quen thuộc mất đi, người chơi có cảm giác mình vừa mất một phần lịch sử của nhân vật.</div></article>
 
-    <article class="milestone">
-      <div class="mhead"><div class="ver">v0.13</div><div class="mtitle">Tông Môn Sống / NPC Lifecycle</div><span class="badge planned">PLANNED</span></div>
-      <div class="mbody"><div><b>Scope</b><ul><li>Sư phụ, trưởng lão, đồng môn, đối thủ.</li><li>Tuổi, cảnh giới, thiện cảm, biến cố.</li><li>NPC đột phá, thất bại, rời môn hoặc tọa hóa.</li></ul></div><div><b class="deps">Dependencies</b><p>NPC identity bền vững, Nhân Quả, event scheduler.</p><b class="risk">Risk</b><p>Simulation quá nặng hoặc NPC trở thành số liệu nền không có tác động gameplay.</p></div><div><b class="donecrit">Definition of Done</b><p>NPC có lifecycle quan sát được và ít nhất một phần quyết định của người chơi thay đổi quan hệ/sự kiện tông môn.</p></div></div>
-    </article>
+    <article class="item"><div class="item-head"><div><div class="ver">v0.14</div><h3>Thiên Địa Biến</h3></div><span class="status next">Kế hoạch</span></div><p>Thế giới có những khoảng thời gian khác thường thay vì ngày nào cũng giống ngày nào.</p><ul><li>Linh Khí Triều Tịch, Huyết Nguyệt, Đan Hà và các thiên tượng khác.</li><li>Một số hoạt động, tài nguyên hoặc bí cảnh thay đổi theo thời điểm.</li><li>Thông báo toàn server khi có biến cố lớn.</li></ul><div class="why"><b>Mục tiêu:</b> tạo lý do quay lại game tự nhiên hơn, không dựa vào danh sách daily.</div></article>
 
-    <article class="milestone">
-      <div class="mhead"><div class="ver">v0.14</div><div class="mtitle">Thiên Địa Biến / World State Events</div><span class="badge planned">PLANNED</span></div>
-      <div class="mbody"><div><b>Scope</b><ul><li>Thiên tượng theo chu kỳ.</li><li>Global modifiers cho tu luyện, drop, bí cảnh.</li><li>Server banner/event visibility.</li></ul></div><div><b class="deps">Dependencies</b><p>Server time contract, server_status/event config, admin operations.</p><b class="risk">Risk</b><p>Event lịch cố định biến thành daily checklist hoặc gây lợi thế timezone.</p></div><div><b class="donecrit">Definition of Done</b><p>World event thay đổi quyết định chơi mà không bắt người chơi online đúng giờ để tránh mất tiến trình.</p></div></div>
-    </article>
+    <article class="item"><div class="item-head"><div><div class="ver">v0.15</div><h3>Thiên Kiếp</h3></div><span class="status next">Kế hoạch</span></div><p>Đại đột phá nên là một khoảnh khắc đáng nhớ, không chỉ là bấm nút và xem phần trăm.</p><ul><li>Nhiều đạo lôi và các giai đoạn khác nhau.</li><li>Chuẩn bị đan, phù, pháp bảo hoặc trận pháp.</li><li>Có lựa chọn mạo hiểm khi tình hình xấu đi.</li></ul><div class="why"><b>Mục tiêu:</b> trước khi vượt đại cảnh giới, người chơi thật sự phải chuẩn bị.</div></article>
 
-    <article class="milestone">
-      <div class="mhead"><div class="ver">v0.15</div><div class="mtitle">Thiên Kiếp / Major Breakthrough Encounter</div><span class="badge planned">PLANNED</span></div>
-      <div class="mbody"><div><b>Scope</b><ul><li>Nhiều phase thiên lôi.</li><li>Đan, phù, pháp bảo, trận pháp hỗ trợ.</li><li>Đánh đổi HP, tài nguyên, thọ nguyên.</li></ul></div><div><b class="deps">Dependencies</b><p>Hệ Đạo, crafting, combat hooks, inventory transaction an toàn.</p><b class="risk">Risk</b><p>RNG quá mạnh làm mất cảm giác chuẩn bị; thất bại quá nặng gây churn.</p></div><div><b class="donecrit">Definition of Done</b><p>Thành công phụ thuộc đáng kể vào chuẩn bị và build, không chỉ một lần roll xác suất.</p></div></div>
-    </article>
+    <article class="item"><div class="item-head"><div><div class="ver">v0.16</div><h3>Di Sản</h3></div><span class="status next">Kế hoạch</span></div><p>Một kiếp cũ để lại thứ gì đó cho kiếp sau.</p><ul><li>Một phần công pháp, pháp bảo, bí phương hoặc danh hiệu.</li><li>Cách nhận di sản phụ thuộc vào cuộc đời trước.</li><li>Không biến thành hệ thống cộng chỉ số vô hạn.</li></ul><div class="why"><b>Mục tiêu:</b> tọa hóa vẫn là mất mát, nhưng không còn là reset trắng.</div></article>
 
-    <article class="milestone">
-      <div class="mhead"><div class="ver">v0.16</div><div class="mtitle">Di Sản / Cross-Life Transfer</div><span class="badge planned">PLANNED</span></div>
-      <div class="mbody"><div><b>Scope</b><ul><li>Chọn di sản khi kết thúc kiếp.</li><li>Whitelist loại tài sản được truyền.</li><li>Giới hạn sức mạnh xuyên kiếp.</li></ul></div><div><b class="deps">Dependencies</b><p>Tiên Sử, inventory IDs ổn định, save migration.</p><b class="risk">Risk</b><p>Snowball meta khiến kiếp mới mất ý nghĩa hoặc economy bị nhân bản tài sản.</p></div><div><b class="donecrit">Definition of Done</b><p>Di sản tạo lợi thế có ý nghĩa nhưng không bỏ qua progression cốt lõi của kiếp mới; không tồn tại đường duplicate item.</p></div></div>
-    </article>
+    <article class="item"><div class="item-head"><div><div class="ver">v0.17</div><h3>Luân Hồi Phổ</h3></div><span class="status next">Kế hoạch</span></div><p>Cho người chơi nhìn lại cả dòng các kiếp mình đã trải qua.</p><ul><li>Tuổi thọ, linh căn, tông môn, Đạo và cách kết thúc mỗi kiếp.</li><li>Các dấu mốc lớn và di sản được truyền lại.</li><li>Có thể mở lại Tiên Sử của từng nhân vật cũ.</li></ul><div class="why"><b>Mục tiêu:</b> sau nhiều tháng chơi, tài khoản có một lịch sử riêng chứ không chỉ có một nhân vật hiện tại.</div></article>
 
-    <article class="milestone">
-      <div class="mhead"><div class="ver">v0.17</div><div class="mtitle">Luân Hồi Phổ / Account History</div><span class="badge planned">PLANNED</span></div>
-      <div class="mbody"><div><b>Scope</b><ul><li>Gia phả các kiếp.</li><li>Thống kê tuổi, linh căn, tông môn, Đạo, boss, cách chết.</li><li>Liên kết di sản giữa các đời.</li></ul></div><div><b class="deps">Dependencies</b><p>Tiên Sử + Di Sản; data retention policy phía cloud.</p><b class="risk">Risk</b><p>Dữ liệu lịch sử tăng vô hạn và migration khó nếu schema thay đổi.</p></div><div><b class="donecrit">Definition of Done</b><p>Mỗi tài khoản có thể xem chuỗi các kiếp bằng dữ liệu versioned, không cần giữ toàn bộ save snapshot cũ.</p></div></div>
-    </article>
-
-    <article class="milestone">
-      <div class="mhead"><div class="ver">v1.0</div><div class="mtitle">Phi Thăng / First Complete Lifecycle</div><span class="badge planned">PLANNED</span></div>
-      <div class="mbody"><div><b>Scope</b><ul><li>Kết cục Phi Thăng.</li><li>Lựa chọn lưu lại nhân gian hoặc chuyển thế.</li><li>Recap đầy đủ một kiếp.</li><li>Meta unlock sau chu kỳ đầu tiên.</li></ul></div><div><b class="deps">Dependencies</b><p>Toàn bộ chuỗi v0.9–v0.17 ở mức production-ready.</p><b class="risk">Risk</b><p>V1.0 bị kéo dài vô hạn nếu tiếp tục nhồi feature ngoài lifecycle cốt lõi.</p></div><div><b class="donecrit">Definition of Done</b><p>Người chơi có thể đi từ tạo nhân vật → tu luyện → kết thúc một kiếp → để lại di sản → bắt đầu kiếp mới trong một vòng lặp hoàn chỉnh.</p></div></div>
-    </article>
+    <article class="item"><div class="item-head"><div><div class="ver">v1.0</div><h3>Phi Thăng</h3></div><span class="status later">Mốc lớn</span></div><p>Khép lại vòng đời đầu tiên của game bằng một kết cục thật sự.</p><ul><li>Phi Thăng.</li><li>Lưu lại nhân gian.</li><li>Binh giải chuyển thế hoặc một lựa chọn tương đương.</li></ul><div class="why"><b>v1.0 với mình:</b> game đã có một vòng đời hoàn chỉnh từ lúc nhập đạo cho tới lúc kết thúc một kiếp, và các kiếp sau vẫn nối được với nhau.</div></article>
   </div>
 </section>
 
-<section class="section" id="post1">
-  <div class="kicker">Post-1.0 candidates</div><h2>Hướng mở rộng sau khi lifecycle cốt lõi hoàn chỉnh</h2>
-  <p class="intro">Các mục dưới đây có giá trị, nhưng không được chen vào đường tới v1.0 nếu làm chậm việc hoàn thiện vòng lặp xuyên kiếp.</p>
+<section class="section">
+  <div class="kicker">Sau v1.0</div>
+  <h2>Những thứ mình muốn mở rộng khi phần lõi đã ổn</h2>
   <div class="backlog">
-    <article><small>CANDIDATE</small><h3>World Map / Mở rộng Đại Lục</h3><p>Khu vực, thành trấn, thế lực, route di chuyển, tài nguyên vùng và world event theo địa lý. Chỉ nên làm khi content pipeline đủ data-driven.</p></article>
-    <article><small>CANDIDATE</small><h3>Tông môn do người chơi sáng lập</h3><p>Mở ở cảnh giới cao. Cần permission model, economy, membership và moderation trước khi có social competition.</p></article>
-    <article><small>CANDIDATE</small><h3>Song Tu / Đạo Lữ</h3><p>Quan hệ dài hạn, event chain và bonus có trade-off. Cần NPC relationship model đủ sâu trước.</p></article>
-    <article><small>CANDIDATE</small><h3>Auction / Trade</h3><p>Marketplace và giao dịch player-to-player. Bắt buộc server-authoritative, transaction atomic, ledger và anti-abuse.</p></article>
-    <article><small>CANDIDATE</small><h3>PvP</h3><p>Không ưu tiên realtime PvP. Nếu triển khai, bắt đầu bằng async/profile PvP hoặc challenge có snapshot; reward phải server-authoritative.</p></article>
-    <article><small>CANDIDATE</small><h3>Post-Ascension Content</h3><p>Tiên giới hoặc meta layer mới sau Phi Thăng. Thiết kế sau khi v1.0 chứng minh lifecycle hiện tại đủ hấp dẫn.</p></article>
+    <article><span class="status later">Ứng viên</span><h3>Mở rộng đại lục / World Map</h3><p>Nhiều khu vực, thành trì, thế lực và điểm đến hơn. Mình muốn map có lý do để tồn tại, nên sẽ không làm chỉ để tăng số lượng địa điểm.</p></article>
+    <article><span class="status later">Ứng viên</span><h3>Tông môn do người chơi sáng lập</h3><p>Ở cảnh giới cao, người chơi có thể tự lập thế lực. Cần economy, quyền hạn và giới hạn rõ trước khi hệ thống này hợp lý.</p></article>
+    <article><span class="status later">Ứng viên</span><h3>Song tu / Đạo lữ</h3><p>Quan hệ lâu dài giữa nhân vật, có thể gắn với Nhân Quả và Tiên Sử. Mình chưa muốn biến nó thành một hệ thống cộng buff đơn giản.</p></article>
+    <article><span class="status later">Ứng viên</span><h3>Auction / Trade</h3><p>Cho phép người chơi trao đổi tài sản. Phần này chỉ nên mở khi backend đủ chắc để tránh nhân đồ, gian lận và rollback sai.</p></article>
+    <article><span class="status later">Ứng viên</span><h3>PvP</h3><p>Nếu làm, mình nghiêng về đấu bất đồng bộ hoặc dựa trên hồ sơ nhân vật trước. PvP realtime không phải ưu tiên hiện tại.</p></article>
+    <article><span class="status later">Ứng viên</span><h3>Nội dung sau Phi Thăng</h3><p>Thượng giới hoặc một lớp progression mới chỉ có ý nghĩa sau khi vòng chơi hiện tại đã đủ trọn vẹn.</p></article>
   </div>
 </section>
 
-<section class="section" id="backlog">
-  <div class="kicker">Backlog / no ETA</div><h2>Ý tưởng được giữ lại nhưng chưa có cam kết phiên bản</h2>
-  <div class="table"><table><thead><tr><th>Feature</th><th>Lý do chưa schedule</th><th>Điều kiện để được đưa vào roadmap</th></tr></thead><tbody>
-    <tr><td>PvP realtime</td><td>Chi phí networking, anti-cheat, cân bằng và vận hành cao; không phải bản sắc chính hiện tại.</td><td>Async PvP/social competition chứng minh có nhu cầu và backend đủ server-authoritative.</td></tr>
-    <tr><td>Guild war / tông môn chiến</td><td>Phụ thuộc player-created sect, economy và moderation.</td><td>Có social structure ổn định và reward model không pay-to-win.</td></tr>
-    <tr><td>Bản đồ cực lớn</td><td>Dễ tạo nhiều content rỗng và tăng chi phí asset/content.</td><td>World map nhỏ chứng minh traversal và regional systems tạo giá trị.</td></tr>
-    <tr><td>Pet system lớn</td><td>Không trực tiếp củng cố core identity.</td><td>Có use case rõ trong combat/lifecycle thay vì chỉ thêm collection.</td></tr>
-    <tr><td>Gacha / nhiều currency</td><td>Không phù hợp định hướng gameplay hiện tại.</td><td>Không có kế hoạch mặc định; chỉ xem xét nếu mô hình sản phẩm thay đổi rõ ràng.</td></tr>
-    <tr><td>Mở rộng NPC / vật phẩm</td><td>Đây là content work liên tục, không nên gắn thành một version riêng.</td><td>Thêm theo nhu cầu của từng system release và data pipeline.</td></tr>
-  </tbody></table></div>
-  <div class="callout"><b>Quy ước:</b> backlog không có nghĩa là hủy. Nó chỉ có nghĩa feature chưa đạt điều kiện để được đưa vào một milestone có dependency và Definition of Done rõ ràng.</div>
-</section>
-
-<section class="section" id="release-policy">
-  <div class="kicker">Release policy</div><h2>Khi nào một milestone được ship?</h2>
-  <div class="grid">
-    <article class="card"><h3>Functional</h3><p>Core loop chạy được từ đầu đến cuối, state không phụ thuộc refresh/UI trick và error path có xử lý.</p></article>
-    <article class="card"><h3>Persistent</h3><p>Save/cloud/database contract ổn định, migration rõ ràng và không tạo mất dữ liệu với save đang hỗ trợ.</p></article>
-    <article class="card"><h3>Observable</h3><p>Có log/metrics/debug path đủ để phân tích lỗi và cân bằng sau khi ship.</p></article>
-    <article class="card"><h3>Secure</h3><p>Feature cạnh tranh hoặc economy không tin client; action admin có RBAC/audit phù hợp.</p></article>
-    <article class="card"><h3>Balanced enough</h3><p>Không cần cân bằng tuyệt đối, nhưng phải có simulation/test hoặc dữ liệu đủ để tránh phá progression rõ ràng.</p></article>
-    <article class="card"><h3>Documented</h3><p>Wiki/player docs cập nhật phần cần biết; engineering docs cập nhật contract và boundary nếu kiến trúc thay đổi.</p></article>
+<section class="section">
+  <div class="kicker">Backlog</div>
+  <h2>Ý tưởng vẫn còn, nhưng chưa có lịch</h2>
+  <p class="intro">Một ý tưởng nằm ở backlog không có nghĩa là bị hủy. Chỉ là hiện tại mình chưa muốn hứa một phiên bản cho nó.</p>
+  <div class="backlog">
+    <article><span class="status idea">Chưa xếp lịch</span><h3>Thêm NPC và chuỗi nhiệm vụ</h3><p>Sẽ làm dần cùng Tông môn, Nhân Quả và các khu vực mới.</p></article>
+    <article><span class="status idea">Chưa xếp lịch</span><h3>Pháp bảo và vật phẩm mới</h3><p>Ưu tiên món đồ có cách dùng riêng hơn là chỉ thêm nhiều cấp chỉ số.</p></article>
+    <article><span class="status idea">Chưa xếp lịch</span><h3>Boss và bí cảnh mới</h3><p>Thêm khi khung Bí Cảnh Sống đã đủ tốt để nội dung mới không lặp lại cùng một công thức.</p></article>
+    <article><span class="status idea">Chưa xếp lịch</span><h3>Dấu vết cộng đồng</h3><p>Thông báo thành tựu lớn, Thiên Đạo Bia hoặc những cách nhẹ để người chơi nhìn thấy dấu vết của nhau mà không biến game thành MMO nặng.</p></article>
   </div>
 </section>
 
-<footer class="foot"><span>Thiên Vân Đại Lục · Developer Roadmap</span><span>Roadmap là kế hoạch kỹ thuật/sản phẩm và có thể thay đổi theo dependency, dữ liệu vận hành và phản hồi người chơi.</span></footer>
+<section class="section">
+  <div class="kicker">Cách mình cập nhật roadmap</div>
+  <h2>Không cố giữ một kế hoạch nếu chơi thử thấy không ổn</h2>
+  <p class="intro">Mình sẽ thay đổi roadmap khi có lý do rõ ràng: một hệ thống không vui, phụ thuộc kỹ thuật chưa sẵn sàng, hoặc một ý tưởng khác giải quyết vấn đề tốt hơn. Khi đổi hướng, mình sẽ cố ghi lại lý do thay vì âm thầm xóa ý tưởng cũ.</p>
+</section>
+
+<footer class="foot"><span>Thiên Vân Đại Lục · Roadmap</span><span>Roadmap có thể thay đổi theo quá trình phát triển.</span></footer>
 </main>
 </body>
 </html>
