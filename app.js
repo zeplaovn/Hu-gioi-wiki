@@ -1,6 +1,16 @@
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const input=$("#searchInput"), sections=$$(".searchable"), empty=$("#searchEmpty"), side=$("#sidebar"), menu=$("#menuBtn");
 
+/* Bản đồ lớn có trang riêng để tránh nhồi thêm nội dung dài vào index wiki. */
+const worldLabel=$$(".side-label").find(x=>x.textContent.trim()==="Thế giới");
+const worldNav=worldLabel?.nextElementSibling;
+if(worldNav){
+  const a=document.createElement("a");
+  a.href="maps.html";
+  a.textContent="Thiên Vân Địa Đồ ↗";
+  worldNav.prepend(a);
+}
+
 menu.addEventListener("click",()=>side.classList.toggle("open"));
 $$(".sidebar a").forEach(a=>a.addEventListener("click",()=>side.classList.remove("open")));
 
