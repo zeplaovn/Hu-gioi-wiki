@@ -8,6 +8,7 @@ Nguồn gameplay chính: `zeplaovn/Hu-gioi`.
 
 ```text
 index.html              gameplay wiki
+maps.html               Thiên Vân Địa Đồ: Hạ Giới + preview Tiên Giới / Thần Giới
 roadmap.html            roadmap dự án
 404.html                fallback
 assets/
@@ -18,7 +19,7 @@ app.js                  stable compatibility entrypoint
 docs/MAINTENANCE.md
 ```
 
-`index.html` và `roadmap.html` giữ ở root để không phá URL public hiện tại. Hai entrypoint `styles.css` / `app.js` được giữ tương thích trong giai đoạn chuyển cấu trúc; source tổ chức mới nằm dưới `assets/`.
+`index.html`, `maps.html` và `roadmap.html` giữ ở root để URL public ngắn và ổn định. Hai entrypoint `styles.css` / `app.js` được giữ tương thích trong giai đoạn chuyển cấu trúc; source tổ chức mới nằm dưới `assets/`.
 
 ## Chạy cục bộ
 
@@ -37,6 +38,7 @@ Không tạo file temp/redeploy trigger để ép deploy; sửa Git integration 
 ## Nguồn sự thật
 
 - Gameplay/số liệu: `Hu-gioi`.
+- Bản đồ: `Hu-gioi/src/game/maps/`; nội dung Tiên Giới / Thần Giới ghi `preview` hoặc `dự kiến` cho tới khi gameplay tương ứng được kích hoạt.
 - Online behavior: `Hu-gioi/supabase/` khi có ảnh hưởng player-facing.
 - Roadmap public: `roadmap.html`.
 
