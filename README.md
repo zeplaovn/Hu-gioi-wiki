@@ -1,49 +1,75 @@
 # Thiên Vân Đại Lục Wiki
 
-Wiki tĩnh cho game **Thiên Vân Đại Lục**.
+Player-facing wiki cho game **Thiên Vân Đại Lục**.
 
 Nguồn gameplay chính: `zeplaovn/Hu-gioi`.
 
-## Cấu trúc
+## Stack
 
-```text
-index.html              gameplay wiki
-roadmap.html            roadmap dự án
-404.html                fallback
-assets/
-  css/main.css          shared stylesheet source
-  js/app.js             search + sidebar source
-styles.css              stable compatibility entrypoint
-app.js                  stable compatibility entrypoint
-docs/MAINTENANCE.md
-```
-
-`index.html` và `roadmap.html` giữ ở root để không phá URL public hiện tại. Hai entrypoint `styles.css` / `app.js` được giữ tương thích trong giai đoạn chuyển cấu trúc; source tổ chức mới nằm dưới `assets/`.
+- React 18
+- Vite 5
+- Tailwind CSS 3
+- Lucide icons
+- Hash routing nhẹ, không phụ thuộc router package
 
 ## Chạy cục bộ
 
 ```bash
-python3 -m http.server 8080
+npm install
+npm run dev
 ```
 
-Sau đó mở `http://localhost:8080`.
+Build production:
 
-## Deploy
+```bash
+npm run build
+npm run preview
+```
 
-Wiki là static site, không cần build. Phù hợp với Vercel, GitHub Pages, Netlify hoặc Cloudflare Pages.
+Output nằm trong `dist/`.
 
-Không tạo file temp/redeploy trigger để ép deploy; sửa Git integration ở platform nếu auto-deploy không chạy.
+## Cấu trúc
+
+```text
+index.html
+roadmap.html                 legacy/public roadmap URL
+404.html
+src/
+  App.jsx                    wiki shell + search + navigation + TOC
+  main.jsx
+  styles.css                 Tailwind entry + visual system
+  content/
+    wikiData.js              player-facing content/data
+assets/
+  wiki/                      original wiki artwork
+  css/                       legacy compatibility assets
+  js/                        legacy compatibility assets
+docs/
+  MAINTENANCE.md
+```
+
+`roadmap.html` và `404.html` tiếp tục được đưa vào Vite multi-page build để giữ URL public hiện tại.
 
 ## Nguồn sự thật
 
-- Gameplay/số liệu: `Hu-gioi`.
-- Online behavior: `Hu-gioi/supabase/` khi có ảnh hưởng player-facing.
-- Roadmap public: `roadmap.html`.
+Ưu tiên theo thứ tự:
 
-## Hướng scale
+1. gameplay code/data trong `Hu-gioi`;
+2. migration/RPC trong `Hu-gioi/supabase/` nếu nội dung liên quan hành vi online;
+3. roadmap public trong repo wiki;
+4. README/docs kỹ thuật của game.
 
-Khi số trang tăng và layout/sidebar bắt đầu copy lặp lại, chuyển sang `pages/` + shared layout hoặc một static-site generator nhỏ. Không thêm framework chỉ để phục vụ vài trang tĩnh.
+Không lấy số liệu từ note cũ, commit message hoặc file tạm.
 
-## Bảo mật nội dung
+## Quy tắc nội dung
 
-Wiki không chứa secret, token, database credential, admin bootstrap hoặc chi tiết vận hành nội bộ không dành cho người chơi.
+- thông tin chắc chắn mới ghi như dữ liệu đã xác nhận;
+- nội dung chưa đủ nguồn dùng `[CẦN XÁC MINH]`;
+- kinh nghiệm cộng đồng dùng `[KINH NGHIỆM CỘNG ĐỒNG]`;
+- suy đoán phải ghi `[SUY ĐOÁN]`;
+- số liệu cân bằng phải gắn phiên bản áp dụng; nếu version X.X chưa xác nhận thì không tự đặt;
+- không đưa secret, token, credential, admin bootstrap hoặc chi tiết vận hành nội bộ lên wiki.
+
+## Visual system
+
+Wiki kế thừa DNA giao diện game: **mực núi + ngọc bích + giấy dó**, nền xanh than, ngọc lục làm primary và ấn chu sa làm điểm nhấn. Artwork trong `assets/wiki/` là minh họa; artwork không phải nguồn gameplay.
