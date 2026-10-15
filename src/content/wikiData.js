@@ -1,50 +1,41 @@
+// Nội dung wiki. Số liệu gameplay lấy từ ./gameData.js (SINH TỰ ĐỘNG từ repo Hu-gioi bằng
+// `npm run sync`); phần còn lại là biên tập. Đừng chép số liệu tay vào đây.
+import {game} from './gameData.js'
+export {game}
+
+const pctN = x => String(Number((x * 100).toFixed(1))).replace('.', ',')
+const sgn = n => (n > 0 ? `+${n}` : `${n}`)
+const R = i => game.realms[i].name
+
 export const meta = {
   game: 'Thiên Vân Đại Lục',
   platform: 'Trình duyệt (PC/Mobile)',
-  version: '[CẦN XÁC MINH]',
-  lastUpdated: '15/10/2026',
+  version: game.gameVersion,
+  versionNote: 'Lấy từ package.json của repo game. Nếu bản production khác, [CẦN XÁC MINH].',
+  lastUpdated: '15/10/2026'
 }
 
-export const realms = [
-  ['Phàm Nhân','#cfd8dc'],['Luyện Khí','#7fdcff'],['Trúc Cơ','#7fffa0'],['Kim Đan','#ffd24a'],['Nguyên Anh','#ff9f43'],['Hóa Thần','#d980ff'],['Luyện Hư','#ff6b9d'],['Đại Thừa','#ffffff'],['Độ Kiếp','#ffe27a']
-]
+export const realms = game.realms.map(r => [r.name, r.color])
 
-export const races = [
-  {name:'Nhân',life:90,effect:'Không đổi chỉ số gốc; Thích Nghi giúp tốc độ tu luyện +8%.'},
-  {name:'Ma',life:90,effect:'Căn Cốt +2, Tướng Mạo -2; Ma Thể giúp chiến lực +6%.'},
-  {name:'Yêu',life:115,effect:'Căn Cốt +1, Ngộ Tính -1; Yêu Thể giúp hồi phục khí huyết +25%.'},
-  {name:'Linh',life:100,effect:'Ngộ Tính +1, Căn Cốt -1; Thông Linh giúp tỉ lệ đột phá +3%.'},
-  {name:'Tiên Duệ',life:135,effect:'Phúc Duyên +2, Vận Khí +1, Căn Cốt -2; Tiên Vận giúp cơ duyên hiếm dễ xuất hiện hơn.'},
-  {name:'Thú',life:80,effect:'Căn Cốt +2, Ngộ Tính -2; Cường Thể giúp khí huyết tối đa +12%.'}
-]
+export const races = game.races.map(r => ({
+  name: r.name,
+  life: r.life,
+  effect: [Object.entries(r.bonus).map(([k, v]) => `${k} ${sgn(v)}`).join(', ') || 'Không đổi chỉ số gốc', r.trait].filter(Boolean).join('; ')
+}))
 
-export const items = [
-  ['Tụ Khí Đan','20 linh thạch','Phàm Nhân','Cộng 6% tu vi cần để lên tầng tiếp theo.'],
-  ['Hồi Huyết Đan','15 linh thạch','Phàm Nhân','Hồi 60% khí huyết tối đa.'],
-  ['Phá Cảnh Đan','90 linh thạch','Luyện Khí','+12% cho lần đột phá kế tiếp; giới hạn cộng dồn hiện [CẦN XÁC MINH].'],
-  ['Trường Thọ Quả','160 linh thạch','Luyện Khí','Thọ nguyên +6 năm, có tăng theo cảnh giới.'],
-  ['Ngưng Nguyên Đan','140 linh thạch','Trúc Cơ','Cộng 5% tu vi cần để lên tầng tiếp theo.'],
-  ['Đại Hồi Đan','70 linh thạch','Trúc Cơ','Hồi đầy khí huyết.'],
-  ['Dịch Cân Đan','420 linh thạch','Kim Đan','Một chỉ số gốc ngẫu nhiên +1, tối đa 40.'],
-  ['Hóa Anh Đan','650 linh thạch','Nguyên Anh','Cộng 4,5% tu vi cần để lên tầng tiếp theo.'],
-  ['Tục Mệnh Đan','800 linh thạch','Nguyên Anh','Thọ nguyên +12 năm, có tăng theo cảnh giới.'],
-  ['Thiên Cơ Đan','1600 linh thạch','Hóa Thần','+20% cho lần đột phá kế tiếp; giới hạn cộng dồn hiện [CẦN XÁC MINH].'],
-  ['Thái Hư Đan','3200 linh thạch','Luyện Hư','Cộng 4% tu vi cần để lên tầng tiếp theo.'],
-  ['Tạo Hóa Dịch','5200 linh thạch','Đại Thừa','Một chỉ số gốc ngẫu nhiên +1, tối đa 40.'],
-  ['Độ Kiếp Đan','9000 linh thạch','Độ Kiếp','+25% cho lần đột phá kế tiếp; giới hạn cộng dồn hiện [CẦN XÁC MINH].']
-]
-
-export const regions = [
-  ['Phàm Nhân Thành','Phàm Nhân','Thành trấn và núi rừng quanh nơi nhập đạo.'],
-  ['Thanh Vân Sơn','Luyện Khí','Linh mạch sơ khai, yêu thú Luyện Khí thường lui tới.'],
-  ['Vạn Yêu Lâm','Trúc Cơ','Rừng yêu khí dày đặc, tài nguyên Trúc Cơ phong phú.'],
-  ['Hắc Phong Cốc','Kim Đan','Kim Đan tu sĩ tranh đoạt di tích trong cốc sâu.'],
-  ['Thiên Hà Hải','Nguyên Anh','Hải vực Nguyên Anh, linh triều và hải thú cùng tồn tại.'],
-  ['Hoang Cổ Chi Địa','Hóa Thần','Di tích Hóa Thần, cổ thi và dị tượng không ngừng xuất hiện.'],
-  ['Hư Không Liệt Cốc','Luyện Hư','Không gian rạn vỡ, chỉ Luyện Hư mới đủ sức đặt chân.'],
-  ['Đăng Thiên Cổ Lộ','Đại Thừa','Con đường Đại Thừa hướng tới Thiên Môn.'],
-  ['Thiên Môn Sơn','Độ Kiếp','Đỉnh Hạ Giới, nơi lôi kiếp và khí tức phi thăng giao nhau.']
-]
+const itemEffect = it => {
+  const lim = it.lim ? ` Mua tối đa ${it.lim} lần mỗi kỳ nhập hàng.` : ''
+  switch (it.kind) {
+    case 'exp': return `Cộng ${pctN(it.v)}% tu vi cần để lên tầng tiếp theo.${lim}`
+    case 'heal': return (it.v >= 1 ? 'Hồi đầy khí huyết.' : `Hồi ${pctN(it.v)}% khí huyết tối đa.`) + lim
+    case 'pill': return `+${pctN(it.v)}% tỉ lệ cho lần đột phá kế tiếp (tổng cộng dồn tối đa 30%).${lim}`
+    case 'life': return `Thọ nguyên +${it.v} năm, tăng 50% mỗi cảnh giới.${lim}`
+    case 'stat': return `Một chỉ số gốc ngẫu nhiên +${it.v}, tối đa 40.${lim}`
+    default: return it.desc
+  }
+}
+export const items = game.items.map(it => [it.name, `${it.cost} linh thạch`, R(it.realm), itemEffect(it)])
+export const regions = game.world.regions.map(r => [r.name, R(r.realm), r.desc])
 
 export const realmGuide = [
   {name:'Phàm Nhân',art:'realm1',region:'Phàm Nhân Thành',tone:'Khởi điểm của đạo đồ',desc:'Định nghĩa — Phàm Nhân là trạng thái trước khi tu sĩ thực sự dẫn linh khí vào con đường tu luyện. Thân thể, tuổi thọ và nhận thức vẫn chịu giới hạn của người thường; vì vậy đây là giai đoạn học luật trời trước khi thử nghịch trời. Trong Thiên Vân Đại Lục, Phàm Nhân cũng là tầng nhập môn để người chơi làm quen với tu vi, thọ nguyên, tài nguyên và nhịp thời gian thật. Có thể xem đây là phần móng của cả một đời tu: móng càng hiểu rõ, những cảnh giới sau càng ít phải trả giá vì sai lầm ban đầu.',tip:'Hiểu luật trước khi tối ưu. Một nền móng bình thường nhưng chắc chắn thường đi xa hơn một khởi đầu nóng vội.'},
@@ -66,7 +57,7 @@ export const historyTimeline = [
   {label:'Tiên Giới & Thần Giới',status:'[ĐÃ XÁC NHẬN]',text:'Thế giới được định hướng theo Hạ Giới → Tiên Giới → Thần Giới. Hai tầng trên hiện chưa mở cho người chơi; lịch sử cụ thể của chúng vẫn [CẦN XÁC MINH].'}
 ]
 
-export const npcEntries = [
+const npcCore = [
   {name:'Lão Dược Sư',place:'Thanh Khê Thành · Phàm Nhân Thành',role:'Dược sư địa phương',art:'alchemist',desc:'Có mặt ở nơi người mới bước vào tiên đồ. Tiểu sử, cảnh giới và quan hệ cá nhân hiện [CẦN XÁC MINH].'},
   {name:'Chấp Sự Thanh Vân',place:'Thanh Vân Sơn Môn',role:'Chấp sự tông môn',art:'elder',desc:'Đại diện rõ nhất cho hoạt động tông môn tại chân Thanh Vân Sơn. Chức danh cho thấy liên hệ với Thanh Vân Tông; quyền hạn cụ thể hiện [CẦN XÁC MINH].'},
   {name:'Kiếm Tu Mạc Vân',place:'Vọng Vân Đài · Thanh Vân Sơn',role:'Kiếm tu',art:'swordImmortal',desc:'Có mặt tại Vọng Vân Đài, nơi thiên phong mạnh và yêu cầm làm tổ. Công pháp và thân phận trong tông môn chưa được công bố.'},
@@ -94,7 +85,7 @@ export const factionRelations = [
   ['Huyết Sát Môn','Vạn Dược Cốc','[CẦN XÁC MINH]','Chưa có dữ liệu xác nhận quan hệ ngoại giao chính thức.']
 ]
 
-export const bestiary = [
+const bestiaryCore = [
   {name:'Hắc Lang',realm:'Phàm Nhân',region:'Phàm Nhân Thành',art:'tier0',kind:'Yêu thú',status:'[ĐÃ XÁC NHẬN]',desc:'Một trong các quái đầu tiên quanh Thanh Khê Thành và Thanh Khê Lâm.'},
   {name:'Thiết Giáp Hùng',realm:'Luyện Khí',region:'Thanh Vân Sơn',art:'tier1',kind:'Yêu thú',status:'[ĐÃ XÁC NHẬN]',desc:'Xuất hiện ở Thanh Vân Sơn, nơi yêu thú Luyện Khí bắt đầu trở thành mối đe dọa đáng kể.'},
   {name:'Hỏa Lân Thú',realm:'Trúc Cơ',region:'Vạn Yêu Lâm',art:'electricQilin',kind:'Yêu thú',status:'[ĐÃ XÁC NHẬN]',desc:'Một trong các sinh vật mạnh của Vạn Yêu Lâm. Hình dùng linh thú chính thức có khí chất tương ứng; diện mạo chính xác hiện [CẦN XÁC MINH].'},
@@ -110,20 +101,257 @@ export const bestiary = [
   {name:'Kiếp Hải Ma Thần',realm:'Độ Kiếp',region:'Thiên Môn / Kiếp Hải',art:'cosmicMage',kind:'Đại địch cao tầng',status:'[ĐÃ XÁC NHẬN TÊN]',desc:'Nằm trong nhóm quái Độ Kiếp cuối Hạ Giới. Kỹ năng và phần thưởng riêng hiện [CẦN XÁC MINH].'}
 ]
 
+/* ---- Bổ sung từ dữ liệu bản đồ: quái & NPC chưa có mục biên tập riêng ---- */
+const allSites = game.world.regions.flatMap(r => r.sites.map(s => ({...s, region: r.name, realm: r.realm})))
+const TIER_ART = ['tier0', 'tier1', 'electricQilin', 'tier3', 'tier4', 'armoredWarrior', 'celestialWolf', 'easternDragon', 'celestialKnight']
+const realmIdx = n => game.realms.findIndex(r => r.name === n)
+const seen = new Set(bestiaryCore.map(m => m.name))
+const monsterExtras = []
+game.monstersByTier.forEach((list, tier) => list.forEach(name => {
+  if (seen.has(name)) return
+  seen.add(name)
+  const at = allSites.filter(s => s.monsters.includes(name))
+  monsterExtras.push({
+    name, realm: R(tier), region: [...new Set(at.map(s => s.region))].join(' · ') || R(tier), art: TIER_ART[tier], kind: 'Quái Hạ Giới',
+    status: '[ĐÃ XÁC NHẬN TÊN]', generated: true,
+    desc: at.length ? `Xuất hiện tại ${at.map(s => s.name).join(', ')}. Kỹ năng riêng và phần thưởng chưa được mô tả chi tiết.` : 'Thuộc bảng quái của cảnh giới này. Nơi xuất hiện cụ thể [CẦN XÁC MINH].'
+  })
+}))
+export const bestiary = [...bestiaryCore, ...monsterExtras].sort((a, b) => realmIdx(a.realm) - realmIdx(b.realm))
+
+const knownNpc = new Set(npcCore.map(n => n.name))
+export const npcEntries = npcCore
+export const npcOthers = allSites.flatMap(s => s.npcs.filter(n => !knownNpc.has(n)).map(n => ({name: n, place: `${s.name} · ${s.region}`, realm: R(s.realm)})))
+
+export const sectRanks = game.sectRanks
+
+/* Thiên Mệnh & Mảnh Phi Thăng: đọc từ src/game/features/meta.js (chưa sinh tự động). */
+export const destinyUpgrades = [
+  ['Thiên Tư', '+1 điểm phân bổ chỉ số khi tạo nhân vật mỗi cấp', [3, 5, 8, 12, 18]],
+  ['Túi Càn Khôn', '+20 linh thạch khởi đầu mỗi cấp', [2, 3, 4, 6, 8]],
+  ['Trường Sinh', '+5 năm thọ nguyên khởi đầu mỗi cấp', [3, 4, 6, 8, 12]],
+  ['Đạo Tâm', '+3% tốc độ tu luyện vĩnh viễn mỗi cấp', [4, 6, 9, 13, 18]],
+  ['Thiên Vận', '+1 Vận Khí khởi đầu mỗi cấp', [5, 9, 14]]
+]
+export const ascendFragments = {cost: [8, 10, 13, 17, 22, 28, 36, 46, 58, 73, 92, 115], titles: {3: 'Hành giả cầu phi', 6: 'Lữ khách thiên môn', 9: 'Chân nhân vấn đỉnh', 12: 'Thiên Đạo Chi Chủ'}}
+
+const G = game
+const N = n => String(n).replace('.', ',')
+
 export const pages = [
-  {id:'home',title:'Thiên Thư',kicker:'Trang chủ',summary:'Thiên Vân Đại Lục Wiki là đạo tàng dành cho người chơi: cơ chế, lịch sử, cảnh giới, nhân vật, tông môn, quái vật và những dấu tích của Hạ Giới được nối lại thành một bức tranh thống nhất.',quote:'Tu tiên không tranh một sớm một chiều; người đi xa nhất thường là người biết lúc nào nên tiến, lúc nào nên giữ đạo tâm.'},
-  {id:'history',title:'Thiên Sử',kicker:'Lịch sử thế giới',summary:'Không có niên biểu đầy đủ, nhưng Hạ Giới lưu lại đủ di tích để dựng nên một lược sử theo dấu vết: tông môn thất truyền, tàn điện Hóa Thần, cổ lộ Đại Thừa và Thiên Môn nơi vô số đời tu sĩ từng hướng tới.',quote:'Cổ tích không nói hết sự thật, nhưng đá vỡ và mộ cũ chưa từng biết nói dối.'},
-  {id:'realms',title:'Cảnh Giới Lục',kicker:'Hệ thống tu luyện',summary:'Cảnh giới là những nấc biến đổi lớn trên con đường tu hành, không đơn thuần là cấp độ sức mạnh. Chín cảnh giới Hạ Giới đi từ Phàm Nhân tới Độ Kiếp; mỗi bước phản ánh một mức độ làm chủ linh khí, nền móng, thần ý, hư không và cuối cùng là khả năng chịu kiếp trước ngưỡng phi thăng. Trong gameplay, cảnh giới đồng thời quyết định môi trường lịch luyện, loại hiểm họa và mức độ khắt khe của việc quản lý thọ nguyên.',quote:'Một lần phá cảnh là thắng chính mình của hôm qua; một đời tu thành hay bại lại nằm ở cách giữ nền móng.'},
-  {id:'characters',title:'Tu Sĩ',kicker:'Nhân vật & chỉ số',summary:'Chủng tộc, năm chỉ số nền, linh căn và thiên phú quyết định nhịp phát triển của mỗi đời tu. Không có lựa chọn mạnh nhất tuyệt đối, chỉ có lựa chọn hợp con đường hơn.',sections:[{title:'Năm chỉ số nền',bullets:['Tướng Mạo: quý nhân, giao tiếp và giá mua.','Phúc Duyên: cơ duyên và chất lượng kỳ ngộ.','Căn Cốt: tu luyện, khí huyết và chiến lực.','Ngộ Tính: đốn ngộ, hỗ trợ đột phá.','Vận Khí: tránh họa, may mắn và hỗ trợ đột phá.']},{title:'Chủng tộc',table:'races'}]},
-  {id:'npcs',title:'Danh Giám Nhân Vật',kicker:'NPC quan trọng',summary:'Những nhân vật dưới đây đều xuất hiện tại các địa điểm cụ thể của Hạ Giới. Wiki chỉ khẳng định vai trò và nơi xuất hiện đã thấy rõ; tiểu sử chưa công bố giữ [CẦN XÁC MINH].',quote:'Người gặp trên đường có thể chỉ nói một câu, nhưng đôi khi một câu ấy đủ đổi cả vận mệnh.'},
-  {id:'sects',title:'Tông Môn Phổ',kicker:'Thế lực & quan hệ',summary:'Ba tông môn hiện có bản sắc rõ: Thanh Vân Tông thiên chính đạo, Huyết Sát Môn đi ma đạo, Vạn Dược Cốc lấy đan đạo làm gốc. Chỉ quan hệ được thể hiện rõ mới được ghi là đã xác nhận.',quote:'Tông môn là nơi che mưa, cũng là nơi một ân oán cá nhân có thể hóa thành đại thế.'},
-  {id:'bestiary',title:'Yêu Thú & Boss Đồ Lục',kicker:'Quái vật & đại địch',summary:'Từ Hắc Lang ngoài thành tới Kiếp Hải Ma Thần ở đỉnh Hạ Giới, quái vật tăng cấp cùng cảnh giới. Hình chỉ được dùng đúng mức độ xác nhận; hình đại diện sẽ được ghi rõ.',quote:'Yêu thú mạnh chưa chắc đáng sợ nhất; đáng sợ nhất là gặp đúng thứ mình chưa hiểu.'},
-  {id:'items',title:'Bách Bảo Các',kicker:'Vật phẩm & trang bị',summary:'Đan dược, nguyên liệu và pháp khí là công cụ để rút ngắn thời gian, vá điểm yếu và sống sót qua bình cảnh.',sections:[{title:'Đan dược & vật phẩm cửa hàng',table:'items'},{title:'Nhập hàng',body:'Cửa hàng làm mới sau 30 phút thời gian thật; giá tăng theo cảnh giới hiện tại.'}]},
-  {id:'beginner',title:'Nhập Đạo',kicker:'Hướng dẫn tân thủ',summary:'Người mới nên hiểu nhịp thời gian thật, thọ nguyên, khu vực và tài nguyên trước khi lao vào tối ưu từng con số.',sections:[{title:'Ba điều đầu tiên',bullets:['Thọ nguyên là tài nguyên.','Đột phá mở thêm thế giới nhưng cũng tăng cái giá của sai lầm.','Không tiêu sạch vật phẩm chỉ vì một lần thất bại.']}]},
-  {id:'mechanics',title:'Đạo Pháp & Cơ Chế',kicker:'Cơ chế & chiến thuật',summary:'Tu luyện, đột phá, lịch luyện, linh điền, nghề phụ, bí cảnh và tông môn tạo thành vòng lặp chính của Hạ Giới.',sections:[{title:'Tu luyện & đột phá',body:'Ngộ Tính và Vận Khí có liên quan tỉ lệ đột phá; công thức chi tiết phải được đọc theo dữ liệu hiện hành.'},{title:'Linh điền',body:'Một tháng linh điền bằng 60 giây thật; Linh Thảo chín sau 6 tháng linh điền, khoảng 6 phút thật.'}]},
-  {id:'world',title:'Thiên Vân Địa Đồ',kicker:'Bản đồ & địa điểm',summary:'Hạ Giới gồm chín khu vực từ Phàm Nhân Thành tới Thiên Môn Sơn. Tiên Giới và Thần Giới đã có hình giới thiệu nhưng hiện chưa mở cho người chơi.',sections:[{title:'Cửu vực Hạ Giới',table:'regions'}]},
-  {id:'lore',title:'Vạn Cổ Ký',kicker:'Lore',summary:'Lore được ghi theo dấu tích, mô tả địa điểm và những gì game đã xác nhận; khoảng trống lịch sử không bị lấp bằng suy đoán vô căn cứ.',sections:[{title:'Ba tầng thế giới',body:'Trật tự hiện được xác nhận là Hạ Giới → Tiên Giới → Thần Giới. Hai tầng trên chưa mở cho người chơi.'}]},
-  {id:'updates',title:'Thiên Biến',kicker:'Cập nhật',summary:'Nơi theo dõi thay đổi và lộ trình nội dung.',sections:[{title:'Nguyên tắc',body:'Nội dung dự kiến không được ghi như tính năng đã phát hành.'}]},
-  {id:'glossary',title:'Đạo Điển',kicker:'Thuật ngữ',summary:'Giải thích thuật ngữ cốt lõi bằng tiếng Việt nhất quán.',sections:[{title:'Thuật ngữ',bullets:['Cảnh giới: bậc tu hành lớn.','Đột phá: vượt giới hạn hiện tại.','Thọ nguyên: tuổi thọ của đời tu.','Tọa hóa: kết thúc một đời tu sĩ.']}]},
-  {id:'faq',title:'Giải Nghi',kicker:'FAQ',summary:'Những câu hỏi người chơi dễ gặp nhất.',sections:[{title:'Tiên Giới đã mở chưa?',body:'Chưa.'},{title:'Thần Giới đã mở chưa?',body:'Chưa.'}]}
+  {id: 'home', title: 'Thiên Thư', kicker: 'Trang chủ',
+    summary: 'Thiên Vân Đại Lục Wiki là đạo tàng dành cho người chơi: cơ chế, lịch sử, cảnh giới, nhân vật, tông môn, quái vật và những dấu tích của Hạ Giới được nối lại thành một bức tranh thống nhất.',
+    quote: 'Tu tiên không tranh một sớm một chiều; người đi xa nhất thường là người biết lúc nào nên tiến, lúc nào nên giữ đạo tâm.'},
+
+  {id: 'history', title: 'Thiên Sử', kicker: 'Lịch sử thế giới',
+    summary: 'Không có niên biểu đầy đủ, nhưng Hạ Giới lưu lại đủ di tích để dựng nên một lược sử theo dấu vết: tông môn thất truyền, tàn điện Hóa Thần, cổ lộ Đại Thừa và Thiên Môn nơi vô số đời tu sĩ từng hướng tới.',
+    quote: 'Cổ tích không nói hết sự thật, nhưng đá vỡ và mộ cũ chưa từng biết nói dối.'},
+
+  {id: 'realms', title: 'Cảnh Giới Lục', kicker: 'Hệ thống tu luyện',
+    summary: 'Chín cảnh giới của Hạ Giới tạo thành một trục tiến triển từ phàm tục tới Độ Kiếp. Mỗi cảnh giới không chỉ tăng sức mạnh mà còn đổi môi trường, hiểm họa và cách quản lý thọ nguyên.',
+    quote: 'Một lần phá cảnh là thắng chính mình của hôm qua; một đời tu thành hay bại lại nằm ở cách giữ nền móng.'},
+
+  {id: 'characters', title: 'Tu Sĩ', kicker: 'Nhân vật & chỉ số',
+    summary: 'Chủng tộc, năm chỉ số nền, linh căn và thiên phú quyết định nhịp phát triển của mỗi đời tu. Không có lựa chọn mạnh nhất tuyệt đối, chỉ có lựa chọn hợp con đường hơn.',
+    source: 'Nguồn: core/data.js, core/player.js, features/ha_gioi_fix.js (bản vá cuối cùng ghi đè bảng chủng tộc).',
+    sections: [
+      {title: 'Năm chỉ số nền', bullets: G.stats.map(s => `${s}: ${G.statDesc[s]}`)},
+      {title: 'Khởi tạo một đời tu', bullets: [
+        'Mỗi chỉ số gốc = 5 + điểm phân bổ + bổ chính chủng tộc (tối thiểu 1).',
+        'Thọ nguyên khởi đầu = thọ nguyên cơ sở của chủng tộc + ngẫu nhiên từ −5 đến +10 năm.',
+        'Khởi đầu với 15 linh thạch.',
+        'Có 5 lượt gieo lại Tuổi / Chủng Tộc / Linh căn khi tạo nhân vật; đạo hiệu gieo không giới hạn.',
+        'Thiên Mệnh của các kiếp trước cộng thêm điểm phân bổ, linh thạch, thọ nguyên và Vận Khí khởi đầu (xem Đạo Pháp & Cơ Chế).'
+      ]},
+      {title: 'Chủng tộc', table: 'races'},
+      {title: 'Chỉ số hóa thành sức mạnh thế nào', bullets: [
+        'Cấp = cảnh giới × 9 + tầng (Phàm Nhân tầng 1 là cấp 1; Độ Kiếp tầng 9 là cấp 81).',
+        'Tu vi mỗi tháng nhập định = (4 + Căn Cốt × 1,5 + Ngộ Tính × 2 + cấp × 1,5) × (1 + tổng tăng tốc) × 1,25; mỗi tháng dao động ngẫu nhiên 0,8–1,3 lần.',
+        'Tổng tăng tốc tu luyện cộng từ: linh căn, công pháp, pháp khí, tông môn, chức vị, Đạo Tâm (Thiên Mệnh) và Thích Nghi (chủng tộc Nhân).',
+        'Khí huyết tối đa = (80 + Căn Cốt × 8 + cảnh giới × 40 + công pháp + pháp khí) × (1 + thưởng linh căn), nhân thêm 1,12 với chủng tộc Thú.',
+        'Chiến lực = (cấp × 3 + Căn Cốt × 2 + 5 + công pháp + pháp khí + tông môn) × (1 + thưởng linh căn), nhân thêm 1,06 với chủng tộc Ma.',
+        'Phòng ngự = (6 + cấp × 1,1 + Căn Cốt × 1,5 + cảnh giới × 4) × (1 + thưởng linh căn).',
+        'Chí mạng = 5% + Vận Khí × 0,4% + thưởng linh căn, tối đa 60%.',
+        'Né tránh = 3% + Phúc Duyên × 0,5% + thưởng linh căn, tối đa 42%.',
+        'Hồi phục khí huyết mỗi tháng nhập định = 4% × (1 + thưởng linh căn), nhân thêm 1,25 với chủng tộc Yêu.',
+        'Giá mua ở cửa hàng giảm 0,5% cho mỗi điểm Tướng Mạo trên 5, tối đa 15%.'
+      ]}
+    ]},
+
+  {id: 'roots', title: 'Linh Căn Phổ', kicker: 'Linh căn & ngũ hành',
+    summary: 'Linh căn quyết định bạn tu nhanh hay chậm, bền hay mỏng, hợp bí cảnh nào. Ít nguyên tố thì nhanh nhưng ít được bù; nhiều nguyên tố thì chậm nhưng được bù thọ nguyên và giữ tu vi khi đột phá hỏng.',
+    quote: 'Căn cốt thuần là đường tắt; căn cốt tạp là đường dài, nhưng trời không bỏ rơi kẻ đi đường dài.',
+    source: 'Nguồn: features/idle_data.js. Bản cân bằng linh căn 14/10/2026.',
+    sections: [{title: 'Năm loại linh căn'}, {title: 'Nguyên tố & hiệu ứng'}, {title: 'Tương khắc & bí cảnh'}],
+    keywords: G.elements.map(e => e.name).concat(G.rootTypes.map(r => r.name), ['Dị Linh Căn', 'tôi luyện'])},
+
+  {id: 'skills', title: 'Tàng Kinh Các', kicker: 'Công pháp & pháp khí',
+    summary: 'Công pháp học bằng linh thạch, pháp khí rèn bằng quặng. Công pháp mở theo cảnh giới và cộng dồn với nhau; pháp khí nhân theo phẩm chất khi rèn.',
+    quote: 'Công pháp cao mà thân thể không theo kịp thì chỉ là quyển sách đẹp.',
+    source: 'Nguồn: core/data.js + features/ha_gioi_fix.js (5 công pháp và 5 pháp khí hậu kỳ được thêm ở bản vá).',
+    sections: [{title: 'Công pháp'}, {title: 'Pháp khí'}],
+    keywords: G.skills.map(s => s.name).concat(G.gear.map(g => g.name))},
+
+  {id: 'npcs', title: 'Danh Giám Nhân Vật', kicker: 'NPC quan trọng',
+    summary: 'Những nhân vật dưới đây đều xuất hiện tại các địa điểm cụ thể của Hạ Giới. Wiki chỉ khẳng định vai trò và nơi xuất hiện đã thấy rõ; tiểu sử chưa công bố giữ [CẦN XÁC MINH].',
+    quote: 'Người gặp trên đường có thể chỉ nói một câu, nhưng đôi khi một câu ấy đủ đổi cả vận mệnh.'},
+
+  {id: 'sects', title: 'Tông Môn Phổ', kicker: 'Thế lực & quan hệ',
+    summary: 'Ba tông môn hiện có bản sắc rõ: Thanh Vân Tông thiên chính đạo, Huyết Sát Môn đi ma đạo, Vạn Dược Cốc lấy đan đạo làm gốc. Chỉ quan hệ được thể hiện rõ mới được ghi là đã xác nhận.',
+    quote: 'Tông môn là nơi che mưa, cũng là nơi một ân oán cá nhân có thể hóa thành đại thế.'},
+
+  {id: 'bestiary', title: 'Yêu Thú & Boss Đồ Lục', kicker: 'Quái vật & đại địch',
+    summary: 'Từ Hắc Lang ngoài thành tới Kiếp Hải Ma Thần ở đỉnh Hạ Giới, quái vật tăng cấp cùng cảnh giới. Hình chỉ được dùng đúng mức độ xác nhận; hình đại diện sẽ được ghi rõ.',
+    quote: 'Yêu thú mạnh chưa chắc đáng sợ nhất; đáng sợ nhất là gặp đúng thứ mình chưa hiểu.'},
+
+  {id: 'items', title: 'Bách Bảo Các', kicker: 'Vật phẩm & cửa hàng',
+    summary: 'Đan dược, nguyên liệu và pháp khí là công cụ để rút ngắn thời gian, vá điểm yếu và sống sót qua bình cảnh.',
+    source: 'Nguồn: core/data.js (TT.ITEMS, TT.SHOP), core/game.js (shopPrice), features/ha_gioi_fix.js. Trần cộng dồn Phá Cảnh Đan là 30% theo bản vá; một số dòng mô tả trong game vẫn ghi 40%.',
+    sections: [
+      {title: 'Đan dược & vật phẩm cửa hàng', table: 'items'},
+      {title: 'Nhập hàng & giá', bullets: [
+        `Cửa hàng nhập hàng lại sau ${G.shop.RESTOCK_S / 60} phút thật; vật phẩm có giới hạn mua được tính theo từng kỳ nhập.`,
+        'Giá mua = giá gốc × (1 + 0,5 × cảnh giới hiện tại) × hệ số tông môn (Vạn Dược Cốc nhân 0,7), rồi giảm thêm theo Tướng Mạo (tối đa 15%).',
+        'Hàng của cảnh giới kế tiếp hiển thị nhưng bị khóa cho tới khi bạn đạt cảnh giới đó.',
+        'Nguyên liệu nghề phụ (Hạt Linh Thảo, Quặng Linh Thiết, Giấy Phù) cũng mua ở đây với cùng quy tắc giá; bán lại bằng một nửa giá gốc.'
+      ]}
+    ]},
+
+  {id: 'crafts', title: 'Đan Phòng', kicker: 'Nghề phụ: linh điền, luyện đan, vẽ phù, luyện khí',
+    summary: 'Bốn nghề phụ chạy theo thời gian thật và có minigame riêng. Điểm tổng của các công đoạn quyết định phẩm chất thành phẩm; dưới 30% là thất bại.',
+    quote: 'Lò lửa không phân biệt kẻ giàu người nghèo, chỉ phân biệt kẻ giữ được tay ổn và kẻ không.',
+    source: 'Nguồn: core/data.js, features/farm.js, features/crafts.js, ui guide.',
+    sections: [{title: 'Phẩm chất'}, {title: 'Linh điền'}, {title: 'Luyện đan'}, {title: 'Vẽ phù lục'}, {title: 'Luyện khí'}],
+    keywords: ['Linh Thảo', 'Giấy Phù', 'Quặng Linh Thiết', 'minigame'].concat(G.alch.map(a => a.name), G.talis.map(t => t.name))},
+
+  {id: 'beginner', title: 'Nhập Đạo', kicker: 'Hướng dẫn tân thủ',
+    summary: 'Người mới nên hiểu nhịp thời gian thật, thọ nguyên, khu vực và tài nguyên trước khi lao vào tối ưu từng con số.',
+    quote: 'Hiểu luật trước, tối ưu sau.',
+    sections: [
+      {title: 'Ba điều đầu tiên', bullets: [
+        'Thọ nguyên là tài nguyên. Tuổi chạm thọ nguyên là tọa hóa, kể cả khi bạn đang đóng game (thời gian vắng mặt vẫn được tính).',
+        'Đột phá do bạn chủ động bấm; nhập định không bao giờ tự đột phá. Mỗi lần thử đều tiêu hết cộng dồn từ đan/phù, dù thành hay bại.',
+        'Tu vi tăng chủ yếu theo thời gian thật. Lịch Luyện và Nghỉ ngơi chỉ hồi chiêu 10 giây, không phải nút để bấm liên tục.'
+      ]},
+      {title: 'Lộ trình mở đầu', bullets: [
+        'Khởi đầu có 15 linh thạch. Dưỡng Khí Quyết (30 linh thạch) cộng 20% tốc độ tu luyện, là công pháp đầu tiên đáng mua.',
+        'Vào tông môn khi đủ Luyện Khí: mỗi tông môn nghiêng về một hướng (tu luyện, chiến lực hoặc đan đạo). Xem Tông Môn Phổ để chọn.',
+        'Bật Linh điền sớm: Linh Thảo là nguyên liệu của Tụ Khí Đan, Hồi Huyết Đan và Phá Cảnh Đan.',
+        'Nhớ nghỉ ngơi trước đột phá lớn: từ Kim Đan trở lên, đại đột phá phải qua Thiên Kiếp và khí huyết về 0 là chết.'
+      ]},
+      {title: 'Lỗi dễ mắc (suy ra từ cơ chế đã xác nhận)', bullets: [
+        'Cộng dồn đan/phù đột phá vượt 30% là lãng phí: phần dư bị cắt.',
+        'Bỏ lỡ kỳ nhập hàng 30 phút: hàng có giới hạn mua không cộng dồn sang kỳ sau.',
+        'Chỉ nhìn tu vi mà quên thọ nguyên: linh căn nhiều nguyên tố có thọ nguyên bù thêm, linh căn thuần thì ít hơn.',
+        'Đóng game quá 2 giờ mỗi lần: phần vượt quá không được tính thêm, nhưng thọ nguyên cạn trong lúc vắng mặt vẫn gây tọa hóa.',
+        'Đi vực quá sức: vực cao hơn cho thưởng lớn hơn nhưng mức nguy hiểm tăng theo từng bậc.'
+      ]}
+    ]},
+
+  {id: 'mechanics', title: 'Đạo Pháp & Cơ Chế', kicker: 'Cơ chế & chiến thuật',
+    summary: 'Tu luyện, đột phá, lịch luyện, linh điền, nghề phụ, bí cảnh và tông môn tạo thành vòng lặp chính của Hạ Giới.',
+    source: `Nguồn: features/idle_data.js, features/ha_gioi_fix.js, core/game.js, features/sect.js, features/meta.js · bản ${G.gameVersion}.`,
+    sections: [
+      {title: 'Nhịp thời gian thật', bullets: [
+        `1 nhịp = ${G.idle.TICK_MS / 1000} giây thật; ${G.idle.MONTH_TICKS} nhịp = 1 tháng trong game, tức khoảng ${G.idle.MONTH_TICKS * G.idle.TICK_MS / 1000} giây thật mỗi tháng.`,
+        `Khi đóng game, thời gian vẫn trôi: ${G.idle.FULL_RATE_S / 60} phút đầu tính đủ, phần sau tính ${G.idle.OFFLINE_RATE * 100}%, tối đa ${G.idle.OFFLINE_CAP_S / 3600} giờ (đã quy đổi) mỗi lần vắng mặt.`,
+        'Nếu thọ nguyên cạn trong lúc vắng mặt, nhân vật tọa hóa. Màn chính luôn hiển thị thời gian vắng mặt an toàn.',
+        `Lịch Luyện và Nghỉ ngơi có hồi chiêu ${G.idle.ACT_CD_S} giây thật.`
+      ]},
+      {title: 'Nhập định & linh thạch', bullets: [
+        'Tu vi tăng theo từng tháng nhập định (công thức ở trang Tu Sĩ).',
+        'Luyện hóa linh thạch: tiêu 10 linh thạch để nhận tu vi bằng 1,5 tháng nhập định.',
+        'Nghỉ ngơi hồi 50% khí huyết tối đa.'
+      ]},
+      {title: 'Lịch luyện', bullets: [
+        'Mỗi lần lịch luyện gieo một số d100 cộng thêm (Phúc Duyên × 1,1 + Vận Khí × 0,7), rồi xét theo ngưỡng:',
+        '≥ 118: cơ duyên, nhận tu vi bằng 3–5 tháng nhập định × hệ số vực.',
+        '86–117: tìm thấy tài nguyên, nhận (5–20 + cảnh giới × 10) × hệ số vực linh thạch.',
+        '54–85: chạm trán yêu thú (xem mục kế).',
+        '28–53: gặp tu sĩ; khả năng được tặng linh thạch phụ thuộc Tướng Mạo.',
+        '< 28: hiểm họa. Xác suất tránh được = 8% + Vận Khí × 1,8%, tối đa 55%; nếu không tránh được, mất (5–15 + nguy hiểm × 4) khí huyết và có thể chết.'
+      ]},
+      {title: 'Chạm trán yêu thú', bullets: [
+        'Lực quái = cấp × 3 + ngẫu nhiên 3–16 + bậc quái × 7 + nguy hiểm vực × 3. Bậc quái bằng cảnh giới của bạn.',
+        'Chiến lực của bạn = chiến lực + ngẫu nhiên 0–10 + phù đang dùng; chí mạng nhân 1,45. Thắng khi chiến lực của bạn ≥ lực quái.',
+        'Thắng: nhận tu vi và linh thạch nhân hệ số vực, mất một ít khí huyết.',
+        'Thua: có thể né; nếu không, chịu sát thương giảm theo phòng ngự. Hộ Thân Phù giảm thêm sát thương cho trận kế tiếp. Khí huyết về 0 là chết.'
+      ]},
+      {title: 'Kỳ ngộ', bullets: [
+        'Mỗi tháng nhập định có xác suất gặp kỳ ngộ = 6% + Phúc Duyên × 0,6% + Vận Khí × 0,2% (+1,2% với Tiên Duệ), tối đa 30%; sau mỗi kỳ ngộ phải chờ 3–6 tháng nhập định.',
+        'Độ hiếm theo trọng số: Thường 62, Hiếm 26, Cực hiếm 10, Thiên cơ 2. Phúc Duyên làm tăng cơ hội ra loại hiếm; Vận Khí giảm cơ hội dính kỳ ngộ xấu.'
+      ]},
+      {title: 'Tông môn & chức vị', body: 'Nhiệm vụ tông môn chạy theo thời gian thật, kể cả khi đóng game; cần khí huyết từ 40% và không đang ở bí cảnh. Hoàn thành nhận linh thạch, tu vi, cống hiến; thất bại mất khí huyết. Nhiệm vụ nổi bật trong ngày thưởng gấp 1,5 lần. Chức vị tăng theo tổng cống hiến đã kiếm và mở thêm bậc nhiệm vụ.'},
+      {title: 'Thiên Mệnh, thành tựu & Phi Thăng', bullets: [
+        'Khi chết hoặc phi thăng, bạn nhận điểm Thiên Mệnh để mua nâng cấp vĩnh viễn (xem bảng ở trang Thiên Biến).',
+        'Có 12 Mảnh Phi Thăng đổi bằng điểm Thiên Mệnh, giá tăng dần, có danh hiệu ở mốc 3/6/9/12 mảnh.',
+        'Thành tựu và Bia Thiên Đạo (lịch sử các kiếp) được lưu theo tài khoản.'
+      ]},
+      {title: 'Lưu dữ liệu', body: 'Game dùng mô hình database-only: tiến trình nằm trên máy chủ, tab đang chơi chỉ giữ bản tạm thời. Không có chế độ chơi offline rồi đồng bộ sau. Khi máy chủ có bản mới hơn, bản trên máy chủ thắng và game tải lại, vì vậy tránh mở cùng một tài khoản ở nhiều tab.'}
+    ]},
+
+  {id: 'breakthrough', title: 'Đột Phá Pháp', kicker: 'Công thức & máy tính đột phá',
+    summary: 'Đột phá là cửa ải quyết định tốc độ và độ an toàn của cả một đời tu. Trang này gồm công thức đang chạy trong game và một máy tính để bạn thử trước khi liều.',
+    quote: 'Tính trước một lần, đỡ tiếc ba lần.',
+    source: 'Nguồn: core/player.js + features/ha_gioi_fix.js. Công thức trên trang này được kiểm chứng tự động với lớp Player thật của game.',
+    sections: [{title: 'Máy tính đột phá'}, {title: 'Quy tắc đột phá'}, {title: 'Tu vi cần theo cảnh giới'}],
+    keywords: ['tỉ lệ đột phá', 'thiên kiếp', 'tu vi', 'thọ nguyên', 'áp chế']},
+
+  {id: 'secrets', title: 'Bí Cảnh Lục', kicker: 'Bí cảnh & thám hiểm',
+    summary: 'Bí cảnh là các chuyến thám hiểm chạy theo thời gian thật, nhiều tầng, tầng cuối có Thủ Lĩnh. Nguyên tố của bí cảnh tương tác với linh căn của bạn.',
+    source: 'Nguồn: features/idle_data.js, features/ha_gioi_fix.js.',
+    sections: [{title: 'Danh sách bí cảnh'}, {title: 'Cách một chuyến thám hiểm diễn ra'}],
+    keywords: G.secrets.map(s => s.name)},
+
+  {id: 'world', title: 'Thiên Vân Địa Đồ', kicker: 'Bản đồ & địa điểm',
+    summary: 'Hạ Giới gồm chín khu vực từ Phàm Nhân Thành tới Thiên Môn Sơn, mỗi khu có ba địa điểm với quái, tài nguyên và nhân vật riêng. Tiên Giới và Thần Giới đã có hình giới thiệu nhưng hiện chưa mở cho người chơi.',
+    source: 'Nguồn: maps/ha_gioi.js (27 địa điểm), features/ha_gioi_fix.js (hệ số thưởng & nguy hiểm đang dùng).',
+    sections: [{title: 'Cửu vực Hạ Giới'}, {title: 'Tiên Giới & Thần Giới'}],
+    keywords: G.world.regions.flatMap(r => [r.name, ...r.sites.map(s => s.name)])},
+
+  {id: 'lore', title: 'Vạn Cổ Ký', kicker: 'Lore',
+    summary: 'Lore được ghi theo dấu tích, mô tả địa điểm và những gì game đã xác nhận; khoảng trống lịch sử không bị lấp bằng suy đoán vô căn cứ.',
+    sections: [{title: 'Ba tầng thế giới', body: 'Trật tự hiện được xác nhận là Hạ Giới → Tiên Giới → Thần Giới. Hai tầng trên chưa mở cho người chơi.'}]},
+
+  {id: 'updates', title: 'Thiên Biến', kicker: 'Cập nhật',
+    summary: 'Nhật ký thay đổi chính thức lấy thẳng từ hộp "Hướng dẫn & Cập nhật" trong game, cùng các quy tắc đang áp dụng. Nội dung dự kiến không được ghi như tính năng đã phát hành.',
+    source: `Nguồn: ui/guide.js (TT.GUIDE_DOCS) · bản game ${G.gameVersion}.`,
+    sections: [{title: 'Nhật ký cập nhật'}, {title: 'Quy tắc đang áp dụng'}, {title: 'Nâng cấp Thiên Mệnh'}, {title: 'Lộ trình công khai'}]},
+
+  {id: 'glossary', title: 'Đạo Điển', kicker: 'Thuật ngữ',
+    summary: 'Giải thích thuật ngữ cốt lõi bằng tiếng Việt nhất quán với game.',
+    sections: [{title: 'Thuật ngữ', bullets: [
+      'Cảnh giới: bậc tu hành lớn. Có 9 cảnh giới từ Phàm Nhân tới Độ Kiếp, mỗi cảnh giới 9 tầng.',
+      'Tầng: bậc nhỏ trong một cảnh giới. Tầng 9 là điểm chuyển cảnh giới.',
+      'Tu vi: điểm kinh nghiệm tu hành; đủ tu vi cần cho tầng hiện tại mới được thử đột phá.',
+      'Đột phá: vượt giới hạn hiện tại. Đại đột phá là lần đột phá ở tầng 9 để sang cảnh giới mới.',
+      'Thiên Kiếp: chuỗi lôi kiếp giáng xuống khi đại đột phá lên Kim Đan trở lên; khí huyết về 0 là chết.',
+      'Thọ nguyên: tuổi thọ của đời tu. Tăng khi đại đột phá và khi dùng một số vật phẩm.',
+      'Tọa hóa: kết thúc một đời tu sĩ, gồm cả chết do thọ nguyên cạn.',
+      'Linh căn: thiên phú nguyên tố của nhân vật (Thiên, Song, Tam, Tứ, Ngũ hoặc Dị Linh Căn).',
+      'Tôi luyện: cường hóa nguyên tố linh căn, mỗi cấp tăng 8% hiệu quả nguyên tố, tối đa 10 cấp.',
+      'Linh thạch: tiền tệ của Hạ Giới.',
+      'Chiến lực / Khí huyết: sức công kích tổng hợp / sinh lực tối đa.',
+      'Lịch luyện: hành động khám phá vực hiện tại (tìm tài nguyên, gặp quái, kỳ ngộ).',
+      'Nhập định: trạng thái tu luyện nền, tu vi tăng theo thời gian thật.',
+      'Kỳ ngộ: sự kiện ngẫu nhiên khi tu luyện, chia thành Thường, Hiếm, Cực hiếm, Thiên cơ.',
+      'Bí cảnh: chuyến thám hiểm nhiều tầng có Thủ Lĩnh ở tầng cuối.',
+      'Linh điền: ruộng thuốc, trồng Linh Thảo theo thời gian thật.',
+      'Thiên Mệnh: điểm và nâng cấp vĩnh viễn nhận được sau mỗi kiếp.',
+      'Phi thăng: vượt qua đại đột phá cuối ở Độ Kiếp, kết thúc hành trình Hạ Giới.'
+    ]}]},
+
+  {id: 'faq', title: 'Giải Nghi', kicker: 'FAQ',
+    summary: 'Những câu hỏi người chơi dễ gặp nhất, trả lời theo đúng cơ chế đang chạy.',
+    sections: [
+      {title: 'Tiên Giới và Thần Giới đã mở chưa?', body: 'Chưa. Cả hai đã có module bản đồ và hình giới thiệu nhưng gameplay chưa bật.'},
+      {title: 'Phá Cảnh Đan cộng dồn tối đa bao nhiêu?', body: 'Tối đa 30% tỉ lệ đột phá cho lần thử kế tiếp. Một số mô tả trong game vẫn ghi 40% (văn bản cũ); giá trị chạy thực tế là 30% theo bản vá cân bằng.'},
+      {title: 'Đột phá có tự động không?', body: 'Không. Nhập định không bao giờ tự đột phá; bạn phải chủ động bấm khi đủ tu vi.'},
+      {title: 'Đột phá thất bại mất gì?', body: 'Mất một phần tu vi (giữ lại 65% ở tầng nhỏ, 55% ở đại đột phá, cộng thêm phần bù của linh căn và không quá 80%), mất khí huyết, và tiêu hết cộng dồn đan/phù.'},
+      {title: 'Đóng game thì sao?', body: 'Thời gian vẫn trôi: 2 phút đầu tính đủ, sau đó 50%, tối đa 2 giờ mỗi lần. Nếu thọ nguyên cạn lúc vắng mặt, nhân vật tọa hóa.'},
+      {title: 'Vì sao không chơi offline được?', body: 'Tiến trình lưu trên cơ sở dữ liệu máy chủ. Game không còn lưu gameplay vào trình duyệt và không có chế độ offline rồi đồng bộ sau.'},
+      {title: 'Mở nhiều tab thì có sao không?', body: 'Nên tránh. Khi máy chủ có bản lưu mới hơn, bản máy chủ thắng và tab cũ phải tải lại, có thể mất tiến trình chưa kịp lưu ở tab đó.'},
+      {title: 'Chủng tộc nào tốt nhất?', body: 'Không có chủng tộc mạnh tuyệt đối. Thú nhiều khí huyết nhưng Ngộ Tính thấp; Linh dễ đột phá hơn nhưng Căn Cốt thấp; Nhân tu nhanh hơn 8% và không có điểm yếu chỉ số. Hãy chọn theo lối chơi.'},
+      {title: 'Bảo trì là gì?', body: 'Khi máy chủ bảo trì, người chơi được chuyển sang trang bảo trì; banner thông báo hiển thị trước đó. Thông tin chi tiết nằm ở roadmap và thông báo trong game.'}
+    ]}
 ]

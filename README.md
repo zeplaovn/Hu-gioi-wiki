@@ -28,6 +28,8 @@ npm run preview
 
 Output nằm trong `dist/`.
 
+Đồng bộ số liệu từ game: `GAME_REPO=../Hu-gioi npm run sync && GAME_REPO=../Hu-gioi npm run verify` (xem docs/MAINTENANCE.md).
+
 ## Cấu trúc
 
 ```text
@@ -39,7 +41,10 @@ src/
   main.jsx
   styles.css                 Tailwind entry + visual system
   content/
-    wikiData.js              player-facing content/data
+    wikiData.js              nội dung biên tập (giọng văn, lore, NPC, tông môn)
+    gameData.js              SINH TỰ ĐỘNG từ repo game (npm run sync)
+  lib/formulas.js            công thức máy tính đột phá (npm run verify)
+  pages.jsx                  các trang dữ liệu/tương tác (linh căn, công pháp, nghề phụ, đột phá, bí cảnh, địa đồ)
 assets/
   wiki/                      original wiki artwork
   css/                       legacy compatibility assets

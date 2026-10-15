@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sync": "node scripts/sync-game-data.mjs",
+    "verify": "node scripts/verify-formulas.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

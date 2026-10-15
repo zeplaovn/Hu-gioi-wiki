@@ -78,3 +78,25 @@ Không commit file chỉ để kích redeploy. Nếu auto-deploy không chạy, 
 - không có secret/internal admin instructions;
 - mọi `[CẦN XÁC MINH]` mới được rà lại;
 - artwork mới đã được nén hợp lý và có alt text.
+
+## Đồng bộ dữ liệu từ game (mới)
+
+Số liệu gameplay không còn chép tay. Quy trình khi game đổi cân bằng:
+
+```bash
+# 1. clone/pull repo game cạnh repo wiki (hoặc đặt GAME_REPO)
+GAME_REPO=../Hu-gioi npm run sync      # sinh lại src/content/gameData.js
+GAME_REPO=../Hu-gioi npm run verify    # so công thức máy tính đột phá với lớp Player thật
+npm run build
+```
+
+- `scripts/sync-game-data.mjs` nạp `data.js`, `idle_data.js`, `maps/ha_gioi.js` và `features/ha_gioi_fix.js`
+  theo đúng thứ tự game, nên số liệu đã gồm các bản vá cân bằng (bản vá ghi đè `data.js`, ví dụ bảng chủng tộc,
+  trần cộng dồn đan đột phá 30%, 5 công pháp và 5 pháp khí hậu kỳ).
+- Nhật ký cập nhật và quy tắc ở trang Thiên Biến được trích từ `TT.GUIDE_DOCS` trong `src/ui/guide.js`.
+- `src/lib/formulas.js` chứa công thức dùng cho máy tính đột phá. `npm run verify` thất bại nghĩa là game đã đổi công thức:
+  cập nhật `formulas.js` rồi mới phát hành wiki.
+- `src/content/gameData.js` là file sinh tự động, không sửa tay. Nội dung biên tập nằm ở `wikiData.js`.
+- Chưa sinh tự động: bảng nâng cấp Thiên Mệnh / Mảnh Phi Thăng (`destinyUpgrades`, `ascendFragments` trong `wikiData.js`,
+  đọc từ `features/meta.js`) và nhiệm vụ tông môn. Cập nhật tay khi các phần này đổi.
+- `meta.version` lấy từ `package.json` của game; nếu bản production khác, ghi lại `[CẦN XÁC MINH]`.
