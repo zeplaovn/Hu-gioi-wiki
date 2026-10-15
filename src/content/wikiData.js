@@ -3,7 +3,6 @@ export const meta = {
   platform: 'Trình duyệt (PC/Mobile)',
   version: '[CẦN XÁC MINH]',
   lastUpdated: '15/10/2026',
-  source: 'zeplaovn/Hu-gioi',
 }
 
 export const realms = [
@@ -50,91 +49,92 @@ export const regions = [
 export const pages = [
   {
     id:'home', title:'Thiên Thư', kicker:'Trang chủ',
-    summary:'Thiên Vân Đại Lục là game tu tiên idle theo thời gian thật chạy trên trình duyệt. Wiki này ưu tiên dữ liệu đọc trực tiếp từ repo game và tách rõ phần đã xác nhận khỏi nội dung cần kiểm chứng.',
+    summary:'Thiên Vân Đại Lục là game tu tiên theo thời gian thật trên trình duyệt. Wiki này chỉ công bố thông tin dành cho người chơi và đánh dấu rõ những phần chưa đủ căn cứ.',
     sections:[
-      {title:'Đạo đồ hiện tại', body:'Tiến trình cảnh giới đã xác nhận gồm 9 bậc từ Phàm Nhân đến Độ Kiếp. Hạ Giới hiện là đại thế giới playable; Tiên Giới và Thần Giới đã có module/preview nhưng chưa mở gameplay.'},
-      {title:'Nguyên tắc tra cứu', body:'Mọi số liệu trên wiki phải đi kèm nguồn và phiên bản áp dụng. Phiên bản public hiện tại chưa thấy một nhãn X.X đủ chắc chắn trong tài liệu đã kiểm tra nên vẫn để [CẦN XÁC MINH].'},
-      {title:'Ba lối vào nhanh', bullets:['Nhập Đạo: hướng dẫn cho người mới.','Đạo Pháp & Cơ Chế: nơi tra công thức và luật gameplay.','Thiên Vân Địa Đồ: tiến trình 9 khu vực của Hạ Giới.']}
+      {title:'Đạo đồ hiện tại', body:'Tiến trình cảnh giới đã xác nhận gồm 9 bậc từ Phàm Nhân đến Độ Kiếp. Hạ Giới hiện là nơi người chơi có thể khám phá; Tiên Giới và Thần Giới chưa mở.'},
+      {title:'Nguyên tắc tra cứu', body:'Mọi chỉ số quan trọng đều được ghi kèm trạng thái xác nhận. Phiên bản X.X hiện chưa có thông tin đủ chắc chắn để công bố nên vẫn để [CẦN XÁC MINH].'},
+      {title:'Ba lối vào nhanh', bullets:['Nhập Đạo: hướng dẫn cho người mới.','Đạo Pháp & Cơ Chế: tra luật chơi và hệ thống.','Thiên Vân Địa Đồ: xem chín khu vực của Hạ Giới.']}
     ]
   },
   {
     id:'characters', title:'Tu Sĩ', kicker:'Nhân vật & chỉ số',
-    summary:'Nhân vật được định hình bởi chủng tộc, năm chỉ số nền và tiến trình cảnh giới. Mỗi chủng tộc có thọ nguyên cơ sở và hiệu chỉnh chỉ số riêng đã được khai báo trong gameplay data.',
+    summary:'Mỗi tu sĩ được định hình bởi chủng tộc, năm chỉ số nền và tiến trình cảnh giới. Chủng tộc khác nhau có thọ nguyên và thiên hướng khác nhau.',
     sections:[
       {title:'Năm chỉ số nền', bullets:['Tướng Mạo: ảnh hưởng cơ hội được quý nhân giúp đỡ và thuận lợi khi vào tông môn.','Phúc Duyên: liên quan cơ duyên và nhặt bảo vật khi lịch luyện.','Căn Cốt: liên quan tốc độ tu luyện, khí huyết và sức chiến đấu.','Ngộ Tính: liên quan đốn ngộ khi tu luyện và tỉ lệ đột phá.','Vận Khí: liên quan may mắn khi lịch luyện, tránh họa và tỉ lệ đột phá.']},
       {title:'Chủng tộc', table:'races'},
-      {title:'Mẹo thực chiến', body:'[KINH NGHIỆM CỘNG ĐỒNG] Chưa có dữ liệu cộng đồng đủ tin cậy trong nguồn đã đọc để xếp hạng chủng tộc. Không nên mặc định chủng tộc có thọ nguyên cao là lựa chọn mạnh nhất.'}
+      {title:'Mẹo thực chiến', body:'[KINH NGHIỆM CỘNG ĐỒNG] Chưa có đủ dữ liệu để xếp hạng chủng tộc. Không nên mặc định thọ nguyên cao đồng nghĩa với mạnh hơn trong mọi lối chơi.'}
     ]
   },
   {
     id:'items', title:'Bách Bảo Các', kicker:'Vật phẩm & trang bị',
-    summary:'Cửa hàng, đan dược và trang bị có dữ liệu định lượng trong source game. Bảng dưới ghi theo dữ liệu hiện có trong `src/game/core/data.js`; phiên bản X.X vẫn [CẦN XÁC MINH].',
+    summary:'Đan dược, nguyên liệu và pháp khí là những công cụ quan trọng trên con đường tu luyện. Bảng dưới chỉ giữ các chỉ số đã xác nhận; phiên bản X.X vẫn [CẦN XÁC MINH].',
     sections:[
       {title:'Đan dược & vật phẩm cửa hàng', table:'items'},
-      {title:'Nhập hàng', body:'[ĐÃ XÁC NHẬN] Cửa hàng nhập lại sau 1800 giây thời gian thật, tương đương 30 phút; giá có hệ số tăng 50% mỗi cảnh giới theo cấu hình hiện tại.'},
+      {title:'Nhập hàng', body:'[ĐÃ XÁC NHẬN] Cửa hàng nhập lại sau 1800 giây thời gian thật, tương đương 30 phút; giá tăng 50% theo mỗi cảnh giới.'},
       {title:'Trang bị chế tạo', bullets:['Phi Kiếm: dùng 3 Quặng Linh Thiết, mở từ Phàm Nhân, chiến lực cơ sở +6 trước hệ số phẩm chất.','Pháp Bào: dùng 3 Quặng Linh Thiết, mở từ Phàm Nhân, khí huyết cơ sở +24 trước hệ số phẩm chất.','Linh Giới: dùng 2 Quặng Linh Thiết, mở từ Luyện Khí, tốc độ tu luyện cơ sở +4% trước hệ số phẩm chất.']}
     ]
   },
   {
     id:'beginner', title:'Nhập Đạo', kicker:'Hướng dẫn tân thủ',
-    summary:'Mục tiêu của người mới là hiểu nhịp thời gian thật, giữ nhân vật sống đủ lâu và mở dần hệ thống theo cảnh giới. Wiki không giả định chiến lược tối ưu khi chưa có số liệu đầy đủ.',
+    summary:'Người mới nên hiểu nhịp thời gian thật, thọ nguyên và điều kiện mở khóa trước khi tối ưu tài nguyên. Không có một con đường duy nhất phù hợp với mọi nhân vật.',
     sections:[
-      {title:'Việc nên hiểu trước', bullets:['Tu luyện và một số hệ thống tiếp tục dựa trên thời gian thật.','Thọ nguyên và tuổi là tài nguyên sống còn; tọa hóa là một phần của vòng đời nhân vật.','Đột phá mở ra cảnh giới mới và kéo theo hệ thống/khu vực mới.','Save gameplay bền vững nằm ở database; game hiện không có chế độ chơi offline rồi đồng bộ sau.']},
-      {title:'Sai lầm tân thủ hay gặp', bullets:['[KINH NGHIỆM CỘNG ĐỒNG] Chưa đủ dữ liệu để khẳng định route mua vật phẩm tối ưu.','Không coi preview Tiên Giới/Thần Giới là content đang chơi được.','Không dùng số liệu cũ ngoài source hiện tại để lập build.']},
-      {title:'Checklist nhập đạo', bullets:['Đọc mô tả năm chỉ số.','Kiểm tra thọ nguyên cơ sở của chủng tộc.','Theo dõi tiến độ tu vi trước khi dùng vật phẩm tăng tu vi.','Tra điều kiện khu vực trước khi lịch luyện.']}
+      {title:'Việc nên hiểu trước', bullets:['Tu luyện và nhiều hoạt động diễn ra theo thời gian thật.','Thọ nguyên và tuổi là tài nguyên sống còn; tọa hóa là một phần của vòng đời nhân vật.','Đột phá mở cảnh giới mới và dẫn tới khu vực, lựa chọn mới.','Tiến trình được lưu trực tuyến; hiện không có chế độ chơi ngoại tuyến rồi đồng bộ sau.']},
+      {title:'Sai lầm tân thủ hay gặp', bullets:['[KINH NGHIỆM CỘNG ĐỒNG] Chưa đủ dữ liệu để khẳng định thứ tự mua vật phẩm tối ưu.','Không coi Tiên Giới hoặc Thần Giới là nội dung đã mở.','Không dùng số liệu cũ hoặc truyền miệng để lập lộ trình nếu chưa được xác nhận.']},
+      {title:'Checklist nhập đạo', bullets:['Đọc mô tả năm chỉ số.','Kiểm tra thọ nguyên cơ sở của chủng tộc.','Theo dõi tu vi trước khi dùng vật phẩm tăng tu vi.','Tra điều kiện khu vực trước khi lịch luyện.']}
     ]
   },
   {
     id:'mechanics', title:'Đạo Pháp & Cơ Chế', kicker:'Cơ chế & chiến thuật',
-    summary:'Hệ thống cốt lõi xoay quanh tu luyện idle, đột phá, thọ nguyên, lịch luyện, bí cảnh, nghề phụ và meta progression. Công thức nào chưa đọc được trực tiếp từ source sẽ không được tự suy ra.',
+    summary:'Hệ thống cốt lõi xoay quanh tu luyện, đột phá, thọ nguyên, lịch luyện, bí cảnh và nghề phụ. Phần nào chưa xác định đủ chắc chắn sẽ không được tự suy diễn.',
     sections:[
-      {title:'Tu luyện & đột phá', body:'[ĐÃ XÁC NHẬN] Game có tốc độ tu luyện, tầng/cảnh giới và cơ chế đột phá; Ngộ Tính và Vận Khí được mô tả là có liên quan tỉ lệ đột phá. Công thức chính xác của tỉ lệ hiện [CẦN XÁC MINH] trong wiki này.'},
-      {title:'Linh điền', body:'[ĐÃ XÁC NHẬN] Một tháng linh điền bằng 60 giây thật; Linh Thảo chín sau 6 tháng linh điền, tức khoảng 6 phút thật theo cấu hình hiện tại. Khi được coi là vắng mặt, cây chỉ lớn đến lúc chín và không tiếp tục chịu sâu bệnh/khô/héo.'},
-      {title:'Nghề phụ', bullets:['Luyện đan dùng Linh Thảo theo công thức.','Vẽ phù dùng hình mẫu phù lục trong minigame.','Luyện khí tạo Phi Kiếm, Pháp Bào và Linh Giới với phẩm chất ảnh hưởng hệ số kết quả.']}
+      {title:'Tu luyện & đột phá', body:'[ĐÃ XÁC NHẬN] Game có tốc độ tu luyện, tầng, cảnh giới và cơ chế đột phá. Ngộ Tính và Vận Khí có liên quan tới tỉ lệ đột phá. Công thức chính xác hiện [CẦN XÁC MINH].'},
+      {title:'Linh điền', body:'[ĐÃ XÁC NHẬN] Một tháng linh điền bằng 60 giây thật; Linh Thảo chín sau 6 tháng linh điền, tức khoảng 6 phút thật. Khi người chơi vắng mặt, cây chỉ lớn đến lúc chín và không tiếp tục chịu sâu bệnh, khô hoặc héo.'},
+      {title:'Nghề phụ', bullets:['Luyện đan dùng Linh Thảo theo công thức.','Vẽ phù dùng các hình mẫu phù lục.','Luyện khí tạo Phi Kiếm, Pháp Bào và Linh Giới; phẩm chất ảnh hưởng kết quả cuối.']}
     ]
   },
   {
     id:'world', title:'Thiên Vân Địa Đồ', kicker:'Bản đồ & địa điểm',
-    summary:'Hạ Giới là đại thế giới playable với chín khu vực tương ứng tiến trình cảnh giới. Tiên Giới và Thần Giới hiện chỉ ở trạng thái module/preview và phải được ghi rõ là chưa playable.',
+    summary:'Hạ Giới hiện có chín khu vực gắn với tiến trình cảnh giới. Tiên Giới và Thần Giới chưa mở cho người chơi.',
     sections:[
       {title:'Cửu vực Hạ Giới', table:'regions'},
-      {title:'Tiên Giới', body:'[ĐÃ XÁC NHẬN] Có module và preview asset riêng nhưng `playable: false`. Flow Phi Thăng hiện tại chưa được thay đổi để mở gameplay Tiên Giới.'},
-      {title:'Thần Giới', body:'[ĐÃ XÁC NHẬN] Có module và preview asset riêng, `playable: false`, được định vị là expansion sau Tiên Giới.'}
+      {title:'Tiên Giới', body:'[ĐÃ XÁC NHẬN] Tiên Giới đã được giới thiệu trong định hướng thế giới nhưng hiện chưa mở để khám phá.'},
+      {title:'Thần Giới', body:'[ĐÃ XÁC NHẬN] Thần Giới được định vị là tầng thế giới sau Tiên Giới và hiện chưa mở.'}
     ]
   },
   {
     id:'lore', title:'Vạn Cổ Ký', kicker:'Lore',
-    summary:'Lore trên wiki chỉ ghi những gì hiện có trong mô tả gameplay và tên địa điểm. Các diễn giải về lịch sử, nhân vật hoặc đại thế giới chưa có nguồn rõ ràng sẽ được đánh dấu thay vì viết thành sự thật.',
+    summary:'Phần ghi chép thế giới chỉ giữ những gì đã được công bố hoặc thể hiện rõ trong game. Những khoảng trống lịch sử sẽ không được tự bịa thêm.',
     sections:[
-      {title:'Khung thế giới đã xác nhận', body:'Thiên Vân Đại Lục hiện thuộc Hạ Giới. Progression bản đồ dẫn từ vùng phàm tục, qua linh sơn, yêu lâm, hải vực và di tích cổ, tới Hư Không, Đăng Thiên Cổ Lộ và Thiên Môn Sơn.'},
-      {title:'Các đại thế giới', bullets:['Hạ Giới — playable.','Tiên Giới — preview, chưa playable.','Thần Giới — preview, chưa playable.']},
-      {title:'Dòng thời gian', body:'[CẦN XÁC MINH] Chưa có tài liệu lore chronology đủ rõ trong các file đã đọc để dựng một timeline lịch sử chính thức.'}
+      {title:'Ba tầng thế giới', body:'[ĐÃ XÁC NHẬN] Trật tự thế giới hiện được biết đến gồm Hạ Giới, Tiên Giới và Thần Giới. Hạ Giới là điểm khởi đầu của đạo đồ.'},
+      {title:'Phi Thăng', body:'[ĐÃ XÁC NHẬN] Phi Thăng là cột mốc vượt khỏi Hạ Giới sau chặng Độ Kiếp. Chi tiết đầy đủ của hành trình sau Phi Thăng hiện [CẦN XÁC MINH].'},
+      {title:'Dòng thời gian', body:'[CẦN XÁC MINH] Chưa có đủ dữ liệu để dựng một dòng thời gian lore chính thức mà không suy đoán.'}
     ]
   },
   {
-    id:'updates', title:'Thiên Biến', kicker:'Cập nhật & roadmap',
-    summary:'Roadmap public thuộc repo wiki; gameplay hiện hành phải đối chiếu source game. Những lời hứa tương lai không được trình bày như tính năng đã phát hành.',
+    id:'updates', title:'Thiên Biến', kicker:'Cập nhật phiên bản',
+    summary:'Nơi theo dõi những thay đổi ảnh hưởng trực tiếp đến người chơi. Chỉ những nội dung đã công bố mới được xem là đã có trong game.',
     sections:[
-      {title:'Trạng thái hiện tại', bullets:['Hạ Giới: playable, 9 khu vực.','Tiên Giới: module + preview, chưa playable.','Thần Giới: module + preview, chưa playable.']},
-      {title:'Phiên bản', body:'[CẦN XÁC MINH] Repo/tài liệu hiện chưa cung cấp một số phiên bản X.X đủ chắc chắn để wiki công bố.'},
-      {title:'Nguồn roadmap', body:'Roadmap public chuẩn nằm trong repo Hu-gioi-wiki. Khi chuyển sang React, nội dung roadmap cũ cần được giữ tương thích URL hoặc redirect rõ ràng.'}
+      {title:'Tình trạng hiện tại', body:'Phiên bản X.X hiện [CẦN XÁC MINH]. Khi có số phiên bản chính thức, toàn bộ chỉ số trên wiki cần gắn với phiên bản tương ứng.'},
+      {title:'Định hướng thế giới', bullets:['Hạ Giới: đang mở.','Tiên Giới: chưa mở.','Thần Giới: chưa mở.']},
+      {title:'Nguyên tắc đọc cập nhật', body:'Thông tin dự kiến hoặc định hướng tương lai không được xem như tính năng đã phát hành.'}
     ]
   },
   {
     id:'glossary', title:'Đạo Điển', kicker:'Thuật ngữ',
-    summary:'Thuật ngữ giữ nguyên cách gọi trong game để người chơi có thể tra cứu ngược vào giao diện và source. Chỉ thêm diễn giải tiếng Việt khi cần làm rõ chức năng.',
+    summary:'Bảng thuật ngữ giúp thống nhất cách gọi trong toàn wiki và tránh hiểu nhầm giữa những khái niệm gần nhau.',
     sections:[
-      {title:'Thuật ngữ cốt lõi', bullets:['Cảnh Giới — bậc tu hành lớn.','Tầng — tiến trình nhỏ bên trong cảnh giới.','Đột Phá — hành động vượt ngưỡng progression.','Thọ Nguyên — giới hạn tuổi thọ của nhân vật.','Tọa Hóa — kết thúc một đời tu khi hết thọ nguyên/theo cơ chế game.','Thiên Mệnh — lớp meta progression của tài khoản/chu kỳ.','Phi Thăng — mốc vượt khỏi Hạ Giới; chi tiết flow hiện cần đọc source sâu hơn.']}
+      {title:'Thuật ngữ cốt lõi', bullets:['Cảnh giới: bậc lớn trên con đường tu luyện.','Tầng: tiến trình nhỏ bên trong một cảnh giới.','Đột phá: bước vượt giới hạn để tiến lên.','Thọ nguyên: số năm sống còn lại của tu sĩ.','Tọa hóa: kết thúc một đời tu khi thọ nguyên hoặc điều kiện sống không còn.','Phi Thăng: cột mốc rời Hạ Giới để tiến tới tầng thế giới cao hơn.','Thiên Mệnh: hệ tiến triển lâu dài gắn với hành trình của người chơi.']},
+      {title:'Trạng thái thông tin', bullets:['[ĐÃ XÁC NHẬN]: thông tin đủ chắc chắn để công bố.','[KINH NGHIỆM CỘNG ĐỒNG]: nhận định thực chiến, không phải luật tuyệt đối.','[SUY ĐOÁN]: giả thuyết chưa được xác nhận.','[CẦN XÁC MINH]: còn thiếu căn cứ, không được tự điền.']}
     ]
   },
   {
     id:'faq', title:'Giải Nghi', kicker:'FAQ',
-    summary:'Các câu trả lời dưới đây chỉ dùng dữ liệu đã xác nhận từ repo hiện tại. Nội dung thay đổi theo patch phải được kiểm lại trước khi công bố.',
+    summary:'Các câu hỏi thường gặp về tiến trình, thế giới và độ tin cậy của thông tin trên wiki.',
     sections:[
-      {title:'Game có chơi offline rồi đồng bộ sau không?', body:'Không. README hiện xác nhận save gameplay dùng database-only persistence; không còn chế độ chơi offline rồi đồng bộ sau.'},
-      {title:'Tiên Giới đã chơi được chưa?', body:'Chưa. Module và preview đã có nhưng `playable: false`.'},
-      {title:'Thần Giới đã chơi được chưa?', body:'Chưa. Đây là expansion sau Tiên Giới và hiện `playable: false`.'},
-      {title:'Wiki lấy số liệu ở đâu?', body:'Ưu tiên gameplay code/data trong `Hu-gioi`; hành vi online đối chiếu migration/RPC; roadmap public lấy từ repo wiki.'}
+      {title:'Tiên Giới đã chơi được chưa?', body:'Chưa. Tiên Giới hiện chưa mở cho người chơi.'},
+      {title:'Thần Giới đã chơi được chưa?', body:'Chưa. Thần Giới là tầng thế giới về sau và hiện chưa mở.'},
+      {title:'Wiki có tự đoán chỉ số không?', body:'Không. Chỉ số không đủ căn cứ sẽ được đánh dấu [CẦN XÁC MINH].'},
+      {title:'Bảng xếp hạng build nào mạnh nhất?', body:'[KINH NGHIỆM CỘNG ĐỒNG] Chưa có đủ dữ liệu để công bố một bảng xếp hạng build đáng tin cậy.'}
     ]
   }
 ]
