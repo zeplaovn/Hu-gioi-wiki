@@ -1,6 +1,8 @@
 import React, {useEffect, useMemo, useState} from 'react'
 import { BookOpen, Search, Moon, Sun, Menu, X, Map, ScrollText, Package, Users, Sparkles, CircleHelp, Newspaper, Compass, ExternalLink } from 'lucide-react'
 import { meta, pages, realms, races, items, regions } from './content/wikiData.js'
+import heroArt from '../assets/wiki/hero.webp'
+import realmArt from '../assets/wiki/realm-progression.webp'
 
 const navIcons={home:BookOpen,characters:Users,items:Package,beginner:Compass,mechanics:Sparkles,world:Map,lore:ScrollText,updates:Newspaper,glossary:BookOpen,faq:CircleHelp}
 
@@ -64,9 +66,9 @@ export default function App(){
       </aside>
 
       <main className="min-w-0 px-4 py-7 md:px-8 lg:px-10 lg:py-10">
-        {page.id==='home'&&<div className="hero relative mb-8 overflow-hidden rounded-[28px] border border-line/60 p-7 md:p-10"><img src="/assets/wiki/hero.webp" alt="Minh họa Thiên Vân Đại Lục" className="absolute inset-0 h-full w-full object-cover opacity-75"/><div className="absolute inset-0 bg-gradient-to-r from-[#081018] via-[#081018]/80 to-transparent"/><div className="relative z-10 max-w-2xl"><Badge>[ĐÃ XÁC NHẬN] Wiki người chơi</Badge><h1 className="mt-5 font-serif text-4xl font-bold md:text-6xl">Thiên Vân Đại Lục</h1><p className="mt-4 max-w-xl text-base leading-7 text-slate-200">Tu tiên không chỉ tính bằng một lần đột phá. Ở đây, mỗi cảnh giới, năm tháng và lựa chọn đều để lại dấu trên đạo đồ.</p></div></div>}
+        {page.id==='home'&&<div className="hero relative mb-8 overflow-hidden rounded-[28px] border border-line/60 p-7 md:p-10"><img src={heroArt} alt="Minh họa Thiên Vân Đại Lục" className="absolute inset-0 h-full w-full object-cover opacity-75"/><div className="absolute inset-0 bg-gradient-to-r from-[#081018] via-[#081018]/80 to-transparent"/><div className="relative z-10 max-w-2xl"><Badge>[ĐÃ XÁC NHẬN] Wiki người chơi</Badge><h1 className="mt-5 font-serif text-4xl font-bold md:text-6xl">Thiên Vân Đại Lục</h1><p className="mt-4 max-w-xl text-base leading-7 text-slate-200">Tu tiên không chỉ tính bằng một lần đột phá. Ở đây, mỗi cảnh giới, năm tháng và lựa chọn đều để lại dấu trên đạo đồ.</p></div></div>}
         <div className="mb-8"><div className="text-xs font-bold uppercase tracking-[.22em] text-jade">{page.kicker}</div><h1 className="mt-2 font-serif text-4xl font-bold">{page.title}</h1><p className="mt-4 max-w-3xl text-base leading-7 text-slate-600 dark:text-slate-300">{page.summary}</p><div className="mt-4 flex flex-wrap gap-2"><Badge>[ĐÃ XÁC NHẬN] nguồn repo game</Badge><Badge>Phiên bản {meta.version}</Badge></div></div>
-        {page.id==='home'&&<><div className="mb-5"><RealmStrip/></div><img className="mb-8 max-h-[520px] w-full rounded-2xl border border-line/60 object-cover object-top" src="/assets/wiki/realm-progression.webp" alt="Minh họa hành trình chín cảnh giới"/></>}
+        {page.id==='home'&&<><div className="mb-5"><RealmStrip/></div><img className="mb-8 max-h-[520px] w-full rounded-2xl border border-line/60 object-cover object-top" src={realmArt} alt="Minh họa hành trình chín cảnh giới"/></>}
         {page.id==='world'&&<img className="mb-8 aspect-[16/7] w-full rounded-2xl border border-line/60 object-cover" src="https://raw.githubusercontent.com/zeplaovn/Hu-gioi/main/assets/maps/tien_world.webp" alt="Preview mỹ thuật đại thế giới"/>}
         {page.id==='items'&&<div className="mb-8 rounded-2xl border border-line/60 bg-gradient-to-br from-[#2a1d14] to-panel p-6 text-slate-100"><div className="font-serif text-2xl">Lò luyện & Bách Bảo Các</div><p className="mt-2 text-sm text-slate-300">Không khí thị giác lấy từ ngọc bích, giấy dó, đan lô và ấn chu sa; số liệu bên dưới vẫn theo source, không theo minh họa.</p></div>}
         <article className="rounded-2xl border border-line/60 bg-white/55 p-5 shadow-sm dark:bg-panel/55 md:p-8">{page.sections.map((s,i)=><Section key={s.title} s={s} index={i}/>)}</article>
