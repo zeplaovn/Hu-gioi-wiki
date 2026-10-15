@@ -18,4 +18,9 @@ linear-gradient(90deg,rgba(8,13,18,.94) 0%,rgba(8,13,18,.72) 48%,rgba(8,13,18,.2
 radial-gradient(circle at 78% 30%,rgba(60,255,60,.18),transparent 20%),
 linear-gradient(135deg,#152833 0%,#10161c 48%,#2a1a16 100%);color:white;min-height:330px}
 .hero:after{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 74% 34%,#7fdcffaa 0 2px,transparent 3px),radial-gradient(circle at 82% 44%,#ffd24a99 0 1px,transparent 2px),linear-gradient(120deg,transparent 40%,#3cff3c10 41%,transparent 42%);background-size:210px 180px,160px 140px,100% 100%;opacity:.8;pointer-events:none}
+
+/* Atlas hiện tại có 6x6 ô, mỗi ô 72px. Không phóng quá kích thước gốc để tránh nội suy làm mềm ảnh. */
+div[role="img"][aria-label^="Huy hiệu"]{width:72px!important;height:72px!important;min-width:72px;min-height:72px;background-size:432px 432px!important;image-rendering:-webkit-optimize-contrast;filter:contrast(1.04) saturate(1.03)}
+div[role="img"][aria-label^="Minh họa"]{width:72px!important;height:72px!important;min-width:72px;min-height:72px;background-size:432px 432px!important;image-rendering:-webkit-optimize-contrast;filter:contrast(1.05) saturate(1.04)}
+
 @media (prefers-reduced-motion:no-preference){a,button,input{transition:color .16s ease,background-color .16s ease,border-color .16s ease,transform .16s ease}.hero{animation:reveal .35s ease-out}@keyframes reveal{from{opacity:.65;transform:translateY(4px)}to{opacity:1;transform:none}}}
