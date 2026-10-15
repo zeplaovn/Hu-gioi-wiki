@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{font-family:"Be Vietnam Pro","Segoe UI",system-ui,sans-serif;font-synthesis:none;text-rendering:optimizeLegibility}
+html{scroll-behavior:smooth}
+body{margin:0;min-width:320px;min-height:100vh}
+*{box-sizing:border-box}
+::selection{background:#3cff3c33;color:inherit}
+code{border:1px solid #2a4a3a66;border-radius:.4rem;padding:.08rem .35rem;background:#00000015;font-size:.9em}
+.dark code{background:#00000035}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th,td{padding:.75rem .8rem;text-align:left;vertical-align:top;border-bottom:1px solid #2a4a3a55}
+th{font-family:"Noto Serif","Source Serif 4",Georgia,serif;color:#8a9aa8;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em}
+tbody tr:hover{background:#3cff3c08}
+.hero{background:
+linear-gradient(90deg,rgba(8,13,18,.94) 0%,rgba(8,13,18,.72) 48%,rgba(8,13,18,.2) 100%),
+radial-gradient(circle at 78% 30%,rgba(60,255,60,.18),transparent 20%),
+linear-gradient(135deg,#152833 0%,#10161c 48%,#2a1a16 100%);color:white;min-height:330px}
+.hero:after{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 74% 34%,#7fdcffaa 0 2px,transparent 3px),radial-gradient(circle at 82% 44%,#ffd24a99 0 1px,transparent 2px),linear-gradient(120deg,transparent 40%,#3cff3c10 41%,transparent 42%);background-size:210px 180px,160px 140px,100% 100%;opacity:.8;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){a,button,input{transition:color .16s ease,background-color .16s ease,border-color .16s ease,transform .16s ease}.hero{animation:reveal .35s ease-out}@keyframes reveal{from{opacity:.65;transform:translateY(4px)}to{opacity:1;transform:none}}}
