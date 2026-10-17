@@ -31,3 +31,11 @@
 - Không tích hợp `RootsPage` cũ vì xác suất/hệ số mâu thuẫn rõ rệt; giữ module phục vụ đối chiếu, không đưa vào NAV.
 - `UpdatesPage` chỉ trình bày guide snapshot (có cảnh báo) và link roadmap riêng, không đưa bảng Mảnh Phi Thăng/TM cũ lên site.
 - Không đưa tư liệu spoiler/endgame vào UI public. Nếu nguồn nội dung hoặc phạm vi hiển thị chưa chắc chắn: không xuất bản.
+
+## Kết quả refactor local và tình trạng release
+
+- `RootsPage` cũ có số liệu xung đột được lưu ở `legacy/RootsPage.review.txt`, **không được import vào public bundle**.
+- Các trang công pháp/nghề phụ/đột phá/bí cảnh/địa đồ/cập nhật nay là module riêng. Các trang này vẫn dùng snapshot `gameData.js`, không tuyên bố số liệu là runtime mới nhất.
+- Phần nâng cấp Thiên Mệnh legacy và đề cập “Thần Giới” cũ không đưa lên UI; quy tắc Thiên Mệnh cũ trong `UpdatesPage` cũng được tạm ẩn cho tới khi verify.
+- Phần spoiler/tuyến cuối trong roadmap đã được làm mờ/redact để tránh lộ cơ chế cốt truyện; chỉ giữ roadmap cấp cao, không trộn gameplay.
+- Chưa thể so với HEAD `Hu-gioi` ở local vì không có checkout `GAME_REPO`, do vậy mọi mâu thuẫn ở bảng trên **vẫn mở**.

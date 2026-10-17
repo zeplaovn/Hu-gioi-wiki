@@ -1,102 +1,78 @@
-# Wiki Maintenance Guide
+# Wiki Maintenance
 
-Wiki là tài liệu public-facing cho **Thiên Vân Đại Lục**. Nguồn dữ liệu chính là repo game `zeplaovn/Hu-gioi`.
+Đây là wiki player-facing. Các trang canonical và game snapshot **không cùng một nguồn số liệu**. Xem [DATA_AUDIT.md](DATA_AUDIT.md) trước khi chỉnh sửa số liệu hoặc nhập dữ liệu vào UI.
 
-## Nguồn sự thật
-
-Ưu tiên theo thứ tự:
-
-1. gameplay code/data trong `Hu-gioi`;
-2. migration/RPC nếu nội dung liên quan online/server behavior;
-3. roadmap chính thức trong repo wiki;
-4. README/docs kỹ thuật của game.
-
-Không lấy số liệu từ note cũ, commit message hoặc file tạm.
-
-## Quy tắc xác minh nội dung
-
-- dữ liệu chắc chắn: `[ĐÃ XÁC NHẬN]` khi cần hiển thị nhãn;
-- kinh nghiệm người chơi: `[KINH NGHIỆM CỘNG ĐỒNG]`;
-- suy đoán: `[SUY ĐOÁN]`;
-- thiếu nguồn hoặc chưa đối chiếu: `[CẦN XÁC MINH]`;
-- mọi con số cân bằng phải ghi phiên bản áp dụng; nếu version X.X chưa xác nhận thì giữ `[CẦN XÁC MINH]` thay vì tự đặt.
-
-## Khi nào phải cập nhật wiki
-
-Cập nhật khi thay đổi một trong các nhóm sau:
-
-- cảnh giới/progression;
-- chỉ số, linh căn, chủng tộc;
-- bí cảnh, tông môn, vật phẩm;
-- cơ chế thời gian thật, thọ nguyên, tọa hóa;
-- map/world progression;
-- online feature mà người chơi nhìn thấy;
-- roadmap/product direction.
-
-## Kiến trúc hiện tại
+## Luồng dữ liệu
 
 ```text
-src/
-  App.jsx
-  main.jsx
-  styles.css
-  content/wikiData.js
-assets/wiki/
-roadmap.html
-404.html
+Hu-gioi source ── npm run sync ──> src/content/gameData.js ─> lib/formulas.js ─> pages/{Skills,Crafts,Breakthrough,Secrets,Atlas,Updates}
+                       │
+                       └─ npm run verify: so formulas.js với TT.Player (runtime)
+
+FINAL v1.2 ──> src/content/canon*.js ─> src/content/canonData.js ─> các trang canon và tìm kiếm
+Hu-gioi/assets ── npm run sync:assets ──> assets/wiki/game/**.webp ─> lib/gameArt.js ─> GameArt
+roadmap.html ────────────────────────────────> trang roadmap độc lập (không có nghĩa đã phát hành)
 ```
 
-React phụ trách UI; nội dung/player-facing data đặt riêng dưới `src/content/` để giảm coupling và dễ đối chiếu source game.
+`src/App.jsx` là shell + điều hướng. `src/pages/` mỗi trang một file. `src/components/` chứa thành phần dùng chung. `src/lib/router.js` xử lý hash, trang 404, và cập nhật `document.title` ở App.
 
-## Artwork
+## Nguyên tắc nội dung
 
-`assets/wiki/` chứa artwork minh họa cho wiki. Artwork chỉ phục vụ nhận diện thị giác, không được dùng làm bằng chứng về lore, mechanic, NPC, map hoặc feature đã phát hành.
+- Ưu tiên gameplay code/data đang chạy trong `zeplaovn/Hu-gioi`, sau đó migration/RPC cho hành vi online.
+- Bộ canon là nguồn thiết kế đã chốt **ở phiên bản của nó**, nhưng khi mâu thuẫn với runtime phải mở `[CẦN XÁC MINH]`, không sửa số liệu theo trực giác.
+- Label: `[ĐÃ XÁC NHẬN]`, `[CẦN XÁC MINH]`, `[KINH NGHIỆM CỘNG ĐỒNG]`, `[SUY ĐOÁN]`.
+- Không công khai token, secret, admin bootstrap, log nội bộ, tài liệu cốt truyện ẩn/endgame, hoặc asset bí mật.
+- Không coi roadmap là cơ chế game. Kế hoạch trong `roadmap.html` phải có nhãn trạng thái.
 
-## Roadmap
-
-Roadmap public không được trộn với dữ liệu gameplay hiện hành. Feature nằm trong roadmap/preview phải được ghi rõ trạng thái và không trình bày như content playable.
-
-## Build & deploy
+## Quy trình cập nhật
 
 ```bash
-npm install
+# Checkout mã nguồn game công khai tương thích với bản bạn chuẩn bị phát hành
+GAME_REPO=../Hu-gioi npm run sync
+GAME_REPO=../Hu-gioi npm run verify
+GAME_REPO=../Hu-gioi npm run sync:assets
+npm ci
+npm run lint
 npm run build
 ```
 
-Vite tạo `dist/`. `roadmap.html` và `404.html` là các HTML input bổ sung để giữ URL public cũ.
+Lưu ý:
 
-Không commit file chỉ để kích redeploy. Nếu auto-deploy không chạy, xử lý ở Vercel/Git integration.
+- `sync` cập nhật `src/content/gameData.js`. Không sửa tay file sinh. Các trang snapshot lấy dữ liệu thông qua `wikiData.js` nên thay đổi sẽ hiển thị.
+- `verify` so công thức trong `src/lib/formulas.js` với `Player` của game. Nếu fail, dừng publish và sửa công thức có đối chiếu.
+- `sync:assets` chỉ chuyển danh sách cho phép ở `src/lib/gameArtMap.js` thành WebP 256px chất lượng 82 trong `assets/wiki/game/`. Cần `magick` hoặc `convert`. Nếu thiếu source thì giữ ô trống, không hotlink nguồn game.
+- Máy phát triển có thể không có kết nối npm hoặc GAME_REPO. **Không coi cú pháp JSX hợp lệ là một lần build thành công**.
+- `npm run lint` hiện là parser JSX/import/safety kiểm tra tối thiểu, **chưa phải ESLint đầy đủ**. `.prettierrc` đã có, cần cài Prettier/ESLint phù hợp lockfile sau khi có registry rồi mới coi công việc format/lint chuẩn là hoàn tất.
+- `roadmap.html`, `404.html` và `index.html` là ba entry chính, phải còn trong `dist/`.
 
-## Checklist trước publish
+## Kiểm thử Chromium trước push
 
-- `npm run build` thành công;
-- link/navigation/search/TOC hoạt động;
-- dark/light mode không mất tương phản;
-- mobile sidebar hoạt động;
-- `roadmap.html` vẫn build và truy cập được;
-- không có số liệu cũ mâu thuẫn game;
-- không có secret/internal admin instructions;
-- mọi `[CẦN XÁC MINH]` mới được rà lại;
-- artwork mới đã được nén hợp lý và có alt text.
-
-## Đồng bộ dữ liệu từ game (mới)
-
-Số liệu gameplay không còn chép tay. Quy trình khi game đổi cân bằng:
+Sau khi `npm ci` và build thành công, chạy:
 
 ```bash
-# 1. clone/pull repo game cạnh repo wiki (hoặc đặt GAME_REPO)
-GAME_REPO=../Hu-gioi npm run sync      # sinh lại src/content/gameData.js
-GAME_REPO=../Hu-gioi npm run verify    # so công thức máy tính đột phá với lớp Player thật
-npm run build
+npm run dev -- --host 127.0.0.1
 ```
 
-- `scripts/sync-game-data.mjs` nạp `data.js`, `idle_data.js`, `maps/ha_gioi.js` và `features/ha_gioi_fix.js`
-  theo đúng thứ tự game, nên số liệu đã gồm các bản vá cân bằng (bản vá ghi đè `data.js`, ví dụ bảng chủng tộc,
-  trần cộng dồn đan đột phá 30%, 5 công pháp và 5 pháp khí hậu kỳ).
-- Nhật ký cập nhật và quy tắc ở trang Thiên Biến được trích từ `TT.GUIDE_DOCS` trong `src/ui/guide.js`.
-- `src/lib/formulas.js` chứa công thức dùng cho máy tính đột phá. `npm run verify` thất bại nghĩa là game đã đổi công thức:
-  cập nhật `formulas.js` rồi mới phát hành wiki.
-- `src/content/gameData.js` là file sinh tự động, không sửa tay. Nội dung biên tập nằm ở `wikiData.js`.
-- Chưa sinh tự động: bảng nâng cấp Thiên Mệnh / Mảnh Phi Thăng (`destinyUpgrades`, `ascendFragments` trong `wikiData.js`,
-  đọc từ `features/meta.js`) và nhiệm vụ tông môn. Cập nhật tay khi các phần này đổi.
-- `meta.version` lấy từ `package.json` của game; nếu bản production khác, ghi lại `[CẦN XÁC MINH]`.
+Mở Chromium tại `http://127.0.0.1:5173/`, kiểm tra tối thiểu:
+
+1. Hash `#/home`, `#/skills`, `#/crafts`, `#/breakthrough`, `#/secrets`, `#/atlas`, `#/updates`, `#/canon` render được.
+2. `#/not-a-page` ra 404 và `document.title` đúng; click về Home hoạt động.
+3. Ctrl/⌘+K tìm dữ liệu, bỏ dấu tiếng Việt, chuyển trang được; Escape đóng overlay.
+4. Menu mobile 375px dùng được, sidebar cuộn tới tất cả nhóm; headings không bị che bởi sticky topbar.
+5. Tương tác máy tính thay đổi kết quả, bảng dài có “Hiện thêm”, TOC đi tới heading, ảnh hỏng biến mất.
+6. `http://127.0.0.1:5173/roadmap.html` là roadmap riêng, 404 tĩnh tồn tại.
+7. Không request `raw.githubusercontent.com`, không có nội dung bí mật/endgame trong bundle.
+
+Chụp screenshot desktop/mobile trước khi xin duyệt. **Không push/merge trước khi chủ repo xác nhận giao diện và kết quả test đạt**.
+
+## Checklist publish
+
+- [ ] Snapshot game đã sync và verify với đúng commit `Hu-gioi` (lưu SHA nguồn trong PR).
+- [ ] Mâu thuẫn mới cập nhật `docs/DATA_AUDIT.md`, không tự chọn số liệu.
+- [ ] Sync ảnh whitelist, kiểm tra mapping, xác nhận không có assets bí mật.
+- [ ] `npm ci && npm run lint && npm run build` PASS.
+- [ ] `dist/index.html`, `dist/roadmap.html`, `dist/404.html` tồn tại.
+- [ ] Chromium test desktop/mobile và review ảnh bằng người thật.
+- [ ] URL/SEO/sidebar/title/search/toC/PvP-lethal/meta TM đã rà.
+- [ ] Không leak nội dung ẩn, token, tệp admin.
+- [ ] Chủ repo xác nhận trước push.

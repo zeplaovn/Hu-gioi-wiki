@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "sync": "node scripts/sync-game-data.mjs",
     "verify": "node scripts/verify-formulas.mjs",
-    "sync:assets": "node scripts/sync-game-assets.mjs"
+    "sync:assets": "node scripts/sync-game-assets.mjs",
+    "lint": "node scripts/lint.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

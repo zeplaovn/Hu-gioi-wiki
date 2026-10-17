@@ -1,0 +1,43 @@
+name: Wiki CI
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+      - name: Confirm all public entry points
+        run: |
+          test -f dist/index.html
+          test -f dist/roadmap.html
+          test -f dist/404.html
+  verify-game:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: zeplaovn/Hu-gioi
+          path: game
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Verify calculator against game source
+        env:
+          GAME_REPO: ${{ github.workspace }}/game
+        run: npm run verify
