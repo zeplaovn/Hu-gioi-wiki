@@ -4,4 +4,7 @@ Thumbs.db
 .idea/
 .vercel/
 *.log
-node_modules
+node_modules/
+dist/
+.env*
+*.local
