@@ -15,3 +15,29 @@
 .legacy-page select,.legacy-page input { color:var(--text); background:var(--panel); }
 .legacy-page select option { background:var(--panel); color:var(--text); }
 .legacy-page .text-mist { color:#a3b8c8; }
+
+.load-more,.global-search-trigger { border:1px solid var(--line);border-radius:9px;padding:8px 13px;background:var(--panel2);color:var(--text);cursor:pointer; }
+.load-more:hover,.global-search-trigger:hover{border-color:var(--jade)}
+.global-search-trigger { display:inline-flex;align-items:center;gap:8px;margin-left:auto;white-space:nowrap; }
+.global-search-trigger kbd{font-size:10px;color:var(--muted)}
+.search-overlay{position:fixed;z-index:110;inset:0;background:#000b;display:flex;align-items:flex-start;justify-content:center;padding:11vh 16px 16px}
+.search-modal{width:min(660px,100%);background:#101b25;color:var(--text);border:1px solid #406579;border-radius:16px;box-shadow:0 16px 60px #000b;max-height:80vh;overflow:auto}
+.search-modal-head{display:flex;align-items:center;gap:12px;padding:16px;border-bottom:1px solid var(--line)}
+.search-modal-head input{flex:1;min-width:0;background:transparent;color:var(--text);border:0;outline:0}
+.search-modal-head button{border:0;background:transparent;color:var(--text);cursor:pointer}
+.search-results{max-height:60vh;overflow:auto;padding:8px}
+.search-results p{padding:12px;color:var(--muted)}
+.search-results button{width:100%;display:flex;justify-content:space-between;gap:10px;text-align:left;background:transparent;border:0;color:var(--text);padding:13px;border-radius:8px;cursor:pointer}
+.search-results button:hover,.search-results button:focus-visible{background:#58e8a11a}
+.search-results span{color:var(--muted)}
+.page-toc{margin-top:28px;border-top:1px solid var(--line);padding:16px;color:var(--muted)}
+.page-toc summary{cursor:pointer;color:var(--jade)}
+.page-toc nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.page-toc nav a{color:var(--text);border:1px solid var(--line);border-radius:8px;padding:7px 11px;text-decoration:none}
+main h2 {scroll-margin-top:88px}
+@media (max-width:540px){.global-search-trigger{font-size:0;padding:8px}.global-search-trigger kbd{display:none}}
+
+/* Long sidebar for the 17-section wiki */
+.app-shell>aside{display:flex;flex-direction:column;overflow-y:auto;overflow-x:hidden}
+.app-shell>aside nav{flex:1;min-height:0;overflow-y:auto;align-content:start}
+.app-shell>aside .aside-foot{position:static;margin:14px 10px 0;padding-top:10px;border-top:1px solid var(--line)}

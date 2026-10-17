@@ -1,44 +1,59 @@
-import React,{useState} from 'react'
-import {BookOpen,Search,Mountain,Orbit,FlaskConical,Package,Shield,Skull,HeartPulse,Sparkles,Map,Database,ChevronRight,AlertTriangle,X} from 'lucide-react'
-import {canon} from './content/canonData.js'
-import heroArt from '../assets/wiki/hero.webp'
-import {elementArt, materialArt, monsterArt, gearArt} from './lib/gameArt.js'
-import { SkillsPage, CraftsPage, BreakthroughPage, SecretsPage, WorldPage as MapPage, UpdatesPage } from './pages.jsx'
+import { useEffect, useState } from 'react'
+import { BookOpen, X } from 'lucide-react'
+import { canon } from './content/canonData.js'
+import NAV from './pages/nav.js'
+import { routeFromHash, navigate } from './lib/router.js'
+import { Pill } from './components/index.js'
+import GlobalSearch from './components/GlobalSearch.jsx'
+import PageTOC from './components/PageTOC.jsx'
+import NotFound from './pages/NotFound.jsx'
+import Home from './pages/Home.jsx'
+import Progression from './pages/Progression.jsx'
+import Roots from './pages/Roots.jsx'
+import Alchemy from './pages/Alchemy.jsx'
+import Materials from './pages/Materials.jsx'
+import Equipment from './pages/Equipment.jsx'
+import Bestiary from './pages/Bestiary.jsx'
+import Death from './pages/Death.jsx'
+import Destiny from './pages/Destiny.jsx'
+import World from './pages/World.jsx'
+import Skills from './pages/Skills.jsx'
+import Crafts from './pages/Crafts.jsx'
+import Breakthrough from './pages/Breakthrough.jsx'
+import Secrets from './pages/Secrets.jsx'
+import Atlas from './pages/Atlas.jsx'
+import Updates from './pages/Updates.jsx'
+import Canon from './pages/Canon.jsx'
 
-const NAV=[
- ['home','Tổng quan',BookOpen],['progression','Lộ trình 60 ngày',Mountain],['roots','Linh căn & pháp',Orbit],
- ['alchemy','Đan dược & linh dược',FlaskConical],['materials','Nguyên liệu',Package],['equipment','Trang bị',Shield],
- ['bestiary','Yêu thú & boss',Skull],['death','Tử vong & trùng sinh',HeartPulse],['destiny','Thiên Mệnh Các',Sparkles],
- ['world','Ba giới',Map],['skills','Công pháp',BookOpen],['crafts','Nghề phụ',FlaskConical],['breakthrough','Máy tính đột phá',Orbit],['secrets','Bí cảnh',Mountain],['atlas','Địa đồ',Map],['updates','Thiên Biến & Updates',Database],['canon','Canon & trạng thái',Database]
-]
-const normalize=s=>String(s??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').toLowerCase()
-const money=(v,c)=>`${v} ${c}`
-
-function GameArt({src,alt='',size=44}) {if(!src)return <span className="art-empty" aria-label={`${alt}: chưa có ảnh xác minh`}>—</span>;return <img className="game-art" src={src} alt={alt} width={size} height={size} loading="lazy" onError={e=>{e.currentTarget.hidden=true}}/>}
-function Pill({children,tone='jade'}){return <span className={`pill pill-${tone}`}>{children}</span>}
-function SectionTitle({eyebrow,title,children}){return <header className="section-title"><div className="eyebrow">{eyebrow}</div><h1>{title}</h1>{children&&<p>{children}</p>}</header>}
-function DataTable({rows,columns,limit=120}){return <div className="table-wrap"><table><thead><tr>{columns.map(c=><th key={c.key}>{c.label}</th>)}</tr></thead><tbody>{rows.slice(0,limit).map((r,i)=><tr key={r.id||r.name||i}>{columns.map(c=><td key={c.key}>{c.render?c.render(r):r[c.key]}</td>)}</tr>)}</tbody></table>{rows.length>limit&&<div className="table-note">Đang hiển thị {limit}/{rows.length} dòng.</div>}</div>}
-function SearchBox({value,onChange,placeholder='Tìm trong mục này…'}){return <label className="search"><Search size={17}/><input value={value} onChange={e=>onChange(e.target.value)} placeholder={placeholder}/>{value&&<button onClick={()=>onChange('')} aria-label="Xóa tìm kiếm"><X size={15}/></button>}</label>}
-function filterRows(rows,q){if(!q)return rows;const n=normalize(q);return rows.filter(x=>normalize(Object.values(x).join(' ')).includes(n))}
-
-function Home({go}){return <div className="stack-xl">
- <section className="hero-card"><img src={heroArt} alt="Thiên Vân Đại Lục"/><div className="hero-overlay"/><div className="hero-copy"><div className="eyebrow">Wiki canonical · v{canon.meta.version}</div><h1>Thiên Vân Đại Lục</h1><p>Tra cứu luật game, lộ trình tu luyện, linh căn, vật phẩm, quái vật và meta progression dựa trên gói thiết kế FINAL v1.2.</p><div className="hero-actions"><button className="primary" onClick={()=>go('progression')}>Xem lộ trình <ChevronRight size={16}/></button><button className="ghost" onClick={()=>go('canon')}>Trạng thái canon</button></div></div></section>
- <div className="stats"><div><b>{canon.progression.length}</b><span>Mốc progression</span></div><div><b>{canon.pills.length}</b><span>Đan dược</span></div><div><b>{canon.herbs.length}</b><span>Linh dược</span></div><div><b>{canon.equipment.length}</b><span>Trang bị</span></div><div><b>{canon.monsters.length}</b><span>Quái & boss</span></div><div><b>{canon.destinyShop.length}</b><span>Mục Thiên Mệnh</span></div></div>
- <div className="rule-grid">{canon.canonRules.slice(0,4).map((r,i)=><article className="rule-card" key={r.title}><Pill tone={i===1?'red':i===2?'gold':'jade'}>{i===0?'PHI THĂNG':i===1?'LETHAL':i===2?'MẤT TÀI SẢN':'META'}</Pill><h3>{r.title}</h3><p>{r.text}</p></article>)}</div>
- </div>}
-
-function Progression(){return <><SectionTitle eyebrow="Balance master · 60 ngày" title="Lộ trình ba giới">Mốc ngày là target đường sạch, không phải cam kết thời gian bắt buộc cho mọi người chơi.</SectionTitle><div className="timeline">{canon.progression.map((r,i)=><article key={r.stage_id}><div className="timeline-day">Ngày {r.day_start}–{r.day_end}</div><div><div className="row"><Pill>{r.world}</Pill><span className="muted">{r.stage_id}</span></div><h3>{r.stage}</h3><p>{r.content}</p></div></article>)}</div></>}
-function Roots(){const [q,setQ]=useState('');const rows=filterRows(canon.rootTech,q);return <><SectionTitle eyebrow="Căn cơ" title="Linh căn, công pháp & pháp tắc">Linh căn quyết định nhịp tu luyện và hướng cộng hưởng; bảng synergy giữ đúng số liệu v1.2.</SectionTitle><div className="card-grid roots">{canon.roots.map((r,i)=><article className="root-card" key={r.name}><div><Pill>{r.spawn_pct}% xuất hiện</Pill><h3>{r.name}</h3><p>{r.identity}</p><small>Hệ số tu luyện ×{r.cultivation_mult} · {r.structure}</small></div></article>)}</div><div className="toolbar"><SearchBox value={q} onChange={setQ}/></div><DataTable rows={rows} columns={[{key:'root_element',label:'Hệ',render:r=><span className="asset-cell"><GameArt src={elementArt(r.root_element)} alt={`Biểu tượng ${r.root_element}`}/><span>{r.root_element}</span></span>},{key:'technique',label:'Công pháp'},{key:'recommended_laws',label:'Pháp tắc khuyên dùng'},{key:'combat_focus',label:'Build'},{key:'synergy',label:'Cộng hưởng'}]}/></>}
-function Alchemy(){const [tab,setTab]=useState('pills');const [q,setQ]=useState('');const rows=filterRows(tab==='pills'?canon.pills:canon.herbs,q);return <><SectionTitle eyebrow="Luyện đan & linh điền" title="Đan dược và linh dược">Dữ liệu giá, giới, nguồn và giới hạn được lấy trực tiếp từ bảng balance canonical.</SectionTitle><div className="toolbar"><div className="tabs"><button className={tab==='pills'?'active':''} onClick={()=>setTab('pills')}>Đan dược ({canon.pills.length})</button><button className={tab==='herbs'?'active':''} onClick={()=>setTab('herbs')}>Linh dược ({canon.herbs.length})</button></div><SearchBox value={q} onChange={setQ}/></div>{tab==='pills'?<DataTable rows={rows} columns={[{key:'name',label:'Tên'},{key:'world',label:'Giới'},{key:'realm',label:'Cảnh giới'},{key:'effect',label:'Tác dụng'},{key:'price',label:'Giá',render:r=>money(r.price,r.currency)},{key:'ingredients',label:'Nguyên liệu'},{key:'limit',label:'Giới hạn'}]}/>:<DataTable rows={rows} columns={[{key:'name',label:'Tên'},{key:'world',label:'Giới'},{key:'rarity',label:'Độ hiếm'},{key:'source',label:'Nguồn'},{key:'use',label:'Công dụng'},{key:'base_price',label:'Giá gốc',render:r=>money(r.base_price,r.currency)},{key:'grow_hours',label:'Trồng',render:r=>r.grow_hours?`${r.grow_hours}h`:'—'}]}/>}</>}
-function Materials(){const [q,setQ]=useState('');const rows=filterRows(canon.materials,q);return <><SectionTitle eyebrow="Crafting" title="Nguyên liệu">Nguồn farm, mục đích dùng, giá trị cơ sở và quyền giao dịch.</SectionTitle><div className="toolbar"><SearchBox value={q} onChange={setQ}/></div><DataTable rows={rows} columns={[{key:'art',label:'Ảnh',render:r=><GameArt src={materialArt(r.name)} alt={r.name}/>},{key:'name',label:'Tên'},{key:'world',label:'Giới'},{key:'rarity',label:'Độ hiếm'},{key:'use',label:'Dùng cho'},{key:'source',label:'Nguồn'},{key:'base_value',label:'Giá trị',render:r=>money(r.base_value,r.currency)},{key:'trade',label:'Giao dịch'}]}/></>}
-function Equipment(){const [q,setQ]=useState('');const rows=filterRows(canon.equipment,q);return <><SectionTitle eyebrow="Build" title="Trang bị, set & affix">Trang bị theo tier/slot; bonus set và biên affix tách riêng để dễ đối chiếu build.</SectionTitle><div className="set-grid">{canon.sets.map(s=><article key={s.name}><Pill>{s.world}</Pill><h3>{s.name}</h3><p>{s.bonuses}</p></article>)}</div><div className="toolbar"><SearchBox value={q} onChange={setQ}/></div><DataTable rows={rows} columns={[{key:'art',label:'Ảnh',render:r=><GameArt src={gearArt(r)} alt={r.name}/>},{key:'name',label:'Trang bị'},{key:'world',label:'Giới'},{key:'rarity',label:'Phẩm'},{key:'slot',label:'Slot'},{key:'tier',label:'Tier'},{key:'effect',label:'Hiệu ứng'},{key:'price',label:'Giá',render:r=>money(r.price,r.currency)},{key:'source',label:'Nguồn'}]}/><h2 className="subhead">Affix</h2><DataTable rows={canon.affixes} columns={[{key:'name',label:'Affix'},{key:'stat',label:'Stat'},{key:'min',label:'Min',render:r=>`${r.min}${r.unit}`},{key:'max',label:'Max',render:r=>`${r.max}${r.unit}`},{key:'slots',label:'Slot'},{key:'note',label:'Ghi chú'}]}/></>}
-function Bestiary(){const [q,setQ]=useState('');const rows=filterRows(canon.monsters.filter(m=>m.realm!=='Endgame'&&!normalize(m.type).includes('cot truyen')),q);const mapped=rows.filter(m=>monsterArt(m.name));return <><SectionTitle eyebrow="Đồ lục" title="Yêu thú & boss">Danh mục công khai theo giới, cảnh giới và loại encounter. Chỉ những tên có đối chiếu trực tiếp được với thư mục asset công khai mới gắn ảnh.</SectionTitle>{mapped.length>0&&<div className="monster-preview">{mapped.map(m=><article key={m.name}><GameArt src={monsterArt(m.name)} alt={m.name} size={96}/><div><Pill tone={m.type.toLowerCase().includes('boss')?'red':'jade'}>{m.type}</Pill><h3>{m.name}</h3><p>{m.world} · {m.realm}</p></div></article>)}</div>}<div className="source-note asset-note">Ảnh đã đồng bộ trong wiki từ repo game <b>Hu-gioi</b>. Các quái chưa nhận diện đủ chắc chắn vẫn để trống thay vì gán ảnh gần giống.</div><div className="toolbar"><SearchBox value={q} onChange={setQ}/></div><DataTable rows={rows} columns={[{key:'art',label:'Ảnh',render:r=><GameArt src={monsterArt(r.name)} alt={r.name}/>},{key:'name',label:'Tên'},{key:'world',label:'Giới'},{key:'realm',label:'Cảnh giới'},{key:'type',label:'Loại',render:r=><Pill tone={r.type.toLowerCase().includes('boss')?'red':'jade'}>{r.type}</Pill>}]}/></>}
-function Death(){return <><SectionTitle eyebrow="Luật sinh tử" title="Tử vong, mất trắng & trùng sinh">Wiki phân biệt rõ safe defeat với lethal death. Chỉ death thật sự mới đóng kiếp hiện tại.</SectionTitle><div className="warning"><AlertTriangle/><div><b>Luật v1.2 đã chốt</b><p>Phi Thăng không kết thúc kiếp. Khi lethal death được xác nhận, tài sản vật lý của kiếp mất; Thiên Mệnh/meta account-level được giữ.</p></div></div><DataTable rows={canon.deathRules} columns={[{key:'content',label:'Tình huống'},{key:'mode',label:'Mode',render:r=><Pill tone={r.mode==='Lethal'?'red':'jade'}>{r.mode}</Pill>},{key:'can_permadeath',label:'Kết thúc kiếp?'},{key:'on_zero_hp',label:'HP = 0'},{key:'notes',label:'Ghi chú'}]}/><div className="rule-grid">{canon.canonRules.slice(0,4).map(r=><article className="rule-card" key={r.title}><h3>{r.title}</h3><p>{r.text}</p></article>)}</div></>}
-function Destiny(){const [q,setQ]=useState('');const rows=filterRows(canon.destinyShop,q);return <><SectionTitle eyebrow="Meta progression" title="Thiên Mệnh Các">TM thuộc account progression. Vật phẩm mua bằng TM vẫn là vật phẩm vật lý nếu bảng death_rule ghi như vậy.</SectionTitle><div className="callout"><Sparkles/><p><b>Nhận TM:</b> +1 cho mỗi breakthrough milestone thành công được hệ progression xác nhận. Phi Thăng không tự cộng bonus TM riêng.</p></div><div className="toolbar"><SearchBox value={q} onChange={setQ}/></div><DataTable rows={rows} columns={[{key:'name',label:'Mục'},{key:'type',label:'Loại'},{key:'cost',label:'Giá',render:r=>money(r.cost,r.currency)},{key:'effect',label:'Hiệu ứng'},{key:'limit',label:'Giới hạn'},{key:'scope',label:'Scope'},{key:'death_rule',label:'Khi chết'}]}/></>}
-function World(){return <><SectionTitle eyebrow="World progression" title="Ba giới, một kiếp">Người chơi tiếp tục cùng một nhân vật qua các lần Phi Thăng cho tới khi death thật sự.</SectionTitle><div className="world-grid">{canon.worlds.map((w,i)=><article key={w.name}><div className="world-num">0{i+1}</div><Pill>{w.cleanDays}</Pill><h2>{w.name}</h2><p>{w.realms}</p><small>{w.focus}</small>{i<2&&<div className="ascend">Phi Thăng → không end-life</div>}</article>)}</div><div className="callout"><Map/><p>Wiki công khai chỉ mô tả ba giới chính và luật hệ thống. Nội dung cốt truyện ẩn/endgame không được đưa vào bundle công khai.</p></div></>}
-function Canon(){return <><SectionTitle eyebrow="Nguồn dữ liệu" title="Canon v1.2 & Open Decisions">Trang này giúp phân biệt luật đã chốt với phần kỹ thuật/balance còn để mở.</SectionTitle><div className="canon-grid">{canon.canonRules.map(r=><article key={r.title}><Pill>ĐÃ CHỐT</Pill><h3>{r.title}</h3><p>{r.text}</p></article>)}</div><section className="open-box"><div className="row"><AlertTriangle/><div><div className="eyebrow">Không tự suy diễn</div><h2>Open Decisions</h2></div></div><ol>{canon.openDecisions.map(x=><li key={x}>{x}</li>)}</ol></section><div className="source-note"><b>Nguồn hiện hành:</b> {canon.meta.source} · cập nhật {canon.meta.updated}. Các bảng dữ liệu được chuyển trực tiếp từ CSV trong gói FINAL.</div></>}
-
-function GameSnapshot({ title, children }) {return <div className="legacy-page"><SectionTitle eyebrow="Game snapshot · đối chiếu đang mở" title={title}>[CẦN XÁC MINH] Dữ liệu trang này lấy từ gameData.js được đồng bộ từ Hu-gioi, không đồng nhất với bảng canonical v1.2. Không dùng để thay thế hệ progression/Thiên Mệnh đã chốt.</SectionTitle>{children}</div>}
-const wrapGame = (Comp, title) => () => <GameSnapshot title={title}><Comp/></GameSnapshot>
-const PAGES={home:Home,progression:Progression,roots:Roots,alchemy:Alchemy,materials:Materials,equipment:Equipment,bestiary:Bestiary,death:Death,destiny:Destiny,world:World,skills:wrapGame(SkillsPage,'Công pháp & pháp khí'),crafts:wrapGame(CraftsPage,'Nghề phụ'),breakthrough:wrapGame(BreakthroughPage,'Máy tính đột phá'),secrets:wrapGame(SecretsPage,'Bí cảnh'),atlas:wrapGame(MapPage,'Địa đồ'),updates:wrapGame(UpdatesPage,'Thiên Biến & Nhật ký cập nhật'),canon:Canon}
-export default function App(){const [page,setPage]=useState(()=>location.hash.replace('#/','')||'home');const [menu,setMenu]=useState(false);const go=id=>{location.hash=`/${id}`;setPage(id);setMenu(false);window.scrollTo({top:0,behavior:'smooth'})};React.useEffect(()=>{if('scrollRestoration'in history)history.scrollRestoration='manual';const f=()=>setPage(location.hash.replace('#/','')||'home');addEventListener('hashchange',f);return()=>removeEventListener('hashchange',f)},[]);React.useEffect(()=>{window.scrollTo({top:0,left:0,behavior:'auto'})},[page]);const Page=PAGES[page]||Home;return <div className="app-shell"><aside className={menu?'open':''}><div className="brand"><div className="brand-mark">天</div><div><b>Thiên Vân Đại Lục</b><span>Wiki · v{canon.meta.version}</span></div></div><nav>{NAV.map(([id,label,Icon])=><button key={id} className={page===id?'active':''} onClick={()=>go(id)}><Icon size={18}/><span>{label}</span></button>)}</nav><div className="aside-foot">Nguồn: dữ liệu canon v{canon.meta.version}</div></aside><div className="content-shell"><header className="topbar"><button className="menu-btn" onClick={()=>setMenu(!menu)}>{menu?<X/>:<BookOpen/>}</button><div><span>Đạo tàng</span><b>{NAV.find(x=>x[0]===page)?.[1]||'Tổng quan'}</b></div><Pill>CANON 1.2</Pill></header><main><Page go={go}/></main><footer>Thiên Vân Đại Lục Wiki · dữ liệu canonical v1.2 · các mục OPEN được giữ nguyên trạng thái.</footer></div>{menu&&<button className="backdrop" onClick={()=>setMenu(false)} aria-label="Đóng menu"/>}</div>}
+const PAGES = { home: Home, progression: Progression, roots: Roots, alchemy: Alchemy, materials: Materials, equipment: Equipment, bestiary: Bestiary, death: Death, destiny: Destiny, world: World, skills: Skills, crafts: Crafts, breakthrough: Breakthrough, secrets: Secrets, atlas: Atlas, updates: Updates, canon: Canon }
+export default function App() {
+  const [page, setPage] = useState(() => routeFromHash(window.location.hash))
+  const [menu, setMenu] = useState(false)
+  const go = id => { navigate(id); setPage(id); setMenu(false); window.scrollTo({ top: 0, behavior: 'auto' }) }
+  useEffect(() => {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual'
+    const update = () => setPage(routeFromHash(location.hash))
+    addEventListener('hashchange', update)
+    return () => removeEventListener('hashchange', update)
+  }, [])
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    const title = NAV.find(([id]) => id === page)?.[1] || 'Không tìm thấy trang'
+    document.title = `${title} · Thiên Vân Đại Lục Wiki`
+  }, [page])
+  const Page = PAGES[page] || NotFound
+  const title = NAV.find(([id]) => id === page)?.[1] || '404'
+  return <div className="app-shell">
+    <aside className={menu ? 'open' : ''}>
+      <div className="brand"><div className="brand-mark">天</div><div><b>Thiên Vân Đại Lục</b><span>Wiki · v{canon.meta.version}</span></div></div>
+      <nav aria-label="Danh mục wiki">{NAV.map(([id, label, Icon]) => <button type="button" key={id} aria-current={page === id ? 'page' : undefined} className={page === id ? 'active' : ''} onClick={() => go(id)}><Icon size={18} /><span>{label}</span></button>)}</nav>
+      <div className="aside-foot">Nguồn: dữ liệu canon v{canon.meta.version}</div>
+    </aside>
+    <div className="content-shell">
+      <header className="topbar"><button type="button" aria-label="Mở/đóng menu" className="menu-btn" onClick={() => setMenu(!menu)}>{menu ? <X /> : <BookOpen />}</button><div><span>Đạo tàng</span><b>{title}</b></div><GlobalSearch go={go} /><Pill>CANON 1.2</Pill></header>
+      <main><Page go={go} /><PageTOC page={page} /></main>
+      <footer>Thiên Vân Đại Lục Wiki · dữ liệu canonical v1.2 · các mục OPEN được giữ nguyên trạng thái.</footer>
+    </div>
+    {menu && <button className="backdrop" type="button" onClick={() => setMenu(false)} aria-label="Đóng menu" />}
+  </div>
+}

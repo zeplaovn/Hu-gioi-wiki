@@ -1,0 +1,28 @@
+Không tích hợp vì mâu thuẫn xác suất linh căn với canon. [CẦN XÁC MINH]
+
+export function RootsPage() {
+  const rare = {n: 1, name: 'Dị Linh Căn (Lôi / Băng / Phong)', exp: 0.45, scale: 1, w: 3, life: 0, keep: 0}
+  const rows = [...game.rootTypes.map(t => [t.name, `${t.n} nguyên tố`, sg(t.exp), `×${t.scale.toFixed(2).replace('.', ',')}`, `${t.w}%`, t.life ? `+${t.life} năm` : '—', t.keep ? sg(t.keep) : '—']),
+    [rare.name, '1 nguyên tố hiếm', sg(rare.exp), '×1,00', '3%', '—', '—']]
+  const chain = ['Kim', 'Mộc', 'Thổ', 'Thủy', 'Hỏa']
+  return <Shell>
+    <Block i={0} title="Năm loại linh căn" note="Khi tạo nhân vật, 3% gieo ra Dị Linh Căn; 97% còn lại chia theo số nguyên tố. “Thưởng tu luyện” cộng vào tổng tăng tốc; “hệ số” nhân với hiệu quả của từng nguyên tố; hai cột cuối là phần bù cho linh căn tu chậm.">
+      <Tbl head={['Linh căn', 'Số nguyên tố', 'Thưởng tu luyện', 'Hệ số nguyên tố', 'Tỉ lệ gieo', 'Thọ nguyên mỗi đại đột phá', 'Giữ thêm tu vi khi hỏng']} rows={rows}/>
+      <Callout><b>Sổ tay lão làng:</b> linh căn thuần không phải lúc nào cũng thắng. Tam, Tứ, Ngũ linh căn tu chậm hơn nhưng được cộng thọ nguyên và giữ thêm tu vi khi đột phá hỏng để vẫn tới được Phi thăng (theo bản cân bằng 14/10/2026).</Callout>
+    </Block>
+    <Block i={1} title="Nguyên tố & hiệu ứng" note={`Tôi luyện mỗi cấp tăng ${pc(game.temper.step)} hiệu quả của nguyên tố đó, tối đa ${game.temper.max} cấp. Hiệu ứng dưới đây là mức gốc (nhân với hệ số linh căn).`}>
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">{game.elements.map(e =>
+        <div key={e.name} className="rounded-2xl border border-line/60 p-4" style={{boxShadow: `inset 0 3px 0 ${e.color}`}}>
+          <div className="font-serif text-xl" style={{color: e.color}}>{e.name}{['Lôi', 'Băng', 'Phong'].includes(e.name) && <span className="ml-2 text-[11px] font-sans uppercase tracking-widest text-gold">Dị căn</span>}</div>
+          <div className="mt-1 text-sm italic text-mist">{e.story}</div>
+          <div className="mt-3 text-sm leading-6">{elemText(e)}</div>
+        </div>)}</div>
+    </Block>
+    <Block i={2} title="Tương khắc & bí cảnh" note="Nguyên tố của bí cảnh và linh căn của bạn cộng hoặc trừ trực tiếp vào chiến lực khi thám hiểm.">
+      <div className="flex flex-wrap items-center gap-2 text-sm">{chain.map((e, i) => <React.Fragment key={e}><span className="rounded-lg border border-line/60 px-3 py-1.5 font-semibold" style={{color: game.elements.find(x => x.name === e).color}}>{e}</span><span className="text-mist">khắc</span>{i === chain.length - 1 && <span className="rounded-lg border border-line/60 px-3 py-1.5 font-semibold" style={{color: game.elements[0].color}}>Kim</span>}</React.Fragment>)}</div>
+      <ul className="mt-4 space-y-2 text-[15px] leading-7">
+        {['Cùng nguyên tố với bí cảnh: +20% × hệ số linh căn.', 'Nguyên tố của bạn khắc nguyên tố bí cảnh: +30% × hệ số.', 'Nguyên tố bí cảnh khắc nguyên tố của bạn: −25% × hệ số.', 'Dị Linh Căn: luôn có +12%.', 'Tổng điều chỉnh bị kẹp trong khoảng −35% đến +60%. Bí cảnh Vô hệ không thuận cũng không nghịch.'].map(t => <li key={t} className="flex gap-3"><span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-jade"/><span>{t}</span></li>)}
+      </ul>
+    </Block>
+  </Shell>
+}

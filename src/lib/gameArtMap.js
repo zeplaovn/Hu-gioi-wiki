@@ -20,11 +20,10 @@ export const MONSTER_ART = {
   'Thanh Giao': 'monster/ha_gioi/dragon/idle/1.png',
   'Kim Giáp Tiên Vệ': 'monster/tien_gioi/armored_halberd_warrior/idle/1.png'
 }
-const SLOT_HA = {'Vũ khí': 'sword', 'Pháp bào': 'armor', 'Giày': 'boots', 'Hộ phù': 'pendant', 'Pháp giới': 'ring'}
-const SLOT_LINH = {'Vũ khí': 'sword', 'Pháp bào': 'armor', 'Giày': 'boot', 'Hộ phù': 'pendant', 'Pháp giới': 'ring'}
+const SLOT_HA = { 'Vũ khí': 'sword', 'Pháp bào': 'armor', 'Giày': 'boots', 'Hộ phù': 'pendant', 'Pháp giới': 'ring' }
+const SLOT_LINH = { 'Vũ khí': 'sword', 'Pháp bào': 'armor', 'Giày': 'boot', 'Hộ phù': 'pendant', 'Pháp giới': 'ring' }
 export const gearSource = row => {
   if (row.world === 'Hạ Giới' && SLOT_HA[row.slot] && row.tier >= 1 && row.tier <= 6) return `trang_bi/ha_gioi/${SLOT_HA[row.slot]}/${row.tier}.png`
   if (row.world === 'Linh Giới' && SLOT_LINH[row.slot] && row.tier - 4 >= 1 && row.tier - 4 <= 6) return `trang_bi/linh_gioi/${SLOT_LINH[row.slot]}/${row.tier - 4}.png`
   return null
 }
-

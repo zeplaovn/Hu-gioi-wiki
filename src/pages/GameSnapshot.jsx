@@ -1,0 +1,2 @@
+import { SectionTitle } from '../components/index.js'
+export default function GameSnapshot({ title, children }) { return <div className="legacy-page"><SectionTitle eyebrow="Game snapshot · đối chiếu đang mở" title={title}>[CẦN XÁC MINH] Dữ liệu trang này lấy từ gameData.js được đồng bộ từ Hu-gioi, không đồng nhất với bảng canonical v1.2. Không dùng để thay thế hệ progression/Thiên Mệnh đã chốt.</SectionTitle>{children}</div> }
