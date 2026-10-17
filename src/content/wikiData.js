@@ -283,7 +283,7 @@ export const pages = [
       ]},
       {title: 'Tông môn & chức vị', body: 'Nhiệm vụ tông môn chạy theo thời gian thật, kể cả khi đóng game; cần khí huyết từ 40% và không đang ở bí cảnh. Hoàn thành nhận linh thạch, tu vi, cống hiến; thất bại mất khí huyết. Nhiệm vụ nổi bật trong ngày thưởng gấp 1,5 lần. Chức vị tăng theo tổng cống hiến đã kiếm và mở thêm bậc nhiệm vụ.'},
       {title: 'Thiên Mệnh, thành tựu & Phi Thăng', bullets: [
-        'Khi chết hoặc phi thăng, bạn nhận điểm Thiên Mệnh để mua nâng cấp vĩnh viễn (xem bảng ở trang Thiên Biến).',
+        '[CẦN XÁC MINH] Quy tắc nhận Thiên Mệnh của bản game này chưa khớp với canon. Xem trang Thiên Mệnh Các.',
         'Có 12 Mảnh Phi Thăng đổi bằng điểm Thiên Mệnh, giá tăng dần, có danh hiệu ở mốc 3/6/9/12 mảnh.',
         'Thành tựu và Bia Thiên Đạo (lịch sử các kiếp) được lưu theo tài khoản.'
       ]},

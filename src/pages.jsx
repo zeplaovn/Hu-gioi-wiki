@@ -1,5 +1,5 @@
 import React, {useMemo, useState} from 'react'
-import {game, realms, npcOthers, sectRanks, destinyUpgrades, ascendFragments} from './content/wikiData.js'
+import {game, realms, npcOthers, sectRanks} from './content/wikiData.js'
 import {breakChance, failKeep, monthGain, levelOf, needExp, secondsPerMonth, fmtDuration} from './lib/formulas.js'
 
 const rn = i => game.realms[i].name
@@ -9,13 +9,13 @@ const sg = (v, d = 0) => `${v > 0 ? '+' : ''}${(v * 100).toFixed(d).replace('.',
 
 function Block({i, title, note, children}) {
   return <section id={`muc-${i + 1}`} className="scroll-mt-24 border-t border-line/50 py-7 first:border-0 first:pt-0">
-    <h2 className="font-serif text-2xl text-slate-900 dark:text-white">{title}</h2>
-    {note && <p className="mt-3 text-[15px] leading-7 text-slate-600 dark:text-slate-300">{note}</p>}
+    <h2 className="font-serif text-2xl text-white">{title}</h2>
+    {note && <p className="mt-3 text-[15px] leading-7 text-slate-300">{note}</p>}
     <div className="mt-5">{children}</div>
   </section>
 }
-const Shell = ({children}) => <article className="rounded-2xl border border-line/60 bg-white/55 p-5 shadow-sm dark:bg-panel/55 md:p-8">{children}</article>
-const Tbl = ({head, rows}) => <div className="overflow-x-auto"><table><thead><tr>{head.map(h => <th key={h}>{h}</th>)}</tr></thead>
+const Shell = ({children}) => <article className="rounded-2xl border border-line/60 bg-panel/80 p-5 shadow-sm md:p-8">{children}</article>
+const Tbl = ({head, rows}) => <div className="overflow-x-auto"><table><thead><tr>{head.map(h => <th key={h} scope="col">{h}</th>)}</tr></thead>
   <tbody>{rows.map((r, i) => <tr key={i}>{r.map((c, j) => <td key={j} className={j === 0 ? 'font-semibold' : ''}>{c}</td>)}</tr>)}</tbody></table></div>
 const RealmTag = ({i}) => <span className="font-semibold" style={{color: rc(i)}}>{rn(i)}</span>
 const Callout = ({children}) => <p className="mt-4 rounded-xl border border-jade/20 bg-jade/5 px-4 py-3 text-sm leading-6">{children}</p>
@@ -104,7 +104,7 @@ export function CraftsPage() {
 
 /* ------------------------- Đột phá + máy tính ------------------------- */
 const Field = ({label, hint, children}) => <label className="block text-sm"><span className="font-semibold">{label}</span>{hint && <span className="ml-2 text-xs text-mist">{hint}</span>}<div className="mt-1">{children}</div></label>
-const inp = 'w-full rounded-lg border border-line/60 bg-white/60 px-3 py-2 text-sm outline-none focus:border-jade dark:bg-panel/80'
+const inp = 'w-full rounded-lg border border-line/60 bg-panel/80 text-white px-3 py-2 text-sm outline-none focus:border-jade'
 
 export function BreakthroughPage() {
   const [s, setS] = useState({realm: 2, tang: 5, ngoTinh: 10, vanKhi: 8, canCot: 10, pill: 0, expBonus: 30, linh: false, rootKeep: 0, ratio: 100})
@@ -141,7 +141,7 @@ export function BreakthroughPage() {
         <div className="rounded-2xl border border-line/60 p-5"><div className="text-xs font-bold uppercase tracking-[.16em] text-sky">Thời gian đầy tu vi</div><div className="mt-2 font-serif text-3xl">{fmtDuration(r.months * secondsPerMonth())}</div><div className="mt-1 text-xs text-mist">≈ {Math.round(r.months)} tháng nhập định × {secondsPerMonth()} giây, tính từ 0 tu vi, chưa tính vắng mặt.</div></div>
       </div>
       {r.trib && <Callout><b>Thiên Kiếp:</b> đại đột phá lên {rn(s.realm + 1)} phải qua khoảng {r.strikes} đạo lôi. Khí huyết về 0 là chết, nên hãy nghỉ ngơi đầy khí huyết trước khi bấm.</Callout>}
-      {s.realm === 8 && s.tang === 9 && <Callout>Thành công ở đây là phi thăng, kết thúc hành trình Hạ Giới.</Callout>}
+      {s.realm === 8 && s.tang === 9 && <Callout>[CẦN XÁC MINH] Thời điểm chuyển giới và kết quả đột phá của phiên bản game triển khai cần đối chiếu. Phi Thăng không kết thúc kiếp (canon).</Callout>}
     </Block>
     <Block i={1} title="Quy tắc đột phá">
       <ul className="space-y-2 text-[15px] leading-7">{[
@@ -196,13 +196,13 @@ export function WorldPage() {
       <div className="mt-5 rounded-2xl border border-line/60 p-5" style={{boxShadow: `inset 0 3px 0 ${rc(reg.realm)}`}}>
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div><div className="text-xs font-bold uppercase tracking-[.16em]" style={{color: rc(reg.realm)}}>Mở từ {rn(reg.realm)} · {reg.biome}</div>
-            <h3 className="mt-1 font-serif text-3xl">{reg.name}</h3><p className="mt-2 max-w-2xl text-sm leading-7 text-slate-600 dark:text-slate-300">{reg.desc}</p></div>
+            <h3 className="mt-1 font-serif text-3xl">{reg.name}</h3><p className="mt-2 max-w-2xl text-sm leading-7 text-slate-300">{reg.desc}</p></div>
           <div className="space-y-2 text-sm"><div><span className="text-mist">Hệ số thưởng: </span><b>×{reg.reward.toFixed(2).replace('.', ',')}</b></div><Danger v={reg.danger}/></div>
         </div>
         <div className="mt-5 grid gap-4 md:grid-cols-3">{reg.sites.map(s =>
           <div key={s.id} className="rounded-xl border border-line/50 p-4">
             <div className="flex items-baseline justify-between gap-2"><h4 className="font-serif text-xl">{s.name}</h4><span className="text-[11px] uppercase tracking-widest text-gold">{s.kind}</span></div>
-            <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">{s.desc}</p>
+            <p className="mt-2 text-sm leading-6 text-slate-300">{s.desc}</p>
             <dl className="mt-3 space-y-1.5 text-sm">
               <div><dt className="inline text-mist">Quái: </dt><dd className="inline">{s.monsters.join(', ')}</dd></div>
               <div><dt className="inline text-mist">Tài nguyên: </dt><dd className="inline">{s.resources.join(', ')}</dd></div>
@@ -211,9 +211,7 @@ export function WorldPage() {
             </dl></div>)}</div>
       </div>
     </Block>
-    <Block i={1} title="Tiên Giới & Thần Giới" note="Cả hai đã có module bản đồ và hình giới thiệu, nhưng gameplay chưa bật để không đổi luồng Phi Thăng. Wiki không thêm địa danh hay cơ chế chưa được xác nhận.">
-      <div className="grid gap-4 md:grid-cols-2">{['Tiên Giới', 'Thần Giới'].map(n => <div key={n} className="rounded-xl border border-dashed border-line/70 p-4 text-sm"><b className="font-serif text-lg">{n}</b><div className="mt-1 text-mist">Chưa mở · chờ dữ liệu chính thức</div></div>)}</div>
-    </Block>
+
   </Shell>
 }
 
@@ -241,15 +239,12 @@ export function UpdatesPage() {
     <Block i={0} title="Nhật ký cập nhật" note={`Bản game hiện tại: ${game.gameVersion} (theo package.json).`}>
       <div className="space-y-5">{log.map(([date, lines]) => <div key={date} className="grid gap-3 md:grid-cols-[110px_1fr]">
         <div className="font-serif text-xl text-jade">{date}</div>
-        <ul className="space-y-2 text-sm leading-7 text-slate-600 dark:text-slate-300">{lines.map((l, i) => <li key={i} className="flex gap-3"><span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-jade"/><span>{l}</span></li>)}</ul></div>)}</div>
+        <ul className="space-y-2 text-sm leading-7 text-slate-300">{lines.map((l, i) => <li key={i} className="flex gap-3"><span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-jade"/><span>{l}</span></li>)}</ul></div>)}</div>
     </Block>
     <Block i={1} title="Quy tắc đang áp dụng" note="Nguyên văn tinh thần từ hộp Hướng dẫn trong game. Mục nào ghi “dự kiến” chưa phải cam kết.">
-      <div className="space-y-4">{rules.map(([t, d]) => <div key={t} className="rounded-xl border border-line/50 p-4"><b className="font-serif text-lg">{t}</b><p className="mt-1 text-sm leading-7 text-slate-600 dark:text-slate-300">{d}</p></div>)}</div>
+      <div className="space-y-4">{rules.map(([t, d]) => <div key={t} className="rounded-xl border border-line/50 p-4"><b className="font-serif text-lg">{t}</b><p className="mt-1 text-sm leading-7 text-slate-300">{d}</p></div>)}</div>
     </Block>
-    <Block i={2} title="Nâng cấp Thiên Mệnh" note="Mua bằng điểm Thiên Mệnh nhận được khi chết hoặc phi thăng. Mỗi dòng liệt kê giá từng cấp.">
-      <Tbl head={['Nâng cấp', 'Hiệu ứng mỗi cấp', 'Giá từng cấp (điểm)']} rows={destinyUpgrades.map(([n, d, c]) => [n, d, c.join(' → ')])}/>
-      <p className="mt-4 text-sm leading-7 text-slate-600 dark:text-slate-300">Mảnh Phi Thăng: 12 mảnh, giá {ascendFragments.cost.join(' → ')} điểm. Danh hiệu ở mốc 3/6/9/12 mảnh: {Object.entries(ascendFragments.titles).map(([k, v]) => `${k} mảnh “${v}”`).join('; ')}.</p>
-    </Block>
+
     <Block i={3} title="Lộ trình công khai" note="Kế hoạch dự kiến không được ghi như tính năng đã phát hành.">
       <a href="roadmap.html" className="inline-block rounded-xl border border-jade/40 px-4 py-2 text-sm text-jade hover:bg-jade/10">Mở roadmap công khai →</a>
     </Block>

@@ -8,3 +8,10 @@
 .game-art{display:block;object-fit:contain;border-radius:10px;background:#0a141c;border:1px solid #203746;padding:3px}.art-empty{display:inline-grid;place-items:center;min-width:44px;height:44px;color:#4f6677}.asset-cell{display:flex;align-items:center;gap:9px;min-width:110px}.monster-preview{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 10px}.monster-preview article{display:flex;align-items:center;gap:14px;min-width:0;border:1px solid var(--line);border-radius:16px;padding:14px;background:linear-gradient(145deg,#101d27,#0d1821)}.monster-preview .game-art{flex:0 0 auto;background:#071018}.monster-preview h3{margin:7px 0 3px;font-family:Georgia,serif;font-size:18px}.monster-preview p{margin:0;color:var(--muted);font-size:11px}.asset-note{margin:0 0 18px;border:1px dashed #254052;border-radius:12px;background:#0c1720}.content-shell main{scroll-margin-top:72px}
 @media(max-width:1100px){.monster-preview{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:620px){.monster-preview{grid-template-columns:1fr}.game-art{width:40px;height:40px}.monster-preview .game-art{width:82px;height:82px}}
+/* Imported game snapshot pages use the same dark surface as the canonical wiki. */
+.legacy-page { color: var(--text); max-width: 100%; }
+.legacy-page article { color: var(--text); }
+.legacy-page table { width: 100%; }
+.legacy-page select,.legacy-page input { color:var(--text); background:var(--panel); }
+.legacy-page select option { background:var(--panel); color:var(--text); }
+.legacy-page .text-mist { color:#a3b8c8; }
