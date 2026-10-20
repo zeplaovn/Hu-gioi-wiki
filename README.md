@@ -1,92 +1,35 @@
-# Thiên Vân Đại Lục Wiki
+# Thiên Vân Đại Lục — Đạo Tàng Wiki v1.6.1
 
-Wiki công khai cho người chơi Thiên Vân Đại Lục. Stack: **React 18 + Vite 5 + Tailwind CSS 3**. Dữ liệu gameplay được tách nguồn; không mặc định coi roadmap là nội dung đang chơi được.
+Wiki công khai theo gói kế hoạch **Thiên Vân Đại Lục v1.6.1, Excel đã kiểm tra (20/10/2026)**. Frontend: React 18 / Vite 5 / Tailwind 3. Dữ liệu thiết kế **không đồng nghĩa** tính năng đã có trên máy chủ game.
 
-## Chạy local
+## Chạy và kiểm tra
 
 ```bash
 npm ci
+npm run validate:data
+npm run lint
+npm run build
 npm run dev
-# Mở URL Vite hiển thị (mặc định http://localhost:5173)
 ```
 
-Kiểm tra:
+Ứng dụng dùng hash routing, ví dụ: `#/home`, `#/worlds`, `#/catalog/equipment`, `#/people`. `Ctrl/⌘+K` mở tìm kiếm toàn wiki. Bấm vào thẻ hoặc thuật ngữ tô sáng để mở popup hồ sơ chi tiết. Popup đóng bằng Escape, nút X hoặc nền ngoài.
 
-```bash
-npm run lint
-npm run build
-npm run preview
-```
+## Dữ liệu v1.6.1
 
-Ba URL `index.html`, `roadmap.html`, `404.html` phải tồn tại trong `dist/` sau build. Navigation React dùng hash (`#/home`, `#/skills`, v.v.) để không cần cấu hình rewrite phía server.
+- `src/content/wiki-v161.json`: **480 hồ sơ tra cứu** công khai từ các bảng CSV đã rà soát, cộng 59 hồ sơ NPC ở mức giới thiệu và 11 thế lực biên tập; 135 mốc tầng XP.
+- 15 cảnh giới, 82 trang bị, 60 đan dược, 72 linh dược, 54 nguyên liệu, 30 quái/boss, 7 linh căn, 17 mục Thiên Mệnh Các, 9 bộ trang bị, 20 affix, 14 công pháp, 30 kỹ năng, 59 NPC, 11 thế lực.
+- Nguồn cho từng hồ sơ hiển thị trong popup. Trạng thái nguồn: **bản thiết kế v1.6.1, chưa xác minh live**.
+- Cấu trúc dữ liệu: `{ id, name, type, world, summary, detail, source }` cho mỗi hồ sơ; `categories` cho menu; `chapters` cho 12 chương công khai; `xpThresholds` cho chín tầng của mỗi cảnh giới.
+- `scripts/validate-wiki.mjs` xác minh ID trùng, count nhóm, cảnh giới/XP, nguồn, và dấu hiệu xuất hiện spoiler nội bộ.
 
-**Tình trạng kiểm thử:** Bản local chỉ nên đưa lên production sau khi `npm ci`, `npm run build`, `npm run lint` và smoke test Chromium chạy thành công. Chi tiết môi trường/test xem `docs/MAINTENANCE.md`.
+## Quy tắc công khai và bảo trì
 
-## Cấu trúc thực tế
+1. **Không nhập** `02_NOI_BO_BI_MAT` và không đưa lời giải nội dung ẩn vào frontend, mã nguồn, assets hay snapshot.
+2. Bản gốc ZIP / Excel không được đưa thẳng lên site. Chỉ những CSV/JSON công khai đã biên tập và phần giới thiệu lore mới đi vào `wiki-v161.json`.
+3. Không khẳng định số liệu simulation 30–45 ngày là kết quả production. Baseline không tử vong: 33 ngày; kết quả mô phỏng trung vị 35,49 ngày, P75 43,91 ngày với hazard chuẩn.
+4. Thông số thiết kế có thể đổi theo beta. Giữ source/version cho từng hồ sơ và chạy `npm run validate:data` sau khi cập nhật.
+5. Luật kế hoạch: Hạ → Linh → Tiên Giới cùng một kiếp; tử vong thật làm mất tài sản vật lý nhưng không xóa Thiên Mệnh thuộc tài khoản; Quy Phàm có trạng thái kết thúc riêng.
 
-```text
-index.html                    React wiki SPA
-roadmap.html                  roadmap công khai, tách biệt gameplay
-404.html                      URL 404 tĩnh
-assets/wiki/                  hero, ảnh wiki sở hữu và WebP đã đồng bộ
-scripts/
-  sync-game-data.mjs          sinh snapshot gameData.js từ Hu-gioi
-  verify-formulas.mjs         đối chiếu máy tính với Player nguồn game
-  sync-game-assets.mjs       đồng bộ ảnh game whitelist -> WebP
-  lint.mjs                   kiểm tra cú pháp/import/security nhẹ
-src/
-  App.jsx                    sidebar + topbar + route dispatch
-  main.jsx                   React entry
-  styles.css                 Tailwind + giao diện wiki dark
-  components/                GameArt/Pill/SectionTitle/DataTable/SearchBox/GlobalSearch/PageTOC
-  pages/                     mỗi trang một module; dữ liệu canon và game snapshot tách biệt
-  lib/
-    router.js                 hash route, 404 fallback
-    text.js                   normalize tiếng Việt, lọc bảng
-    gameArtMap.js             whitelist tên -> đường dẫn game asset
-    gameArt.js                resolve URL asset đã copy vào wiki
-    formulas.js               công thức cho máy tính đột phá
-  content/
-    canon*.js                 các bảng canon thiết kế FINAL v1.2
-    gameData.js               sinh tự động từ gameplay repo
-    wikiData.js               nội dung/tiện ích tham khảo cho snapshot game
-legacy/                       code cũ không an toàn để đưa lên public UI
-.github/workflows/ci.yml     build/lint và đối chiếu công thức khi checkout game được
-docs/DATA_AUDIT.md            bảng đối chiếu hai hệ dữ liệu và các mâu thuẫn còn mở
-```
+## Những gì đã loại bỏ
 
-## Nguồn dữ liệu và trách nhiệm xác minh
-
-1. **Game hiện hành**: `zeplaovn/Hu-gioi` (code, dữ liệu, patches, RPC/migration cho hành vi server).
-2. **Bộ canon**: `src/content/canon*.js` dựa trên FINAL v1.2; giữ làm nguồn hiển thị cho các trang vốn có nhưng **không tự áp đặt** số liệu đó lên runtime khác phiên bản.
-3. **Snapshot game**: `src/content/gameData.js` là kết quả đồng bộ game qua script. Các trang Công pháp, Nghề phụ, Máy tính đột phá, Bí cảnh, Địa đồ, Cập nhật có nhãn `[CẦN XÁC MINH]` cho tới khi đối chiếu game triển khai.
-4. **Roadmap** (`roadmap.html`): các ý tưởng/tính năng tương lai, **không chứng minh gameplay đã phát hành**.
-
-Đọc `docs/DATA_AUDIT.md` trước khi thay đổi cảnh giới, linh căn, giá và số liệu cân bằng. Không âm thầm lựa chọn giữa hai nguồn đang mâu thuẫn.
-
-## Đồng bộ có kiểm soát
-
-```bash
-# Đặt GAME_REPO đến checkout game hợp lệ (không dùng URL)
-GAME_REPO=../Hu-gioi npm run sync
-GAME_REPO=../Hu-gioi npm run verify
-GAME_REPO=../Hu-gioi npm run sync:assets
-npm run lint
-npm run build
-```
-
-Ảnh thuộc `assets/wiki/game/` được chọn **bằng whitelist**, không copy tràn toàn bộ game assets. Nếu `GAME_REPO` không có ảnh đã map, ảnh tương ứng sẽ để trống; không gán minh họa thay thế để tránh sai lore. Mọi thay đổi ảnh phải kiểm tra nguồn và nội dung bí mật trước khi đưa vào Git.
-
-## Quy tắc nội dung
-
-- Đủ chứng cứ mới gắn `[ĐÃ XÁC NHẬN]` khi cần.
-- Thiếu nguồn, chưa kiểm tra runtime, hoặc mâu thuẫn: `[CẦN XÁC MINH]`.
-- Trải nghiệm từ cộng đồng: `[KINH NGHIỆM CỘNG ĐỒNG]`.
-- Suy đoán: `[SUY ĐOÁN]`.
-- Số liệu cân bằng cần có phiên bản áp dụng; không tự đặt số/version.
-- Không đưa secret, token, credential, nội dung cốt truyện ẩn, tài liệu nội bộ, hoặc assets endgame bí mật vào repo/bundle public.
-- Không gộp dữ liệu **roadmap** với cơ chế gameplay hiện hành.
-
-## Giao diện & khả năng truy cập
-
-Tìm kiếm toàn wiki bằng ô trên topbar hoặc **Ctrl/⌘+K**, hỗ trợ tiếng Việt có/không dấu. Mục lục trang được tạo từ heading nội dung. Hash không hợp lệ hiển thị 404 trong app. Navbar có `aria-current`, bảng có `scope="col"`, và nút “Hiện thêm” cho bảng dài. Giao diện nền tối dùng màu ngọc/bút mực thống nhất.
+Các module canon v1.2, snapshot game cũ, trang React không còn dùng, assets gameplay cũ, công cụ đồng bộ từ repository khác và báo cáo audit v1.2 đã được thay bằng một nguồn dữ liệu v1.6.1 duy nhất. Nội dung có thể truy nguyên ở lịch sử Git, không còn trong bundle hiện tại.

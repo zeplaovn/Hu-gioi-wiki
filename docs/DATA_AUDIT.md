@@ -1,41 +1,21 @@
-# DATA AUDIT — Game snapshot so với canon
+# Kiểm toán dữ liệu wiki v1.6.1
 
-**Trạng thái:** [CẦN XÁC MINH]. Không được xem snapshot của `src/content/gameData.js` là bản gameplay production mới nhất nếu chưa đối chiếu `GAME_REPO` và chạy `npm run sync && npm run verify`.
+Nguồn: ZIP **Thiên Vân Đại Lục v1.6.1 — Excel đã kiểm tra**, ngày 20/10/2026, các CSV trong thư mục `03_DU_LIEU_CAN_BANG_v1.5`, `player_skills.csv` của Combat và văn bản NPC/Bách Quái Chí đã được biên tập.
 
-## Nguồn và phạm vi
+## Phạm vi
 
-- `src/content/canon*.js`: dữ liệu thiết kế FINAL v1.2, giữ các trang canonical hiện có.
-- `src/content/gameData.js`: snapshot **được sinh** từ `Hu-gioi`, dùng cho trang Công pháp, Nghề phụ, Máy tính đột phá, Bí cảnh, Địa đồ, Nhật ký cập nhật. Mỗi trang đều có nhãn `[CẦN XÁC MINH]` về phiên bản đang triển khai.
-- `src/content/wikiData.js`: dữ liệu biên tập/đối chiếu cho phần Hạ Giới. Không được lấy roadmap hay note cũ làm bằng chứng cân bằng.
+- 480 thực thể công khai trong `src/content/wiki-v161.json`: 15 cảnh giới, 82 trang bị, 9 bộ trang bị, 60 đan dược, 72 linh dược, 54 nguyên liệu, 30 quái/boss, 7 linh căn, 17 mục Thiên Mệnh, 20 thuộc tính, 14 công pháp, 30 kỹ năng, 59 NPC, 11 thế lực.
+- 135 mốc XP cho 15 cảnh giới × 9 tầng.
+- 12 nhan đề chương chính; không chứa đoạn nội bộ/nhánh kết cục.
+- Thông tin game hiện hành vẫn **chưa kiểm chứng** với runtime. Đừng viết “đã phát hành”.
+- Không import thư mục `02_NOI_BO_BI_MAT` hoặc các gợi ý nội dung ẩn cuối game.
 
-## Phần trùng đã đối chiếu ngay trong snapshot
+## Kiểm tra
 
-- **Tên cảnh giới**: 7 tên chung đầu gồm Phàm Nhân, Luyện Khí, Trúc Cơ, Kim Đan, Nguyên Anh, Hóa Thần, Luyện Hư; còn có Đại Thừa, Độ Kiếp nhưng **thứ tự khác nhau**.
-- **Giá đan dược**: 12 tên trùng cả tên và giá: Tụ Khí Đan (20), Hồi Huyết Đan (15), Phá Cảnh Đan (90), Ngưng Nguyên Đan (140), Đại Hồi Đan (70), Dịch Cân Đan (420), Hóa Anh Đan (650), Tục Mệnh Đan (800), Thiên Cơ Đan (1.600), Thái Hư Đan (3.200), Tạo Hóa Dịch (5.200), Độ Kiếp Đan (9.000). **Chưa xác minh** rằng cùng tồn tại trong runtime hiện tại.
+```bash
+npm run validate:data
+npm run lint
+npm run build
+```
 
-## Mâu thuẫn còn mở
-
-| Chủ đề | `canon*.js` FINAL v1.2 | `gameData.js` snapshot | Quyết định |
-| --- | --- | --- | --- |
-| Progression | 15 mốc qua Hạ/Linh/Tiên; có Hợp Thể, Ngụy Tiên, Chân Tiên… | 9 cảnh giới; không có Hợp Thể; Độ Kiếp kết thúc danh sách | [CẦN XÁC MINH]. Không đồng nhất hai hệ index/cảnh giới. Máy tính chỉ tính cho 9 mốc snapshot. |
-| Linh căn | Thiên Linh Căn 0,9%, Song 14%, Tam 22%, Tứ 27%, Ngũ 30%, Biến Dị 0,1% | Thiên 6%, Song 18%, Tam 34%, Tứ 27%, Ngũ 12%; trang legacy bổ sung Dị 3% | [CẦN XÁC MINH]. Giữ bảng canon hiện có; không dùng bảng snapshot cho trang Linh căn. |
-| Hệ số tu luyện linh căn | Thiên ×1,20; Song ×1,08; Tam ×1,02; Tứ ×0,96; Ngũ ×0,90 | Bảng `exp`/`scale`: Thiên 0,4/1; Song 0,22/0,8; Tam 0,08/0,62; Tứ -0,02/0,5; Ngũ -0,1/0,4 | Không so trực tiếp hai loại đơn vị. [CẦN XÁC MINH]. |
-| Đột phá & tính thời gian | Thiết kế liên giới + lethal death/meta TM | Công thức cụ thể của Hạ Giới 9 mốc, chưa chạy verify với GAME_REPO | [CẦN XÁC MINH] độ áp dụng. Tránh suy diễn Phi Thăng = kết thúc kiếp. |
-| Thiên Mệnh & Phi Thăng | TM cho milestone đột phá, không thưởng riêng khi chuyển giới; Phi Thăng không kết thúc kiếp | Một số note biên tập cũ nói nhận TM khi chết/phi thăng | Không hiển thị bảng/shop cũ từ `pages.jsx`; loại câu mâu thuẫn và thay nhãn xác minh. |
-| Map Tiên/Thần Giới | Canon công khai gồm Hạ/Linh/Tiên, không có world thứ tư | Page địa đồ cũ nói Tiên/Thần Giới chờ mở | Đã bỏ block unverified; giữ Hạ Giới từ game snapshot, có nhãn [CẦN XÁC MINH]. |
-
-## Quy định tiếp theo
-
-- `sync` thực sự cập nhật `gameData.js`, nên các trang mới dùng dữ liệu đồng bộ, không phải code chết.
-- `verify` đối chiếu công thức với Player thật. **Chưa chạy được ở môi trường local này nếu thiếu thư mục GAME_REPO hợp lệ**.
-- Không tích hợp `RootsPage` cũ vì xác suất/hệ số mâu thuẫn rõ rệt; giữ module phục vụ đối chiếu, không đưa vào NAV.
-- `UpdatesPage` chỉ trình bày guide snapshot (có cảnh báo) và link roadmap riêng, không đưa bảng Mảnh Phi Thăng/TM cũ lên site.
-- Không đưa tư liệu spoiler/endgame vào UI public. Nếu nguồn nội dung hoặc phạm vi hiển thị chưa chắc chắn: không xuất bản.
-
-## Kết quả refactor local và tình trạng release
-
-- `RootsPage` cũ có số liệu xung đột được lưu ở `legacy/RootsPage.review.txt`, **không được import vào public bundle**.
-- Các trang công pháp/nghề phụ/đột phá/bí cảnh/địa đồ/cập nhật nay là module riêng. Các trang này vẫn dùng snapshot `gameData.js`, không tuyên bố số liệu là runtime mới nhất.
-- Phần nâng cấp Thiên Mệnh legacy và đề cập “Thần Giới” cũ không đưa lên UI; quy tắc Thiên Mệnh cũ trong `UpdatesPage` cũng được tạm ẩn cho tới khi verify.
-- Phần spoiler/tuyến cuối trong roadmap đã được làm mờ/redact để tránh lộ cơ chế cốt truyện; chỉ giữ roadmap cấp cao, không trộn gameplay.
-- Chưa thể so với HEAD `Hu-gioi` ở local vì không có checkout `GAME_REPO`, do vậy mọi mâu thuẫn ở bảng trên **vẫn mở**.
+Mỗi hồ sơ ghi source tại popup. Khi số liệu đổi, thay dataset dựa trên gói được chủ dự án duyệt và cập nhật số lượng/validator tương ứng. Git history giữ bản cũ để phục hồi nếu cần.

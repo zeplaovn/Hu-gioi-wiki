@@ -1,59 +1,118 @@
-import { useEffect, useState } from 'react'
-import { BookOpen, X } from 'lucide-react'
-import { canon } from './content/canonData.js'
-import NAV from './pages/nav.js'
-import { routeFromHash, navigate } from './lib/router.js'
-import { Pill } from './components/index.js'
-import GlobalSearch from './components/GlobalSearch.jsx'
-import PageTOC from './components/PageTOC.jsx'
-import NotFound from './pages/NotFound.jsx'
-import Home from './pages/Home.jsx'
-import Progression from './pages/Progression.jsx'
-import Roots from './pages/Roots.jsx'
-import Alchemy from './pages/Alchemy.jsx'
-import Materials from './pages/Materials.jsx'
-import Equipment from './pages/Equipment.jsx'
-import Bestiary from './pages/Bestiary.jsx'
-import Death from './pages/Death.jsx'
-import Destiny from './pages/Destiny.jsx'
-import World from './pages/World.jsx'
-import Skills from './pages/Skills.jsx'
-import Crafts from './pages/Crafts.jsx'
-import Breakthrough from './pages/Breakthrough.jsx'
-import Secrets from './pages/Secrets.jsx'
-import Atlas from './pages/Atlas.jsx'
-import Updates from './pages/Updates.jsx'
-import Canon from './pages/Canon.jsx'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { ArrowRight, ArrowUpRight, BookOpen, Check, ChevronRight, Clock3, Coins, Compass, Copy, FlaskConical, Flag, Gem, HeartPulse, Info, Layers, Leaf, Menu, Mountain, Package, ScrollText, Search, Shield, Skull, Sparkles, Star, Users, WandSparkles, X, Zap } from 'lucide-react'
+import wiki from './content/wiki-v161.json'
 
-const PAGES = { home: Home, progression: Progression, roots: Roots, alchemy: Alchemy, materials: Materials, equipment: Equipment, bestiary: Bestiary, death: Death, destiny: Destiny, world: World, skills: Skills, crafts: Crafts, breakthrough: Breakthrough, secrets: Secrets, atlas: Atlas, updates: Updates, canon: Canon }
+const ICONS = {realms: Mountain, equipment: Shield, sets: Layers, pills: FlaskConical, herbs: Leaf, materials: Gem, monsters: Skull, roots: Sparkles, destiny: Star, affixes: WandSparkles, techniques: ScrollText, skills: Zap, npc: Users, factions: Flag}
+const NAV = [['home', 'Tổng quan', Compass], ['worlds', 'Ba giới & cảnh giới', Mountain], ['catalog', 'Bách khoa vật phẩm', Package], ['people', 'NPC & thế lực', Users], ['bestiary', 'Yêu thú & boss', Skull], ['systems', 'Luật tu luyện', ScrollText], ['story', 'Truyện chính', BookOpen]]
+const WORLDS = [
+  {name: 'Hạ Giới', days: '0 – 8,25', tone: 'jade', title: 'Khởi nguyên', description: 'Sinh tồn, nhập đạo, tông môn và những dấu vết đầu tiên sau Thiên Biến.'},
+  {name: 'Linh Giới', days: '8,25 – 19,25', tone: 'blue', title: 'Truy nguyên', description: 'Cổ trận, đạo tâm và bí ẩn về cánh cửa giữa các thế giới.'},
+  {name: 'Tiên Giới', days: '19,25 – 33', tone: 'gold', title: 'Chứng đạo', description: 'Pháp tắc tiên đạo và quyền lựa chọn con đường trở về.'}
+]
+const LABELS = {id:'Mã dữ liệu', map:'Giới', stage:'Cảnh giới', index:'Thứ tự', hp_base:'HP cơ bản', atk_base:'ATK cơ bản', def_base:'DEF cơ bản', spirit_base:'SPIRIT cơ bản', spd_base:'SPD cơ bản', day_start:'Ngày bắt đầu', day_end:'Ngày kết thúc', minor_tier_count:'Số tầng', world:'Giới', name:'Tên', rarity:'Phẩm chất', slot:'Ô trang bị', tier:'Bậc', effect:'Hiệu quả', focus:'Trọng tâm', price:'Giá', currency:'Tiền tệ', source:'Cách nhận', bonuses:'Hiệu ứng bộ', realm:'Cảnh giới', ingredients:'Nguyên liệu chế', limit:'Giới hạn', shop:'Cửa hàng', use:'Công dụng', base_price:'Giá cơ sở', grow_hours:'Giờ sinh trưởng', trade:'Giao dịch', base_value:'Giá trị cơ sở', type:'Loại', spawn_pct:'Tỷ lệ xuất hiện (%)', cultivation_mult:'Hệ số tu luyện', structure:'Cấu trúc', identity:'Đặc trưng', cost:'Chi phí', scope:'Phạm vi', death_rule:'Quy tắc tử vong', stat:'Chỉ số', unit:'Đơn vị', min:'Tối thiểu', max:'Tối đa', slots:'Ô áp dụng', note:'Ghi chú', root_element:'Nguyên tố', technique:'Công pháp', recommended_laws:'Pháp tắc gợi ý', combat_focus:'Lối đánh', synergy:'Cộng hưởng', element:'Nguyên tố', coefficient:'Hệ số', cooldown:'Hồi chiêu', qi_cost_pct:'Khí tiêu hao (%)', unlock:'Điều kiện mở', special_effect:'Hiệu ứng đặc biệt', effect_chance:'Tỷ lệ hiệu ứng', is_game_canon:'Đã áp dụng trong game', design_status:'Trạng thái thiết kế', role:'Vai trò', faction:'Thế lực'}
+const clean = value => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D').toLowerCase()
+const routeFromHash = () => {const [view = 'home', segment = ''] = decodeURIComponent((window.location.hash || '#/home').replace(/^#\/?/, '')).split('/'); return {view, segment}}
+const byId = new Map(wiki.entities.map(item => [item.id, item]))
+const terms = new Map()
+for (const item of wiki.entities) if (item.name.length >= 5 && !terms.has(item.name.toLowerCase())) terms.set(item.name.toLowerCase(), item)
+const escapeRegex = value => value.replace(/[.*+?^$()|[\]{}]/g, '\\$&')
+const pattern = new RegExp('(' + [...terms.keys()].sort((a,b) => b.length - a.length).map(escapeRegex).join('|') + ')', 'giu')
+const group = type => wiki.entities.filter(item => item.type === type)
+const labelFor = type => wiki.categories.find(cat => cat.id === type)?.label || 'Hồ sơ'
+function Badge({children, tone=''}) {return <span className={'badge ' + tone}>{children}</span>}
+function Highlight({text, open}) {return <>{String(text ?? '').split(pattern).map((part,i) => {const item=terms.get(part.toLowerCase()); return item ? <button type="button" key={i} className={'term term-' + item.type} onClick={event => {event.stopPropagation();open(item)}} title={'Xem hồ sơ ' + item.name}>{part}</button> : <span key={i}>{part}</span>})}</>}
+function Heading({eyebrow,title,children}) {return <div className="heading"><span className="eyebrow">{eyebrow}</span><h1>{title}</h1>{children&&<p>{children}</p>}</div>}
+function ItemCard({item,open}) {const Icon=ICONS[item.type]||BookOpen;return <button type="button" className={'item-card type-'+item.type} onClick={()=>open(item)}><div className="item-top"><span className="item-icon"><Icon size={20}/></span><Badge>{labelFor(item.type)}</Badge><ArrowUpRight size={17} className="item-arrow"/></div><h3>{item.name}</h3><p>{item.summary}</p><div className="item-bottom"><span>{item.world}</span><span>Xem hồ sơ <ChevronRight size={14}/></span></div></button>}
+function Results({items,open,token}) {const [limit,setLimit]=useState(18);useEffect(()=>setLimit(18),[token]);return <>{items.length ? <div className="catalog-grid">{items.slice(0,limit).map(item=><ItemCard key={item.id} item={item} open={open}/>)}</div> : <div className="empty"><Search size={27}/><h3>Không tìm thấy kết quả</h3><p>Hãy thử từ khóa hoặc bộ lọc khác.</p></div>}{items.length>limit&&<div className="load-more"><button type="button" onClick={()=>setLimit(v=>v+18)}>Xem thêm hồ sơ <ChevronRight size={17}/></button><span>{limit} / {items.length}</span></div>}</>}
+function Directory({items,open,token,placeholder='Tìm tên, mã hoặc hiệu quả…'}) {const [query,setQuery]=useState('');const [world,setWorld]=useState('Tất cả');useEffect(()=>{setQuery('');setWorld('Tất cả')},[token]);const filtered=useMemo(()=>items.filter(item=>(world==='Tất cả'||item.world===world||item.world==='Liên giới')&&(!query||clean([item.name,item.id,item.summary,...Object.values(item.detail)].join(' ')).includes(clean(query)))),[items,query,world]);return <><div className="filters"><label className="filter-search"><Search size={18}/><input aria-label="Tìm trong danh mục" value={query} onChange={e=>setQuery(e.target.value)} placeholder={placeholder}/>{query&&<button type="button" aria-label="Xóa từ khóa" onClick={()=>setQuery('')}><X size={16}/></button>}</label><div className="world-chips">{['Tất cả','Hạ Giới','Linh Giới','Tiên Giới'].map(x=><button type="button" key={x} className={world===x?'selected':''} onClick={()=>setWorld(x)}>{x}</button>)}</div><span className="count">{filtered.length} hồ sơ</span></div><Results items={filtered} open={open} token={token+world+query}/></>}
+function Home({go,open}) {const picks=['HG01','EQ-001','PILL-001','NPC-001','MON-001','ROOT-001'].map(x=>byId.get(x)).filter(Boolean);const shortcuts=[['realms','Cảnh giới','15 cảnh giới, 135 tầng','worlds'],['equipment','Trang bị & pháp bảo','82 trang bị có số liệu','catalog'],['pills','Đan dược','Hiệu ứng, công thức và giá','catalog'],['npc','Nhân vật NPC','Những con người trong ba giới','people'],['monsters','Bách Quái Chí','30 yêu thú và boss','bestiary'],['destiny','Thiên Mệnh Các','Sức mạnh xuyên kiếp','systems']];return <div className="page-appear"><section className="hero"><div className="hero-orbit" aria-hidden="true"><span>天</span></div><div className="hero-copy"><span className="hero-kicker"><i/> THIÊN VÂN ĐẠI LỤC / ĐẠO TÀNG 1.6.1</span><h1>Vạn vật hữu danh.<br/><em>Đạo ẩn trong thư.</em></h1><p>Khám phá ba giới. Tra cứu từng cảnh giới, pháp bảo, đan dược và những con người trên con đường tu tiên.</p><div className="hero-actions"><button type="button" className="btn-primary" onClick={()=>go('catalog')}>Khám phá bách khoa <ArrowRight size={17}/></button><button type="button" className="btn-outline" onClick={()=>go('worlds')}>Lộ trình ba giới</button></div></div><span className="hero-vertical">THIÊN · ĐỊA · NHÂN</span></section><div className="disclaimer"><Info size={18}/><p><strong>Wiki thiết kế v1.6.1.</strong> Dữ liệu trong kế hoạch đã rà soát, chưa xác nhận triển khai vào game. Nội dung bí mật không hiển thị công khai.</p></div><div className="metrics"><div><small>CẢNH GIỚI</small><strong>15</strong><span>135 tầng tu luyện</span></div><div><small>HỒ SƠ</small><strong>{wiki.entities.length}</strong><span>14 danh mục tra cứu</span></div><div><small>LỘ TRÌNH NỀN</small><strong>33 <sup>ngày</sup></strong><span>Không tính tử vong</span></div><div><small>THẾ GIỚI</small><strong>03</strong><span>Một kiếp xuyên ba giới</span></div></div><div className="block-heading"><div><span className="eyebrow">CỬA VÀO ĐẠO TÀNG</span><h2>Khám phá theo chủ đề</h2></div><button className="text-link" type="button" onClick={()=>go('catalog')}>Tất cả danh mục <ArrowRight size={16}/></button></div><div className="shortcuts">{shortcuts.map(([type,title,description,view])=>{const Icon=ICONS[type];return <button type="button" className={'shortcut shortcut-'+type} key={type} onClick={()=>go(view,view==='catalog'?type:'')}><span className="shortcut-icon"><Icon size={26}/></span><div><h3>{title}</h3><p>{description}</p><small>{wiki.categories.find(x=>x.id===type)?.count} hồ sơ <ArrowRight size={13}/></small></div></button>})}</div><div className="block-heading"><div><span className="eyebrow">TRA CỨU NHANH</span><h2>Hồ sơ nổi bật</h2></div></div><div className="catalog-grid">{picks.map(item=><ItemCard key={item.id} item={item} open={open}/>)}</div></div>}
+function Worlds({open}) {const realms=group('realms');return <div className="page-appear"><Heading eyebrow="BẢN ĐỒ TU ĐẠO" title="Ba giới. Một kiếp.">Phi Thăng chuyển vùng đất, không kết thúc kiếp sống. Lộ trình 33 ngày là mốc thiết kế của một kiếp không tử vong.</Heading><div className="world-grid">{WORLDS.map((w,i)=><article key={w.name} className={'world-card tone-'+w.tone}><div className="world-card-top"><span>GIỚI 0{i+1}</span><Mountain size={20}/></div><h2>{w.name}</h2><h3>{w.title}</h3><p>{w.description}</p><div className="world-card-bottom"><span>{w.days} ngày</span><span>{realms.filter(r=>r.world===w.name).length} cảnh giới</span></div></article>)}</div><div className="block-heading"><div><span className="eyebrow">LỘ TRÌNH 15 CẢNH GIỚI</span><h2>Từ phàm tục đến tiên đạo</h2></div></div><div className="realm-timeline">{realms.map((item,i)=><button className="realm-node" type="button" key={item.id} onClick={()=>open(item)}><span className="realm-index">{String(i+1).padStart(2,'0')}</span><span className="realm-info"><strong>{item.name}</strong><small>{item.world} · 9 tầng</small></span><span className="realm-time">Ngày {item.detail.day_start} → {item.detail.day_end}</span><ChevronRight size={18}/></button>)}</div><div className="note-grid"><article><Clock3 size={23}/><h3>30–45 ngày: mục tiêu</h3><p>Mô phỏng tính cả trùng sinh: trung vị 35,49 ngày, P75 43,91 ngày ở hazard chuẩn. Chưa phải thời lượng cam kết cho người chơi.</p></article><article><Sparkles size={23}/><h3>Thiên Mệnh từng tầng</h3><p>Đề xuất +1 TM cho mỗi tầng đạt thành công: 135 mốc/kiếp. Phi Thăng không phát thưởng luân hồi riêng.</p></article></div></div>}
+function Catalog({open,initialType}) {const [type,setType]=useState(initialType||'all');useEffect(()=>setType(initialType||'all'),[initialType]);const types=wiki.categories.filter(x=>!['npc','factions','monsters'].includes(x.id));const items=useMemo(()=>wiki.entities.filter(x=>type==='all'?!['npc','factions','monsters'].includes(x.type):x.type===type),[type]);return <div className="page-appear"><Heading eyebrow="ĐẠO TÀNG TOÀN THƯ" title="Bách khoa tu tiên">Mỗi mục có hồ sơ chi tiết, chỉ số và nguồn trích từ gói v1.6.1. Các thuật ngữ xuất hiện trong văn bản có thể nhấn để tìm hiểu.</Heading><div className="tabs"><button type="button" className={type==='all'?'selected':''} onClick={()=>setType('all')}>Tất cả</button>{types.map(cat=><button type="button" key={cat.id} className={cat.id===type?'selected':''} onClick={()=>setType(cat.id)}>{cat.label} <small>{cat.count}</small></button>)}</div><Directory items={items} open={open} token={type}/></div>}
+function People({open}) {const [type,setType]=useState('npc');return <div className="page-appear"><Heading eyebrow="NHÂN TÌNH THẾ SỰ" title="Người trong ba giới">Chân dung NPC không tiết lộ kết cục nhiệm vụ. Nhân vật và tông môn có thể tiếp nối hành trình qua Phi Thăng.</Heading><div className="tabs"><button type="button" className={type==='npc'?'selected':''} onClick={()=>setType('npc')}>Nhân vật · {group('npc').length}</button><button type="button" className={type==='factions'?'selected':''} onClick={()=>setType('factions')}>Tông môn · {group('factions').length}</button></div><Directory items={group(type)} open={open} token={type} placeholder="Tìm NPC, vai trò, tông môn…"/></div>}
+function Bestiary({open}) {return <div className="page-appear"><Heading eyebrow="BÁCH QUÁI CHÍ" title="Yêu thú & boss">30 đối thủ ở ba giới. Hồ sơ mô tả thế giới quan; chiến đấu là dữ liệu tham chiếu, chưa xác nhận cho phiên bản game đang chạy.</Heading><Directory items={group('monsters')} open={open} token="monsters" placeholder="Tìm yêu thú, boss, cảnh giới…"/></div>}
+const RULES=[['Một kiếp qua ba giới','Phi Thăng chỉ đổi current_map, không tạo life_id mới, không xóa hành trang hay quan hệ NPC.'],['Chết thật & trùng sinh','Tử vong thật hoặc tọa hóa làm mất tiền, trang bị và toàn bộ tài sản vật lý của kiếp. Thiên Mệnh và nâng cấp tài khoản được giữ.'],['Đấu tập khác sinh tử','Luận Đạo và khu tập an toàn kết thúc khi HP về 0 mà không mất kiếp. Nội dung lethal cần cảnh báo trước khi vào.'],['Tu luyện ngoại tuyến','8 giờ đầu 100%, giờ 8–16: 70%, giờ 16–24: 40%. Không tự động vào thử thách sinh tử khi vắng mặt.'],['Kinh tế ba loại tiền','Linh Thạch (LS), Linh Tinh (LT) và Tiên Ngọc (TN). Giá quy đổi thiết kế: 1 LT = 1.000 LS; 1 TN = 1.000 LT.'],['Quy Phàm','Người chơi có thể chọn trở về Trái Đất ở cuối tuyến chính hoặc tiếp tục tu luyện. Không tự động coi Quy Phàm là tử vong.']]
+function Systems({open}) {return <div className="page-appear"><Heading eyebrow="ĐẠO PHÁP & QUY TẮC" title="Luật vận hành một kiếp">Các quy tắc chính từ kế hoạch v1.6.1. Giá cả và thông số cân bằng là đề xuất cần được kiểm thử thực tế.</Heading><div className="rule-grid">{RULES.map(([title,text],i)=><article className="rule" key={title}><span>{String(i+1).padStart(2,'0')}</span><h3>{title}</h3><p><Highlight text={text} open={open}/></p></article>)}</div><div className="system-banner"><div><Coins size={26}/><span>TIẾN BỘ XUYÊN KIẾP</span><h2>Thiên Mệnh Các</h2><p>Nâng cấp tài khoản sống qua nhiều kiếp; vật phẩm vật lý mua bằng TM vẫn mất nếu nhân vật chết trước khi sử dụng.</p></div><strong>135 <small>mốc TM / một kiếp</small></strong></div><div className="block-heading"><div><span className="eyebrow">VẬT PHẨM & NÂNG CẤP</span><h2>Tra cứu Thiên Mệnh</h2></div></div><Directory items={group('destiny')} open={open} token="destiny"/></div>}
+function Story({open}) {return <div className="page-appear"><Heading eyebrow="MỘT ĐƯỜNG VỀ QUA BA GIỚI" title="Mười hai chương truyện">Lộ trình đọc truyện chính ở mức tiêu đề, không tiết lộ kết cục nhánh hay nội dung ẩn cuối game.</Heading><div className="story-lead"><BookOpen size={27}/><p>Thiên Biến đưa nhân loại rời Trái Đất. Tại Thiên Vân Đại Lục, một người lạc giới bắt đầu bằng việc tìm chỗ trú, rồi lần theo những câu hỏi về quê hương.</p></div><div className="chapter-grid">{wiki.chapters.map(ch=><article className="chapter" key={ch.number}><span>CHƯƠNG {String(ch.number).padStart(2,'0')}</span><h3>{ch.name}</h3><Badge>{ch.world}</Badge></article>)}</div><div className="disclaimer"><Info size={18}/><p>Nhánh truyện vẫn là tư liệu biên kịch. Tra cứu <Highlight text="Lục Thanh Huyền, Tô Nhược Vân, Trần Minh" open={open}/> để xem hồ sơ nhân vật công khai.</p></div></div>}
+function NotFound({go}) {return <div className="empty not-found"><h1>404</h1><h3>Trang chưa có trong Đạo Tàng</h3><button className="btn-primary" type="button" onClick={()=>go('home')}>Trở về tổng quan <ArrowRight size={16}/></button></div>}
+
+function DetailModal({item,close,open}) {
+  const ref=useRef(null)
+  useEffect(()=>{
+    const previous=document.activeElement
+    document.body.classList.add('modal-open')
+    ref.current?.focus()
+    const keydown=e=>{
+      if(e.key==='Escape')close()
+      if(e.key==='Tab'&&ref.current){
+        const nodes=[...ref.current.querySelectorAll('button, a, [tabindex]:not([tabindex="-1"])')].filter(n=>!n.disabled)
+        if(!nodes.length)return
+        if(e.shiftKey&&document.activeElement===nodes[0]){e.preventDefault();nodes[nodes.length-1].focus()}
+        else if(!e.shiftKey&&document.activeElement===nodes[nodes.length-1]){e.preventDefault();nodes[0].focus()}
+      }
+    }
+    document.addEventListener('keydown',keydown)
+    return()=>{document.body.classList.remove('modal-open');document.removeEventListener('keydown',keydown);previous?.focus?.()}
+  },[close])
+  const Icon=ICONS[item.type]||BookOpen
+  const details=Object.entries(item.detail).filter(([key,value])=>!['id','name','summary','stage','technique'].includes(key)&&value!==''&&value!=null)
+  const thresholds=wiki.xpThresholds.filter(x=>x.stage_id===item.id)
+  return <div className="modal-shade" role="presentation" onMouseDown={e=>{if(e.target===e.currentTarget)close()}}><section ref={ref} tabIndex={-1} className="detail-modal" role="dialog" aria-modal="true" aria-labelledby="detail-title">
+    <div className="modal-top"><span className="eyebrow">ĐẠO TÀNG / HỒ SƠ CHI TIẾT</span><button type="button" className="icon-btn" aria-label="Đóng hồ sơ" onClick={close}><X size={21}/></button></div>
+    <div className="modal-hero"><div className="modal-glyph"><Icon size={30}/></div><div><div className="modal-tags"><Badge>{labelFor(item.type)}</Badge><Badge tone="neutral">{item.world}</Badge></div><h2 id="detail-title">{item.name}</h2><code>{item.id}</code></div></div>
+    <p className="modal-summary"><Highlight text={item.summary} open={open}/></p>
+    <h3 className="modal-section">Thông số & dữ liệu</h3>
+    <dl className="detail-list">{details.map(([key,value])=><div key={key}><dt>{LABELS[key]||key.replaceAll('_',' ')}</dt><dd><Highlight text={String(value).replaceAll('True','Có').replaceAll('False','Chưa xác nhận')} open={open}/></dd></div>)}</dl>
+    {thresholds.length>0&&<div className="tier-preview"><strong>TIẾN ĐỘ CHÍN TẦNG</strong><div>{thresholds.map(x=><span key={x.tier} title={'Tầng '+x.tier+': '+x.xp+' XP'}>{x.tier}<small>{x.xp} XP</small></span>)}</div></div>}
+    <div className="source-box"><Info size={17}/><span>Nguồn: {item.source}, gói v1.6.1. Số liệu thiết kế, chưa xác nhận trong game đang hoạt động.</span></div>
+    <div className="modal-actions"><button type="button" className="btn-outline" onClick={()=>{if(navigator.clipboard?.writeText)navigator.clipboard.writeText(item.name+' — '+item.summary)}}><Copy size={16}/> Sao chép</button><button type="button" className="btn-primary" onClick={close}>Đã hiểu <Check size={16}/></button></div>
+  </section></div>
+}
+function SearchDialog({close,open}) {
+  const [query,setQuery]=useState('')
+  const ref=useRef(null)
+  useEffect(()=>{ref.current?.focus();const esc=e=>{if(e.key==='Escape')close()};document.addEventListener('keydown',esc);return()=>document.removeEventListener('keydown',esc)},[close])
+  const result=useMemo(()=>{const q=clean(query.trim());return q.length<2?[]:wiki.entities.filter(item=>clean([item.name,item.id,item.summary,item.world,...Object.values(item.detail)].join(' ')).includes(q)).slice(0,16)},[query])
+  return <div className="search-shade" role="presentation" onMouseDown={e=>{if(e.target===e.currentTarget)close()}}><div className="command-dialog" role="dialog" aria-modal="true" aria-label="Tìm kiếm toàn wiki"><div className="command-input"><Search size={21}/><input ref={ref} aria-label="Từ khóa tìm kiếm" placeholder="Tên cảnh giới, vật phẩm, NPC…" value={query} onChange={e=>setQuery(e.target.value)}/><button type="button" onClick={close} aria-label="Đóng tìm kiếm"><X size={19}/></button></div><div className="command-results">{query.trim().length<2?<div className="command-empty"><Sparkles size={26}/><p>Gõ ít nhất 2 ký tự. Tìm trong {wiki.entities.length} hồ sơ bằng tiếng Việt có hoặc không dấu.</p></div>:result.length?result.map(item=>{const Icon=ICONS[item.type]||BookOpen;return <button type="button" key={item.id} onClick={()=>{close();open(item)}}><Icon size={19}/><span><strong>{item.name}</strong><small>{labelFor(item.type)} · {item.world}</small></span><ChevronRight size={16}/></button>}):<div className="command-empty"><Search size={26}/><p>Không có hồ sơ phù hợp.</p></div>}</div><div className="command-footer"><span><kbd>Esc</kbd> để đóng</span><span>ĐẠO TÀNG V1.6.1</span></div></div></div>
+}
 export default function App() {
-  const [page, setPage] = useState(() => routeFromHash(window.location.hash))
-  const [menu, setMenu] = useState(false)
-  const go = id => { navigate(id); setPage(id); setMenu(false); window.scrollTo({ top: 0, behavior: 'auto' }) }
-  useEffect(() => {
-    if ('scrollRestoration' in history) history.scrollRestoration = 'manual'
-    const update = () => setPage(routeFromHash(location.hash))
-    addEventListener('hashchange', update)
-    return () => removeEventListener('hashchange', update)
-  }, [])
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
-    const title = NAV.find(([id]) => id === page)?.[1] || 'Không tìm thấy trang'
-    document.title = `${title} · Thiên Vân Đại Lục Wiki`
-  }, [page])
-  const Page = PAGES[page] || NotFound
-  const title = NAV.find(([id]) => id === page)?.[1] || '404'
+  const [route,setRoute]=useState(routeFromHash)
+  const [menu,setMenu]=useState(false)
+  const [modal,setModal]=useState(null)
+  const [search,setSearch]=useState(false)
+  const closeModal=()=>setModal(null)
+  const closeSearch=()=>setSearch(false)
+  const open=item=>setModal(item)
+  const go=(view,segment='')=>{
+    const hash='#/'+view+(segment?'/'+segment:'')
+    if(location.hash!==hash)location.hash=hash;else setRoute({view,segment})
+    setMenu(false)
+    window.scrollTo(0,0)
+  }
+  useEffect(()=>{
+    const update=()=>{setRoute(routeFromHash());window.scrollTo(0,0)}
+    addEventListener('hashchange',update)
+    const keys=e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();setSearch(true)}}
+    document.addEventListener('keydown',keys)
+    return()=>{removeEventListener('hashchange',update);document.removeEventListener('keydown',keys)}
+  },[])
+  const title=NAV.find(x=>x[0]===route.view)?.[1]||'Không tìm thấy'
+  useEffect(()=>{document.title=title+' · Thiên Vân Đại Lục Wiki v1.6.1'},[title])
+  let content
+  switch(route.view){
+    case 'home':content=<Home go={go} open={open}/>;break
+    case 'worlds':content=<Worlds open={open}/>;break
+    case 'catalog':content=<Catalog open={open} initialType={route.segment}/>;break
+    case 'people':content=<People open={open}/>;break
+    case 'bestiary':content=<Bestiary open={open}/>;break
+    case 'systems':content=<Systems open={open}/>;break
+    case 'story':content=<Story open={open}/>;break
+    default:content=<NotFound go={go}/>
+  }
   return <div className="app-shell">
-    <aside className={menu ? 'open' : ''}>
-      <div className="brand"><div className="brand-mark">天</div><div><b>Thiên Vân Đại Lục</b><span>Wiki · v{canon.meta.version}</span></div></div>
-      <nav aria-label="Danh mục wiki">{NAV.map(([id, label, Icon]) => <button type="button" key={id} aria-current={page === id ? 'page' : undefined} className={page === id ? 'active' : ''} onClick={() => go(id)}><Icon size={18} /><span>{label}</span></button>)}</nav>
-      <div className="aside-foot">Nguồn: dữ liệu canon v{canon.meta.version}</div>
-    </aside>
-    <div className="content-shell">
-      <header className="topbar"><button type="button" aria-label="Mở/đóng menu" className="menu-btn" onClick={() => setMenu(!menu)}>{menu ? <X /> : <BookOpen />}</button><div><span>Đạo tàng</span><b>{title}</b></div><GlobalSearch go={go} /><Pill>CANON 1.2</Pill></header>
-      <main><Page go={go} /><PageTOC page={page} /></main>
-      <footer>Thiên Vân Đại Lục Wiki · dữ liệu canonical v1.2 · các mục OPEN được giữ nguyên trạng thái.</footer>
-    </div>
-    {menu && <button className="backdrop" type="button" onClick={() => setMenu(false)} aria-label="Đóng menu" />}
+    <aside className={'sidebar '+(menu?'open':'')}><div className="brand"><div className="brand-seal">天</div><div><strong>THIÊN VÂN</strong><span>ĐẠI LỤC · ĐẠO TÀNG</span></div></div><div className="side-label">KHÁM PHÁ</div><nav aria-label="Danh mục wiki">{NAV.map(([id,label,Icon])=><button type="button" key={id} className={route.view===id?'active':''} aria-current={route.view===id?'page':undefined} onClick={()=>go(id)}><Icon size={19} strokeWidth={1.8}/><span>{label}</span>{route.view===id&&<i/>}</button>)}</nav><div className="side-divider"/><div className="side-label">TRUY CẬP NHANH</div><div className="side-categories">{wiki.categories.filter(x=>['equipment','pills','materials','roots','destiny'].includes(x.id)).map(item=>{const Icon=ICONS[item.id];return <button type="button" key={item.id} onClick={()=>go('catalog',item.id)}><Icon size={16}/><span>{item.label}</span><small>{item.count}</small></button>})}</div><div className="side-bottom"><i/> Bản thiết kế v1.6.1 <small>20.10.2026</small></div></aside>
+    <div className="layout-main"><header className="topbar"><button className="mobile-menu icon-btn" type="button" onClick={()=>setMenu(!menu)} aria-label={menu?'Đóng menu':'Mở menu'}>{menu?<X size={21}/>:<Menu size={21}/>}</button><div className="breadcrumb"><span>THƯ VIỆN /</span><strong>{title}</strong></div><div className="top-actions"><Badge tone="version">V1.6.1</Badge><button className="search-trigger" type="button" onClick={()=>setSearch(true)}><Search size={17}/><span>Tìm kiếm mọi thứ...</span><kbd>⌘ K</kbd></button></div></header><main id="main-content">{content}</main><footer className="footer"><span>© THIÊN VÂN ĐẠI LỤC · ĐẠO TÀNG</span><span>Thiết kế v1.6.1 · Chưa xác nhận nội dung live</span></footer></div>
+    {menu&&<button className="menu-scrim" type="button" aria-label="Đóng menu" onClick={()=>setMenu(false)}/>}
+    {search&&<SearchDialog close={closeSearch} open={open}/>}
+    {modal&&<DetailModal key={modal.id} item={modal} close={closeModal} open={open}/>}
   </div>
 }

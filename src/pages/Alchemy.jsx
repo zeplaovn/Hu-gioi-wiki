@@ -1,8 +1,0 @@
-import { useState } from 'react'
-import { canon } from '../content/canonData.js'
-import { SectionTitle, DataTable, SearchBox } from '../components/index.js'
-import { money, filterRows } from '../lib/text.js'
-
-function Alchemy() { const [tab, setTab] = useState('pills'); const [q, setQ] = useState(''); const rows = filterRows(tab === 'pills' ? canon.pills : canon.herbs, q); return <><SectionTitle eyebrow="Luyện đan & linh điền" title="Đan dược và linh dược">Dữ liệu giá, giới, nguồn và giới hạn được lấy trực tiếp từ bảng balance canonical.</SectionTitle><div className="toolbar"><div className="tabs"><button className={tab === 'pills' ? 'active' : ''} onClick={() => setTab('pills')}>Đan dược ({canon.pills.length})</button><button className={tab === 'herbs' ? 'active' : ''} onClick={() => setTab('herbs')}>Linh dược ({canon.herbs.length})</button></div><SearchBox value={q} onChange={setQ} /></div>{tab === 'pills' ? <DataTable rows={rows} columns={[{ key: 'name', label: 'Tên' }, { key: 'world', label: 'Giới' }, { key: 'realm', label: 'Cảnh giới' }, { key: 'effect', label: 'Tác dụng' }, { key: 'price', label: 'Giá', render: r => money(r.price, r.currency) }, { key: 'ingredients', label: 'Nguyên liệu' }, { key: 'limit', label: 'Giới hạn' }]} /> : <DataTable rows={rows} columns={[{ key: 'name', label: 'Tên' }, { key: 'world', label: 'Giới' }, { key: 'rarity', label: 'Độ hiếm' }, { key: 'source', label: 'Nguồn' }, { key: 'use', label: 'Công dụng' }, { key: 'base_price', label: 'Giá gốc', render: r => money(r.base_price, r.currency) }, { key: 'grow_hours', label: 'Trồng', render: r => r.grow_hours ? `${r.grow_hours}h` : '—' }]} />}</> }
-
-export default Alchemy

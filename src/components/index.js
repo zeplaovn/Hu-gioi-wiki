@@ -1,5 +1,0 @@
-export { default as GameArt } from './GameArt.jsx'
-export { default as Pill } from './Pill.jsx'
-export { default as SectionTitle } from './SectionTitle.jsx'
-export { default as DataTable } from './DataTable.jsx'
-export { default as SearchBox } from './SearchBox.jsx'
