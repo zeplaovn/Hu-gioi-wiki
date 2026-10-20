@@ -18,7 +18,7 @@ npm run dev
 
 - `src/content/wiki-v161.json`: **480 hồ sơ tra cứu** công khai từ các bảng CSV đã rà soát, cộng 59 hồ sơ NPC ở mức giới thiệu và 11 thế lực biên tập; 135 mốc tầng XP.
 - 15 cảnh giới, 82 trang bị, 60 đan dược, 72 linh dược, 54 nguyên liệu, 30 quái/boss, 7 linh căn, 17 mục Thiên Mệnh Các, 9 bộ trang bị, 20 affix, 14 công pháp, 30 kỹ năng, 59 NPC, 11 thế lực.
-- Nguồn cho từng hồ sơ hiển thị trong popup. Trạng thái nguồn: **bản thiết kế v1.6.1, chưa xác minh live**.
+- Nguồn từng hồ sơ lưu trong trường `source` để kiểm toán, không hiển thị dòng trích nguồn trong popup. Trạng thái nguồn: **bản thiết kế v1.6.1, chưa xác minh live**.
 - Cấu trúc dữ liệu: `{ id, name, type, world, summary, detail, source }` cho mỗi hồ sơ; `categories` cho menu; `chapters` cho 12 chương công khai; `xpThresholds` cho chín tầng của mỗi cảnh giới.
 - `scripts/validate-wiki.mjs` xác minh ID trùng, count nhóm, cảnh giới/XP, nguồn, và dấu hiệu xuất hiện spoiler nội bộ.
 
@@ -33,3 +33,11 @@ npm run dev
 ## Những gì đã loại bỏ
 
 Các module canon v1.2, snapshot game cũ, trang React không còn dùng, assets gameplay cũ, công cụ đồng bộ từ repository khác và báo cáo audit v1.2 đã được thay bằng một nguồn dữ liệu v1.6.1 duy nhất. Nội dung có thể truy nguyên ở lịch sử Git, không còn trong bundle hiện tại.
+
+## Tiền tệ theo yêu cầu cập nhật
+
+- **Hạ Giới:** Linh Thạch hạ phẩm (LTHP).
+- **Linh Giới:** Linh Thạch thượng phẩm (LTTP).
+- **Tiên Giới:** Tiên Ngọc thượng phẩm (TNTP) và Tiên Ngọc cực phẩm (TNCP).
+
+Các bản ghi giá gốc LS/LT/TN đã được đổi tên đơn vị phù hợp từng giới, **không thay đổi trị số giá** và không tự suy ra tỷ lệ quy đổi. Tiên Ngọc cực phẩm là đơn vị được giới thiệu tại Tiên Giới; chưa tự gán nó cho món hàng khi thiết kế không chỉ rõ.

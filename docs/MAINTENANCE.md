@@ -9,3 +9,9 @@
 Sau khi sửa, chạy `npm ci && npm run validate:data && npm run lint && npm run build`. Thử trên mobile: sidebar, bộ lọc, mở/đóng popup, click thuật ngữ, Esc, Ctrl/⌘+K, quay lại bằng hash URL.
 
 Không nhập dữ liệu từ snapshot cũ. Gói Excel kiểm tra dùng để đối chiếu với CSV đầu vào, không tự đẩy vào web. Không phát hành nội dung spoiler nội bộ hoặc tuyên bố đã triển khai khi chưa được kiểm chứng.
+
+## Quy ước giao diện & tiền tệ cập nhật
+
+- Font chữ tăng kích thước toàn trang; highlight và tiêu đề hồ sơ được tô màu theo nhóm dữ liệu. Tên hồ sơ và từng thuật ngữ có thể bấm để mở popup.
+- Popup chỉ hiển thị thuộc tính gameplay, không có dòng thông tin trích file nguồn.
+- Schema tiền tệ ở `meta.currencySystem` trong JSON. Khi cập nhật bảng giá, không tự đổi trị số hoặc quy đổi Tiên Ngọc cực phẩm nếu chưa có quyết định cân bằng.

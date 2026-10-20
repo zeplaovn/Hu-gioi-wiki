@@ -23,4 +23,12 @@ for(const realm of realms){
 }
 const banned=/Hỗn Độn|Lục Mệnh|Cổ Môn|Kẻ Trấn Giữ|Bia Thiên Mệnh|02_NOI_BO_BI_MAT/i
 if(banned.test(JSON.stringify(data.entities)))fail('Phát hiện nội dung nội bộ trong hồ sơ công khai')
+
+const currencyLabels={'Hạ Giới':'Linh Thạch hạ phẩm','Linh Giới':'Linh Thạch thượng phẩm','Tiên Giới':'Tiên Ngọc thượng phẩm'}
+for(const entry of data.entities){
+  const unit=entry.detail.currency
+  if(unit&&unit!=='TM'&&unit!==currencyLabels[entry.world])fail('Đơn vị tiền sai ở '+entry.id+': '+unit)
+}
+const currencyMeta=data.meta.currencySystem
+if(!Array.isArray(currencyMeta)||currencyMeta.length!==3||!currencyMeta.some(x=>x.extra==='Tiên Ngọc cực phẩm'))fail('Thiếu khai báo phẩm cấp tiền tệ Tiên Giới')
 console.log('PASS v1.6.1: '+data.entities.length+' hồ sơ, '+data.categories.length+' nhóm, '+data.xpThresholds.length+' tầng, '+data.chapters.length+' chương; không có chuỗi bí mật đã kiểm soát.')
