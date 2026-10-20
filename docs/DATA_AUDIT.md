@@ -18,4 +18,8 @@ npm run lint
 npm run build
 ```
 
-Mỗi hồ sơ ghi source tại popup. Khi số liệu đổi, thay dataset dựa trên gói được chủ dự án duyệt và cập nhật số lượng/validator tương ứng. Git history giữ bản cũ để phục hồi nếu cần.
+Trường `source` được giữ để kiểm toán nội bộ, không hiển thị trích nguồn trong popup. Khi số liệu đổi, thay dataset dựa trên gói được chủ dự án duyệt và cập nhật số lượng/validator tương ứng. Git history giữ bản cũ để phục hồi nếu cần.
+
+## Ghi nhận thay đổi tiền tệ ngày 20/10/2026
+
+Theo chỉ đạo mới của chủ dự án, thay LS của Hạ Giới bằng **Linh Thạch hạ phẩm**, LT của Linh Giới bằng **Linh Thạch thượng phẩm**, TN của Tiên Giới bằng **Tiên Ngọc thượng phẩm**. Tiên Giới còn có **Tiên Ngọc cực phẩm** nhưng chưa gán mệnh giá hàng hóa hoặc tỷ lệ quy đổi vì kế hoạch chưa xác định. Giữ nguyên tất cả trị số `price`, `base_price` và `base_value` — cần tái duyệt cân bằng kinh tế sau khi chốt quy đổi phẩm cấp.

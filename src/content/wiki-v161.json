@@ -5,7 +5,29 @@
     "status": "Tư liệu thiết kế đã rà soát; chưa xác nhận triển khai vào game",
     "source": "Thiên Vân Đại Lục v1.6.1 — CSV/JSON, Balance Master đối chiếu, tài liệu công khai được biên tập",
     "disclaimer": "Số liệu là baseline đề xuất, không phải cam kết gameplay live.",
-    "spoilerPolicy": "Không công bố tư liệu nội bộ và lời giải nội dung ẩn."
+    "spoilerPolicy": "Không công bố tư liệu nội bộ và lời giải nội dung ẩn.",
+    "currencySystem": [
+      {
+        "world": "Hạ Giới",
+        "name": "Linh Thạch hạ phẩm",
+        "short": "LTHP",
+        "tone": "jade"
+      },
+      {
+        "world": "Linh Giới",
+        "name": "Linh Thạch thượng phẩm",
+        "short": "LTTP",
+        "tone": "blue"
+      },
+      {
+        "world": "Tiên Giới",
+        "name": "Tiên Ngọc thượng phẩm",
+        "extra": "Tiên Ngọc cực phẩm",
+        "short": "TNTP · TNCP",
+        "tone": "gold"
+      }
+    ],
+    "currencyNote": "Giữ giá trị số trong bảng nguồn; tỷ lệ quy đổi phẩm cấp và giá niêm yết bằng Tiên Ngọc cực phẩm chưa chốt."
   },
   "categories": [
     {
@@ -440,7 +462,7 @@
         "effect": "ATK +6%, PEN +1%",
         "focus": "ATK/PEN",
         "price": "80",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -460,7 +482,7 @@
         "effect": "HP +7%, DEF +4%",
         "focus": "HP/DEF",
         "price": "80",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -480,7 +502,7 @@
         "effect": "SPD +2%, EVA +1%",
         "focus": "SPD/EVA",
         "price": "80",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -500,7 +522,7 @@
         "effect": "RES +4%, SPIRIT +6%",
         "focus": "RES/SPIRIT",
         "price": "80",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -520,7 +542,7 @@
         "effect": "Kho +6, tu luyện +2%",
         "focus": "Kho/tu luyện",
         "price": "80",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -540,7 +562,7 @@
         "effect": "Kỹ năng chủ động tier 1",
         "focus": "Active",
         "price": "80",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -560,7 +582,7 @@
         "effect": "Passive hiệu quả +4%",
         "focus": "Passive",
         "price": "80",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -580,7 +602,7 @@
         "effect": "ATK +8%, PEN +2%",
         "focus": "ATK/PEN",
         "price": "114",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -600,7 +622,7 @@
         "effect": "HP +9%, DEF +5%",
         "focus": "HP/DEF",
         "price": "114",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -620,7 +642,7 @@
         "effect": "SPD +3%, EVA +1%",
         "focus": "SPD/EVA",
         "price": "114",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -640,7 +662,7 @@
         "effect": "RES +5%, SPIRIT +8%",
         "focus": "RES/SPIRIT",
         "price": "114",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -660,7 +682,7 @@
         "effect": "Kho +7, tu luyện +3%",
         "focus": "Kho/tu luyện",
         "price": "114",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -680,7 +702,7 @@
         "effect": "Kỹ năng chủ động tier 2",
         "focus": "Active",
         "price": "114",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -700,7 +722,7 @@
         "effect": "Passive hiệu quả +5%",
         "focus": "Passive",
         "price": "114",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -720,7 +742,7 @@
         "effect": "ATK +10%, PEN +2%",
         "focus": "ATK/PEN",
         "price": "161",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -740,7 +762,7 @@
         "effect": "HP +11%, DEF +6%",
         "focus": "HP/DEF",
         "price": "161",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -760,7 +782,7 @@
         "effect": "SPD +3%, EVA +2%",
         "focus": "SPD/EVA",
         "price": "161",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -780,7 +802,7 @@
         "effect": "RES +6%, SPIRIT +10%",
         "focus": "RES/SPIRIT",
         "price": "161",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -800,7 +822,7 @@
         "effect": "Kho +8, tu luyện +4%",
         "focus": "Kho/tu luyện",
         "price": "161",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -820,7 +842,7 @@
         "effect": "Kỹ năng chủ động tier 3",
         "focus": "Active",
         "price": "161",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -840,7 +862,7 @@
         "effect": "Passive hiệu quả +6%",
         "focus": "Passive",
         "price": "161",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -860,7 +882,7 @@
         "effect": "ATK +12%, PEN +3%",
         "focus": "ATK/PEN",
         "price": "229",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -880,7 +902,7 @@
         "effect": "HP +13%, DEF +7%",
         "focus": "HP/DEF",
         "price": "229",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -900,7 +922,7 @@
         "effect": "SPD +4%, EVA +2%",
         "focus": "SPD/EVA",
         "price": "229",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -920,7 +942,7 @@
         "effect": "RES +7%, SPIRIT +12%",
         "focus": "RES/SPIRIT",
         "price": "229",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -940,7 +962,7 @@
         "effect": "Kho +9, tu luyện +5%",
         "focus": "Kho/tu luyện",
         "price": "229",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -960,7 +982,7 @@
         "effect": "Kỹ năng chủ động tier 4",
         "focus": "Active",
         "price": "229",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -980,7 +1002,7 @@
         "effect": "Passive hiệu quả +7%",
         "focus": "Passive",
         "price": "229",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1000,7 +1022,7 @@
         "effect": "ATK +14%, PEN +3%",
         "focus": "ATK/PEN",
         "price": "488",
-        "currency": "LT"
+        "currency": "Linh Thạch thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1020,7 +1042,7 @@
         "effect": "HP +15%, DEF +8%",
         "focus": "HP/DEF",
         "price": "488",
-        "currency": "LT"
+        "currency": "Linh Thạch thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1040,7 +1062,7 @@
         "effect": "SPD +4%, EVA +2%",
         "focus": "SPD/EVA",
         "price": "488",
-        "currency": "LT"
+        "currency": "Linh Thạch thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1060,7 +1082,7 @@
         "effect": "RES +8%, SPIRIT +14%",
         "focus": "RES/SPIRIT",
         "price": "488",
-        "currency": "LT"
+        "currency": "Linh Thạch thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1080,7 +1102,7 @@
         "effect": "Kho +10, tu luyện +6%",
         "focus": "Kho/tu luyện",
         "price": "488",
-        "currency": "LT"
+        "currency": "Linh Thạch thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1100,7 +1122,7 @@
         "effect": "Kỹ năng chủ động tier 5",
         "focus": "Active",
         "price": "488",
-        "currency": "LT"
+        "currency": "Linh Thạch thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1120,7 +1142,7 @@
         "effect": "Passive hiệu quả +8%",
         "focus": "Passive",
         "price": "488",
-        "currency": "LT"
+        "currency": "Linh Thạch thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1140,7 +1162,7 @@
         "effect": "ATK +16%, PEN +4%",
         "focus": "ATK/PEN",
         "price": "693",
-        "currency": "LT"
+        "currency": "Linh Thạch thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1160,7 +1182,7 @@
         "effect": "HP +17%, DEF +9%",
         "focus": "HP/DEF",
         "price": "693",
-        "currency": "LT"
+        "currency": "Linh Thạch thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1180,7 +1202,7 @@
         "effect": "SPD +5%, EVA +3%",
         "focus": "SPD/EVA",
         "price": "693",
-        "currency": "LT"
+        "currency": "Linh Thạch thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1200,7 +1222,7 @@
         "effect": "RES +9%, SPIRIT +16%",
         "focus": "RES/SPIRIT",
         "price": "693",
-        "currency": "LT"
+        "currency": "Linh Thạch thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1220,7 +1242,7 @@
         "effect": "Kho +11, tu luyện +7%",
         "focus": "Kho/tu luyện",
         "price": "693",
-        "currency": "LT"
+        "currency": "Linh Thạch thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1240,7 +1262,7 @@
         "effect": "Kỹ năng chủ động tier 6",
         "focus": "Active",
         "price": "693",
-        "currency": "LT"
+        "currency": "Linh Thạch thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1260,7 +1282,7 @@
         "effect": "Passive hiệu quả +9%",
         "focus": "Passive",
         "price": "693",
-        "currency": "LT"
+        "currency": "Linh Thạch thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1280,7 +1302,7 @@
         "effect": "ATK +18%, PEN +4%",
         "focus": "ATK/PEN",
         "price": "984",
-        "currency": "LT"
+        "currency": "Linh Thạch thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1300,7 +1322,7 @@
         "effect": "HP +19%, DEF +10%",
         "focus": "HP/DEF",
         "price": "984",
-        "currency": "LT"
+        "currency": "Linh Thạch thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1320,7 +1342,7 @@
         "effect": "SPD +5%, EVA +3%",
         "focus": "SPD/EVA",
         "price": "984",
-        "currency": "LT"
+        "currency": "Linh Thạch thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1340,7 +1362,7 @@
         "effect": "RES +10%, SPIRIT +18%",
         "focus": "RES/SPIRIT",
         "price": "984",
-        "currency": "LT"
+        "currency": "Linh Thạch thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1360,7 +1382,7 @@
         "effect": "Kho +12, tu luyện +8%",
         "focus": "Kho/tu luyện",
         "price": "984",
-        "currency": "LT"
+        "currency": "Linh Thạch thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1380,7 +1402,7 @@
         "effect": "Kỹ năng chủ động tier 7",
         "focus": "Active",
         "price": "984",
-        "currency": "LT"
+        "currency": "Linh Thạch thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1400,7 +1422,7 @@
         "effect": "Passive hiệu quả +10%",
         "focus": "Passive",
         "price": "984",
-        "currency": "LT"
+        "currency": "Linh Thạch thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1420,7 +1442,7 @@
         "effect": "ATK +20%, PEN +5%",
         "focus": "ATK/PEN",
         "price": "1746",
-        "currency": "TN"
+        "currency": "Tiên Ngọc thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1440,7 +1462,7 @@
         "effect": "HP +21%, DEF +11%",
         "focus": "HP/DEF",
         "price": "1746",
-        "currency": "TN"
+        "currency": "Tiên Ngọc thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1460,7 +1482,7 @@
         "effect": "SPD +6%, EVA +3%",
         "focus": "SPD/EVA",
         "price": "1746",
-        "currency": "TN"
+        "currency": "Tiên Ngọc thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1480,7 +1502,7 @@
         "effect": "RES +11%, SPIRIT +20%",
         "focus": "RES/SPIRIT",
         "price": "1746",
-        "currency": "TN"
+        "currency": "Tiên Ngọc thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1500,7 +1522,7 @@
         "effect": "Kho +13, tu luyện +9%",
         "focus": "Kho/tu luyện",
         "price": "1746",
-        "currency": "TN"
+        "currency": "Tiên Ngọc thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1520,7 +1542,7 @@
         "effect": "Kỹ năng chủ động tier 8",
         "focus": "Active",
         "price": "1746",
-        "currency": "TN"
+        "currency": "Tiên Ngọc thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1540,7 +1562,7 @@
         "effect": "Passive hiệu quả +11%",
         "focus": "Passive",
         "price": "1746",
-        "currency": "TN"
+        "currency": "Tiên Ngọc thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1560,7 +1582,7 @@
         "effect": "ATK +22%, PEN +5%",
         "focus": "ATK/PEN",
         "price": "2480",
-        "currency": "TN"
+        "currency": "Tiên Ngọc thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1580,7 +1602,7 @@
         "effect": "HP +23%, DEF +12%",
         "focus": "HP/DEF",
         "price": "2480",
-        "currency": "TN"
+        "currency": "Tiên Ngọc thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1600,7 +1622,7 @@
         "effect": "SPD +6%, EVA +4%",
         "focus": "SPD/EVA",
         "price": "2480",
-        "currency": "TN"
+        "currency": "Tiên Ngọc thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1620,7 +1642,7 @@
         "effect": "RES +12%, SPIRIT +22%",
         "focus": "RES/SPIRIT",
         "price": "2480",
-        "currency": "TN"
+        "currency": "Tiên Ngọc thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1640,7 +1662,7 @@
         "effect": "Kho +14, tu luyện +10%",
         "focus": "Kho/tu luyện",
         "price": "2480",
-        "currency": "TN"
+        "currency": "Tiên Ngọc thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1660,7 +1682,7 @@
         "effect": "Kỹ năng chủ động tier 9",
         "focus": "Active",
         "price": "2480",
-        "currency": "TN"
+        "currency": "Tiên Ngọc thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1680,7 +1702,7 @@
         "effect": "Passive hiệu quả +12%",
         "focus": "Passive",
         "price": "2480",
-        "currency": "TN"
+        "currency": "Tiên Ngọc thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1700,7 +1722,7 @@
         "effect": "ATK +24%, PEN +6%",
         "focus": "ATK/PEN",
         "price": "3521",
-        "currency": "TN"
+        "currency": "Tiên Ngọc thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1720,7 +1742,7 @@
         "effect": "HP +25%, DEF +13%",
         "focus": "HP/DEF",
         "price": "3521",
-        "currency": "TN"
+        "currency": "Tiên Ngọc thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1740,7 +1762,7 @@
         "effect": "SPD +7%, EVA +4%",
         "focus": "SPD/EVA",
         "price": "3521",
-        "currency": "TN"
+        "currency": "Tiên Ngọc thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1760,7 +1782,7 @@
         "effect": "RES +13%, SPIRIT +24%",
         "focus": "RES/SPIRIT",
         "price": "3521",
-        "currency": "TN"
+        "currency": "Tiên Ngọc thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1780,7 +1802,7 @@
         "effect": "Kho +15, tu luyện +10%",
         "focus": "Kho/tu luyện",
         "price": "3521",
-        "currency": "TN"
+        "currency": "Tiên Ngọc thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1800,7 +1822,7 @@
         "effect": "Kỹ năng chủ động tier 10",
         "focus": "Active",
         "price": "3521",
-        "currency": "TN"
+        "currency": "Tiên Ngọc thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1820,7 +1842,7 @@
         "effect": "Passive hiệu quả +13%",
         "focus": "Passive",
         "price": "3521",
-        "currency": "TN"
+        "currency": "Tiên Ngọc thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1840,7 +1862,7 @@
         "effect": "Kiếm kỹ +12%, ATK +8%",
         "focus": "Unique",
         "price": "0",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1860,7 +1882,7 @@
         "effect": "ATK +12%; active đổi HP lấy burst",
         "focus": "Unique",
         "price": "0",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1880,7 +1902,7 @@
         "effect": "Tăng xác suất chất lượng luyện đan",
         "focus": "Unique",
         "price": "0",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1900,7 +1922,7 @@
         "effect": "Lôi kích + phá giáp PvE",
         "focus": "Unique",
         "price": "0",
-        "currency": "LS"
+        "currency": "Linh Thạch hạ phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1920,7 +1942,7 @@
         "effect": "Triệu hồi kiếm trận",
         "focus": "Unique",
         "price": "0",
-        "currency": "LT"
+        "currency": "Linh Thạch thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1940,7 +1962,7 @@
         "effect": "Đổi HP lấy burst có cooldown",
         "focus": "Unique",
         "price": "0",
-        "currency": "LT"
+        "currency": "Linh Thạch thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1960,7 +1982,7 @@
         "effect": "ACC + phát hiện bẫy/cấm chế",
         "focus": "Unique",
         "price": "0",
-        "currency": "LT"
+        "currency": "Linh Thạch thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -1980,7 +2002,7 @@
         "effect": "Kháng không gian/giới kiếp",
         "focus": "Unique",
         "price": "0",
-        "currency": "LT"
+        "currency": "Linh Thạch thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -2000,7 +2022,7 @@
         "effect": "Pháp tắc damage +15% PvE",
         "focus": "Unique",
         "price": "0",
-        "currency": "TN"
+        "currency": "Tiên Ngọc thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -2020,7 +2042,7 @@
         "effect": "Đổi stance pháp tắc",
         "focus": "Unique",
         "price": "0",
-        "currency": "TN"
+        "currency": "Tiên Ngọc thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -2040,7 +2062,7 @@
         "effect": "Bảo hộ thần hồn",
         "focus": "Unique",
         "price": "0",
-        "currency": "TN"
+        "currency": "Tiên Ngọc thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -2060,7 +2082,7 @@
         "effect": "Cốt truyện; không cấp lợi thế PvP",
         "focus": "Unique",
         "price": "0",
-        "currency": "TN"
+        "currency": "Tiên Ngọc thượng phẩm"
       },
       "source": "trang_bi.csv"
     },
@@ -2203,7 +2225,7 @@
         "realm": "Phàm",
         "effect": "Hồi 60% HP",
         "price": "15",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "ingredients": "Huyết Diệp Hoa + Thanh Linh Thảo",
         "limit": "Không giới hạn shop; CD combat",
         "shop": "Có/Hạn chế"
@@ -2223,7 +2245,7 @@
         "realm": "Phàm",
         "effect": "+6% tiến độ tầng",
         "price": "20",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "ingredients": "Thanh Linh Thảo + Ngưng Lộ Thảo",
         "limit": "5/ngày",
         "shop": "Có/Hạn chế"
@@ -2243,7 +2265,7 @@
         "realm": "Luyện Khí",
         "effect": "+12 điểm % lần đột phá kế",
         "price": "90",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "ingredients": "Trúc Cơ Quả + Tâm Tĩnh Trúc",
         "limit": "2/đại cảnh",
         "shop": "Có/Hạn chế"
@@ -2263,7 +2285,7 @@
         "realm": "Luyện Khí",
         "effect": "+6 năm thọ nguyên quy đổi",
         "price": "160",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "ingredients": "Thọ Nguyên Quả + Cửu Diệp Chi",
         "limit": "1/đại cảnh",
         "shop": "Có/Hạn chế"
@@ -2283,7 +2305,7 @@
         "realm": "Trúc Cơ",
         "effect": "+5% tiến độ tầng",
         "price": "140",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "ingredients": "Trúc Cơ Quả + Kim Tuyến Thảo",
         "limit": "4/ngày",
         "shop": "Có/Hạn chế"
@@ -2303,7 +2325,7 @@
         "realm": "Trúc Cơ",
         "effect": "Hồi đầy HP ngoài PvP",
         "price": "70",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "ingredients": "Huyết Diệp Hoa + Địa Mạch Sâm",
         "limit": "5/ngày",
         "shop": "Có/Hạn chế"
@@ -2323,7 +2345,7 @@
         "realm": "Kim Đan",
         "effect": "+1 chỉ số gốc ngẫu nhiên trong cap +40",
         "price": "420",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "ingredients": "Huyết Linh Sâm + Ngũ Sắc Linh Chi",
         "limit": "1/kiếp Hạ Giới",
         "shop": "Có/Hạn chế"
@@ -2343,7 +2365,7 @@
         "realm": "Kim Đan",
         "effect": "Giảm 30% tổn thất đột phá thất bại",
         "price": "520",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "ingredients": "Kim Dương Chi + Địa Mạch Sâm",
         "limit": "2/đại cảnh",
         "shop": "Có/Hạn chế"
@@ -2363,7 +2385,7 @@
         "realm": "Nguyên Anh",
         "effect": "+4.5% tiến độ tầng",
         "price": "650",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "ingredients": "Hóa Anh Hoa + Thanh Hồn Quả",
         "limit": "3/ngày",
         "shop": "Có/Hạn chế"
@@ -2383,7 +2405,7 @@
         "realm": "Nguyên Anh",
         "effect": "+15% SPIRIT trong 2 giờ",
         "price": "720",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "ingredients": "Âm Nguyệt Liên + Thanh Hồn Quả",
         "limit": "2/ngày",
         "shop": "Có/Hạn chế"
@@ -2403,7 +2425,7 @@
         "realm": "Nguyên Anh",
         "effect": "+12 năm thọ nguyên quy đổi",
         "price": "800",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "ingredients": "Thọ Nguyên Quả + Hóa Anh Hoa",
         "limit": "1/đại cảnh",
         "shop": "Có/Hạn chế"
@@ -2423,7 +2445,7 @@
         "realm": "Hóa Thần",
         "effect": "+20 điểm % đột phá",
         "price": "1600",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "ingredients": "Ngũ Sắc Linh Chi + Tâm Tĩnh Trúc",
         "limit": "1/đại cảnh",
         "shop": "Có/Hạn chế"
@@ -2443,7 +2465,7 @@
         "realm": "Hóa Thần",
         "effect": "+4% tiến độ tầng",
         "price": "3200",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "ingredients": "Giới Mạch Thảo + Cửu Diệp Chi",
         "limit": "2/ngày",
         "shop": "Có/Hạn chế"
@@ -2463,7 +2485,7 @@
         "realm": "Hóa Thần",
         "effect": "+1 chỉ số gốc ngẫu nhiên trong cap +40",
         "price": "5200",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "ingredients": "Ngũ Sắc Linh Chi + Bách Dược Tâm",
         "limit": "1/kiếp",
         "shop": "Có/Hạn chế"
@@ -2483,7 +2505,7 @@
         "realm": "Hóa Thần",
         "effect": "+25 điểm % phi thăng Linh Giới",
         "price": "9000",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "ingredients": "Giới Mạch Thảo + Lôi Văn Quả",
         "limit": "1/lần phi thăng",
         "shop": "Có/Hạn chế"
@@ -2503,7 +2525,7 @@
         "realm": "Trúc Cơ+",
         "effect": "Giảm 35% tác động tâm ma 1 lần",
         "price": "300",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "ingredients": "Tâm Tĩnh Trúc + Âm Nguyệt Liên",
         "limit": "3/tuần",
         "shop": "Có/Hạn chế"
@@ -2523,7 +2545,7 @@
         "realm": "Trúc Cơ+",
         "effect": "+8% HP trong 4 giờ",
         "price": "260",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "ingredients": "Địa Mạch Sâm + Huyết Linh Sâm",
         "limit": "2/ngày",
         "shop": "Có/Hạn chế"
@@ -2543,7 +2565,7 @@
         "realm": "Kim Đan+",
         "effect": "+8% SPD trong 2 giờ",
         "price": "480",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "ingredients": "Phong Linh Hoa + Ngưng Lộ Thảo",
         "limit": "2/ngày",
         "shop": "Có/Hạn chế"
@@ -2563,7 +2585,7 @@
         "realm": "Kim Đan+",
         "effect": "+10% PEN trong 2 giờ",
         "price": "520",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "ingredients": "Lôi Văn Quả + Xích Dương Hoa",
         "limit": "2/ngày",
         "shop": "Có/Hạn chế"
@@ -2583,7 +2605,7 @@
         "realm": "Nguyên Anh+",
         "effect": "+10% hiệu quả đan khác trong 1 giờ",
         "price": "1100",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "ingredients": "Bách Dược Tâm + Cửu Diệp Chi",
         "limit": "1/ngày",
         "shop": "Có/Hạn chế"
@@ -2603,7 +2625,7 @@
         "realm": "Luyện Hư",
         "effect": "+5% tiến độ tầng",
         "price": "25",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "ingredients": "Thái Hư Chi + Tinh Huy Thảo",
         "limit": "4/ngày",
         "shop": "Có/Hạn chế"
@@ -2623,7 +2645,7 @@
         "realm": "Hợp Thể",
         "effect": "+8% hiệu suất pháp tướng 2 giờ",
         "price": "60",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "ingredients": "Hợp Nguyên Quả + Pháp Tướng Quả",
         "limit": "2/ngày",
         "shop": "Có/Hạn chế"
@@ -2643,7 +2665,7 @@
         "realm": "Luyện Hư",
         "effect": "+18% SPIRIT 2 giờ",
         "price": "40",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "ingredients": "Vạn Hồn Thảo + Hồn Ngọc Lan",
         "limit": "2/ngày",
         "shop": "Có/Hạn chế"
@@ -2663,7 +2685,7 @@
         "realm": "Luyện Hư",
         "effect": "+15 điểm % đột phá",
         "price": "180",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "ingredients": "Hư Không Lan + Không Minh Thảo",
         "limit": "2/đại cảnh",
         "shop": "Có/Hạn chế"
@@ -2683,7 +2705,7 @@
         "realm": "Hợp Thể",
         "effect": "Tăng 1 cấp hiệu dụng pháp tướng cho 1 trận",
         "price": "120",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "ingredients": "Pháp Tướng Quả + Bách Thảo Tinh",
         "limit": "2/tuần",
         "shop": "Có/Hạn chế"
@@ -2703,7 +2725,7 @@
         "realm": "Đại Thừa",
         "effect": "+18 điểm % đại đột phá",
         "price": "420",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "ingredients": "Đại Thừa Kim Liên + Cửu Khúc Linh Sâm",
         "limit": "1/đại cảnh",
         "shop": "Có/Hạn chế"
@@ -2723,7 +2745,7 @@
         "realm": "Độ Kiếp",
         "effect": "+20 điểm % phi thăng Tiên Giới",
         "price": "1200",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "ingredients": "Giới Kiếp Tử Liên + Giới Tâm Liên",
         "limit": "1/lần",
         "shop": "Có/Hạn chế"
@@ -2743,7 +2765,7 @@
         "realm": "Luyện Hư+",
         "effect": "Tái phân phối 5–10 điểm purity",
         "price": "800",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "ingredients": "Tẩy Linh Quả + Ngũ Hành Linh Quả",
         "limit": "2/map",
         "shop": "Có/Hạn chế"
@@ -2763,7 +2785,7 @@
         "realm": "Hợp Thể+",
         "effect": "Pity tâm ma +1 bậc",
         "price": "220",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "ingredients": "Vấn Tâm Hoa + Thiên Cơ Hoa",
         "limit": "1/tuần",
         "shop": "Có/Hạn chế"
@@ -2783,7 +2805,7 @@
         "realm": "Đại Thừa",
         "effect": "Giảm 25% sát khí 1 giờ",
         "price": "180",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "ingredients": "Sát Tâm Thảo + Huyền Chỉ Hoa",
         "limit": "2/ngày",
         "shop": "Có/Hạn chế"
@@ -2803,7 +2825,7 @@
         "realm": "Luyện Hư+",
         "effect": "Giảm 20% damage không gian 2 giờ",
         "price": "160",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "ingredients": "Hư Linh Mộc Tâm + Không Minh Thảo",
         "limit": "2/ngày",
         "shop": "Có/Hạn chế"
@@ -2823,7 +2845,7 @@
         "realm": "Đại Thừa",
         "effect": "+10% thần hồn vĩnh viễn trong cap",
         "price": "650",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "ingredients": "Thiên Hồn Quả + Vạn Hồn Thảo",
         "limit": "1/map",
         "shop": "Có/Hạn chế"
@@ -2843,7 +2865,7 @@
         "realm": "Hợp Thể+",
         "effect": "+10% ACC/EVA 2 giờ",
         "price": "95",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "ingredients": "Tinh Không Diệp + Hư Không Lan",
         "limit": "2/ngày",
         "shop": "Có/Hạn chế"
@@ -2863,7 +2885,7 @@
         "realm": "Hợp Thể+",
         "effect": "Mở thử nghiệm biến dị linh căn",
         "price": "980",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "ingredients": "Ngũ Hành Linh Quả + Tẩy Linh Quả",
         "limit": "1/map",
         "shop": "Có/Hạn chế"
@@ -2883,7 +2905,7 @@
         "realm": "Đại Thừa",
         "effect": "Sống sót 1 lần ở 1 HP trong PvE",
         "price": "880",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "ingredients": "Lưỡng Sinh Diệp + Vấn Tâm Hoa",
         "limit": "1/tuần",
         "shop": "Có/Hạn chế"
@@ -2903,7 +2925,7 @@
         "realm": "Đại Thừa",
         "effect": "+8% tiến độ tầng",
         "price": "240",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "ingredients": "Cửu Khúc Linh Sâm + Bách Thảo Tinh",
         "limit": "3/ngày",
         "shop": "Có/Hạn chế"
@@ -2923,7 +2945,7 @@
         "realm": "Hợp Thể+",
         "effect": "+12% ATK, -8% RES trong 2 giờ",
         "price": "110",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "ingredients": "Ma Tâm Liên + Sát Tâm Thảo",
         "limit": "2/ngày",
         "shop": "Có/Hạn chế"
@@ -2943,7 +2965,7 @@
         "realm": "Hợp Thể+",
         "effect": "+12% kiếm kỹ trong 2 giờ",
         "price": "130",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "ingredients": "Thái Hư Chi + Tinh Không Diệp",
         "limit": "2/ngày",
         "shop": "Có/Hạn chế"
@@ -2963,7 +2985,7 @@
         "realm": "Luyện Hư+",
         "effect": "Hồi đầy HP + xóa 1 debuff PvE",
         "price": "75",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "ingredients": "Bách Thảo Tinh + Lưỡng Sinh Diệp",
         "limit": "3/ngày",
         "shop": "Có/Hạn chế"
@@ -2983,7 +3005,7 @@
         "realm": "Đại Thừa",
         "effect": "+15% Ngộ Tính hiệu dụng 1 giờ",
         "price": "300",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "ingredients": "Thiên Cơ Hoa + Vấn Tâm Hoa",
         "limit": "1/ngày",
         "shop": "Có/Hạn chế"
@@ -3003,7 +3025,7 @@
         "realm": "Chân Tiên",
         "effect": "+4% tiến độ tầng",
         "price": "8",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "ingredients": "Vân Hạc Tiên Thảo + Lộc Nhung Tiên Thảo",
         "limit": "5/ngày",
         "shop": "Có/Hạn chế"
@@ -3023,7 +3045,7 @@
         "realm": "Chân Tiên",
         "effect": "+12% tiên linh lực 2 giờ",
         "price": "10",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "ingredients": "Tiên Khiếu Quả + Vân Hạc Tiên Thảo",
         "limit": "3/ngày",
         "shop": "Có/Hạn chế"
@@ -3043,7 +3065,7 @@
         "realm": "Chân Tiên hậu kỳ",
         "effect": "+10% tiến độ tầng",
         "price": "30",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "ingredients": "Thời Sa Hoa + Tiên Khiếu Quả",
         "limit": "2/ngày",
         "shop": "Có/Hạn chế"
@@ -3063,7 +3085,7 @@
         "realm": "Chân Tiên",
         "effect": "+18 điểm % lên Kim Tiên",
         "price": "120",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "ingredients": "Kim Hồn Tiên Quả + Vạn Hồn Tiên Thảo",
         "limit": "1/đại cảnh",
         "shop": "Có/Hạn chế"
@@ -3083,7 +3105,7 @@
         "realm": "Kim Tiên",
         "effect": "Giảm 40% tác hại Sát Suy",
         "price": "160",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "ingredients": "Khổ Lạc Hoa + Huyền Chỉ Tiên Hoa",
         "limit": "2/suy kiếp",
         "shop": "Có/Hạn chế"
@@ -3103,7 +3125,7 @@
         "realm": "Kim Tiên",
         "effect": "+15 điểm % lên Thái Ất",
         "price": "300",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "ingredients": "Thái Ất Ngọc Chi + Lưỡng Sinh Tiên Quả",
         "limit": "1/đại cảnh",
         "shop": "Có/Hạn chế"
@@ -3123,7 +3145,7 @@
         "realm": "Thái Ất",
         "effect": "+4% tiến độ tầng",
         "price": "45",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "ingredients": "Thái Ất Ngọc Chi + Vân Hạc Tiên Thảo",
         "limit": "4/ngày",
         "shop": "Có/Hạn chế"
@@ -3143,7 +3165,7 @@
         "realm": "Thái Ất",
         "effect": "Chặn 1 lần tâm ma/suy kiếp",
         "price": "0",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "ingredients": "Đạo Tâm Liên + Đại Đạo Hoa",
         "limit": "Quest/Boss",
         "shop": "Không"
@@ -3163,7 +3185,7 @@
         "realm": "Endgame",
         "effect": "Cộng hưởng Thời Gian tạm; không bán",
         "price": "0",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "ingredients": "Thời Sa Hoa + Đại Đạo Hoa",
         "limit": "Unique",
         "shop": "Không"
@@ -3183,7 +3205,7 @@
         "realm": "Endgame",
         "effect": "Cộng hưởng Không Gian tạm; không bán",
         "price": "0",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "ingredients": "Không Gian Bồ Đề + Đại Đạo Hoa",
         "limit": "Unique",
         "shop": "Không"
@@ -3203,7 +3225,7 @@
         "realm": "Endgame",
         "effect": "Bảo lưu 1 buff xuyên kiếp giới hạn",
         "price": "0",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "ingredients": "Luân Hồi Quả + Đại Đạo Hoa",
         "limit": "Unique",
         "shop": "Không"
@@ -3223,7 +3245,7 @@
         "realm": "Chân Tiên",
         "effect": "+1 điểm tiến độ tiên khiếu",
         "price": "18",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "ingredients": "Tiên Khiếu Quả + Kim Tu Thập Diệp",
         "limit": "3/ngày",
         "shop": "Có/Hạn chế"
@@ -3243,7 +3265,7 @@
         "realm": "Kim Tiên+",
         "effect": "Giảm 20% tác hại Ngũ Suy",
         "price": "90",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "ingredients": "Lưỡng Sinh Tiên Quả + Đạo Tâm Liên",
         "limit": "1/ngày",
         "shop": "Có/Hạn chế"
@@ -3263,7 +3285,7 @@
         "realm": "Thái Ất",
         "effect": "+10% tiến độ chuẩn bị Đại La",
         "price": "220",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "ingredients": "Huyền Chân Chi Tinh + Đại Đạo Hoa",
         "limit": "1/tuần",
         "shop": "Có/Hạn chế"
@@ -3283,7 +3305,7 @@
         "realm": "Kim Tiên+",
         "effect": "+15% Thủy pháp 2 giờ",
         "price": "70",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "ingredients": "U Thủy Tiên Liên + Thổ Tôn Quả",
         "limit": "2/ngày",
         "shop": "Có/Hạn chế"
@@ -3303,7 +3325,7 @@
         "realm": "Kim Tiên+",
         "effect": "+15% Hỏa pháp 2 giờ",
         "price": "70",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "ingredients": "Cuồng Diễm Thảo + Đạo Tâm Liên",
         "limit": "2/ngày",
         "shop": "Có/Hạn chế"
@@ -3323,7 +3345,7 @@
         "realm": "Chân Tiên+",
         "effect": "+12% HP/DEF 2 giờ",
         "price": "55",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "ingredients": "Cầu Long Thảo + Lộc Nhung Tiên Thảo",
         "limit": "2/ngày",
         "shop": "Có/Hạn chế"
@@ -3343,7 +3365,7 @@
         "realm": "Kim Tiên+",
         "effect": "+15% SPIRIT 2 giờ",
         "price": "65",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "ingredients": "Đản Hồn Hoa + Vạn Hồn Tiên Thảo",
         "limit": "2/ngày",
         "shop": "Có/Hạn chế"
@@ -3363,7 +3385,7 @@
         "realm": "Chân Tiên+",
         "effect": "Xóa độc +30% độc RES 2 giờ",
         "price": "20",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "ingredients": "Thiên Linh Trúc Diệp + Kim Tu Thập Diệp",
         "limit": "3/ngày",
         "shop": "Có/Hạn chế"
@@ -3383,7 +3405,7 @@
         "realm": "Endgame",
         "effect": "Khóa lựa chọn Quy Phàm 24h để xác nhận; không bán",
         "price": "0",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "ingredients": "Quy Hương Bạch Liên + Đạo Tâm Liên",
         "limit": "Cốt truyện",
         "shop": "Không"
@@ -3403,7 +3425,7 @@
         "rarity": "Phổ thông",
         "use": "Tu vi",
         "base_price": "10",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "grow_hours": "2",
         "trade": "Có"
       },
@@ -3422,7 +3444,7 @@
         "rarity": "Phổ thông",
         "use": "Hồi phục",
         "base_price": "12",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "grow_hours": "2",
         "trade": "Có"
       },
@@ -3441,7 +3463,7 @@
         "rarity": "Phổ thông",
         "use": "Ổn định linh lực",
         "base_price": "12",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "grow_hours": "2",
         "trade": "Có"
       },
@@ -3460,7 +3482,7 @@
         "rarity": "Tốt",
         "use": "Hỏa hệ/luyện đan",
         "base_price": "24",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "grow_hours": "4",
         "trade": "Có"
       },
@@ -3479,7 +3501,7 @@
         "rarity": "Tốt",
         "use": "Thủy/Băng",
         "base_price": "25",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "grow_hours": "4",
         "trade": "Có"
       },
@@ -3498,7 +3520,7 @@
         "rarity": "Tốt",
         "use": "Kim hệ",
         "base_price": "26",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "grow_hours": "4",
         "trade": "Có"
       },
@@ -3517,7 +3539,7 @@
         "rarity": "Tốt",
         "use": "Thổ/DEF",
         "base_price": "28",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "grow_hours": "4",
         "trade": "Có"
       },
@@ -3536,7 +3558,7 @@
         "rarity": "Tốt",
         "use": "Mộc/hồi phục",
         "base_price": "28",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "grow_hours": "4",
         "trade": "Có"
       },
@@ -3555,7 +3577,7 @@
         "rarity": "Hiếm",
         "use": "Đột phá Trúc Cơ",
         "base_price": "90",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -3574,7 +3596,7 @@
         "rarity": "Hiếm",
         "use": "Kim Đan/Hỏa",
         "base_price": "95",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -3593,7 +3615,7 @@
         "rarity": "Hiếm",
         "use": "Thần thức/tâm ma",
         "base_price": "100",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -3612,7 +3634,7 @@
         "rarity": "Cực hiếm",
         "use": "Nguyên Anh",
         "base_price": "300",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "grow_hours": "18",
         "trade": "Hạn chế"
       },
@@ -3631,7 +3653,7 @@
         "rarity": "Cực hiếm",
         "use": "Thọ nguyên",
         "base_price": "360",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "grow_hours": "18",
         "trade": "Hạn chế"
       },
@@ -3650,7 +3672,7 @@
         "rarity": "Cực hiếm",
         "use": "Tinh luyện linh căn",
         "base_price": "420",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "grow_hours": "18",
         "trade": "Hạn chế"
       },
@@ -3669,7 +3691,7 @@
         "rarity": "Hiếm",
         "use": "Lôi hệ",
         "base_price": "120",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -3688,7 +3710,7 @@
         "rarity": "Hiếm",
         "use": "Phong/SPD",
         "base_price": "115",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -3707,7 +3729,7 @@
         "rarity": "Hiếm",
         "use": "Tâm ma",
         "base_price": "110",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -3726,7 +3748,7 @@
         "rarity": "Hiếm",
         "use": "Luyện thể",
         "base_price": "125",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -3745,7 +3767,7 @@
         "rarity": "Hiếm",
         "use": "Đan đạo",
         "base_price": "130",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -3764,7 +3786,7 @@
         "rarity": "Cực hiếm",
         "use": "Phi thăng",
         "base_price": "450",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "grow_hours": "18",
         "trade": "Hạn chế"
       },
@@ -3783,7 +3805,7 @@
         "rarity": "Hiếm",
         "use": "Tu vi cao cấp",
         "base_price": "140",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -3802,7 +3824,7 @@
         "rarity": "Hiếm",
         "use": "Thần thức",
         "base_price": "135",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -3821,7 +3843,7 @@
         "rarity": "Hiếm",
         "use": "Hỏa/kháng",
         "base_price": "145",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -3840,7 +3862,7 @@
         "rarity": "Hiếm",
         "use": "HP/DEF",
         "base_price": "145",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -3859,7 +3881,7 @@
         "rarity": "Tốt",
         "use": "Thần thức",
         "base_price": "5",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "grow_hours": "4",
         "trade": "Có"
       },
@@ -3878,7 +3900,7 @@
         "rarity": "Hiếm",
         "use": "Thần hồn",
         "base_price": "22",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -3897,7 +3919,7 @@
         "rarity": "Hiếm",
         "use": "Giảm sát khí",
         "base_price": "24",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -3916,7 +3938,7 @@
         "rarity": "Cực hiếm",
         "use": "Bảo mệnh",
         "base_price": "95",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "grow_hours": "18",
         "trade": "Hạn chế"
       },
@@ -3935,7 +3957,7 @@
         "rarity": "Hiếm",
         "use": "Không gian",
         "base_price": "28",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -3954,7 +3976,7 @@
         "rarity": "Hiếm",
         "use": "Pháp tướng",
         "base_price": "32",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -3973,7 +3995,7 @@
         "rarity": "Tốt",
         "use": "Tu vi/kiếm",
         "base_price": "10",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "grow_hours": "4",
         "trade": "Có"
       },
@@ -3992,7 +4014,7 @@
         "rarity": "Hiếm",
         "use": "Ma công",
         "base_price": "27",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -4011,7 +4033,7 @@
         "rarity": "Tốt",
         "use": "Luyện đan",
         "base_price": "12",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "grow_hours": "4",
         "trade": "Có"
       },
@@ -4030,7 +4052,7 @@
         "rarity": "Hiếm",
         "use": "Ngộ tính",
         "base_price": "35",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -4049,7 +4071,7 @@
         "rarity": "Cực hiếm",
         "use": "Linh căn",
         "base_price": "120",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "grow_hours": "18",
         "trade": "Hạn chế"
       },
@@ -4068,7 +4090,7 @@
         "rarity": "Cực hiếm",
         "use": "Phi thăng",
         "base_price": "150",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "grow_hours": "18",
         "trade": "Hạn chế"
       },
@@ -4087,7 +4109,7 @@
         "rarity": "Hiếm",
         "use": "RES/không gian",
         "base_price": "30",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -4106,7 +4128,7 @@
         "rarity": "Hiếm",
         "use": "Hợp Thể",
         "base_price": "40",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -4125,7 +4147,7 @@
         "rarity": "Cực hiếm",
         "use": "Đại Thừa",
         "base_price": "130",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "grow_hours": "18",
         "trade": "Hạn chế"
       },
@@ -4144,7 +4166,7 @@
         "rarity": "Hiếm",
         "use": "SPIRIT",
         "base_price": "34",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -4163,7 +4185,7 @@
         "rarity": "Tốt",
         "use": "ACC/EVA",
         "base_price": "13",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "grow_hours": "4",
         "trade": "Có"
       },
@@ -4182,7 +4204,7 @@
         "rarity": "Hiếm",
         "use": "Sát khí",
         "base_price": "38",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -4201,7 +4223,7 @@
         "rarity": "Cực hiếm",
         "use": "Affinity",
         "base_price": "110",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "grow_hours": "18",
         "trade": "Hạn chế"
       },
@@ -4220,7 +4242,7 @@
         "rarity": "Hiếm",
         "use": "DEF",
         "base_price": "36",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -4239,7 +4261,7 @@
         "rarity": "Cực hiếm",
         "use": "Tu vi",
         "base_price": "125",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "grow_hours": "18",
         "trade": "Hạn chế"
       },
@@ -4258,7 +4280,7 @@
         "rarity": "Hiếm",
         "use": "Tâm ma",
         "base_price": "42",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -4277,7 +4299,7 @@
         "rarity": "Cực hiếm",
         "use": "Thần hồn",
         "base_price": "140",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "grow_hours": "18",
         "trade": "Hạn chế"
       },
@@ -4296,7 +4318,7 @@
         "rarity": "Cực hiếm",
         "use": "Phi thăng Tiên Giới",
         "base_price": "180",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "grow_hours": "18",
         "trade": "Hạn chế"
       },
@@ -4315,7 +4337,7 @@
         "rarity": "Tốt",
         "use": "Tiên linh lực",
         "base_price": "3",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "grow_hours": "4",
         "trade": "Có"
       },
@@ -4334,7 +4356,7 @@
         "rarity": "Hiếm",
         "use": "Thổ pháp tắc",
         "base_price": "15",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -4353,7 +4375,7 @@
         "rarity": "Hiếm",
         "use": "Linh hồn",
         "base_price": "18",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -4372,7 +4394,7 @@
         "rarity": "Hiếm",
         "use": "Luyện thể",
         "base_price": "16",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -4391,7 +4413,7 @@
         "rarity": "Hiếm",
         "use": "Độc/giải độc",
         "base_price": "14",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -4410,7 +4432,7 @@
         "rarity": "Hiếm",
         "use": "Hỏa pháp tắc",
         "base_price": "18",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -4429,7 +4451,7 @@
         "rarity": "Hiếm",
         "use": "Tinh thần",
         "base_price": "16",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -4448,7 +4470,7 @@
         "rarity": "Tốt",
         "use": "Hồi phục",
         "base_price": "5",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "grow_hours": "4",
         "trade": "Có"
       },
@@ -4467,7 +4489,7 @@
         "rarity": "Cực hiếm",
         "use": "Thần hồn",
         "base_price": "75",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "grow_hours": "18",
         "trade": "Hạn chế"
       },
@@ -4486,7 +4508,7 @@
         "rarity": "Cực hiếm",
         "use": "Sát suy",
         "base_price": "82",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "grow_hours": "18",
         "trade": "Hạn chế"
       },
@@ -4505,7 +4527,7 @@
         "rarity": "Cực hiếm",
         "use": "Bảo mệnh/suy kiếp",
         "base_price": "95",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "grow_hours": "18",
         "trade": "Hạn chế"
       },
@@ -4524,7 +4546,7 @@
         "rarity": "Hiếm",
         "use": "Trồng trọt",
         "base_price": "20",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -4543,7 +4565,7 @@
         "rarity": "Cực hiếm",
         "use": "Túc Sát Đan",
         "base_price": "100",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "grow_hours": "18",
         "trade": "Hạn chế"
       },
@@ -4562,7 +4584,7 @@
         "rarity": "Cực hiếm",
         "use": "Đại La",
         "base_price": "130",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "grow_hours": "18",
         "trade": "Hạn chế"
       },
@@ -4581,7 +4603,7 @@
         "rarity": "Cực hiếm",
         "use": "Thủy pháp tắc",
         "base_price": "115",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "grow_hours": "18",
         "trade": "Hạn chế"
       },
@@ -4600,7 +4622,7 @@
         "rarity": "Cực hiếm",
         "use": "Thời Gian",
         "base_price": "150",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "grow_hours": "18",
         "trade": "Hạn chế"
       },
@@ -4619,7 +4641,7 @@
         "rarity": "Cực hiếm",
         "use": "Không Gian",
         "base_price": "150",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "grow_hours": "18",
         "trade": "Hạn chế"
       },
@@ -4638,7 +4660,7 @@
         "rarity": "Đạo phẩm",
         "use": "Luân Hồi",
         "base_price": "0",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "grow_hours": "0",
         "trade": "Không"
       },
@@ -4657,7 +4679,7 @@
         "rarity": "Cực hiếm",
         "use": "Tâm ma",
         "base_price": "120",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "grow_hours": "18",
         "trade": "Hạn chế"
       },
@@ -4676,7 +4698,7 @@
         "rarity": "Hiếm",
         "use": "Tiên khiếu",
         "base_price": "28",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "grow_hours": "8",
         "trade": "Hạn chế"
       },
@@ -4695,7 +4717,7 @@
         "rarity": "Cực hiếm",
         "use": "Kim Tiên",
         "base_price": "90",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "grow_hours": "18",
         "trade": "Hạn chế"
       },
@@ -4714,7 +4736,7 @@
         "rarity": "Cực hiếm",
         "use": "Thái Ất",
         "base_price": "120",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "grow_hours": "18",
         "trade": "Hạn chế"
       },
@@ -4733,7 +4755,7 @@
         "rarity": "Đạo phẩm",
         "use": "Pháp tắc cao cấp",
         "base_price": "0",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "grow_hours": "0",
         "trade": "Không"
       },
@@ -4752,7 +4774,7 @@
         "rarity": "Đạo phẩm",
         "use": "Cốt truyện",
         "base_price": "0",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "grow_hours": "0",
         "trade": "Không"
       },
@@ -4771,7 +4793,7 @@
         "rarity": "Phổ thông",
         "use": "Trồng linh dược",
         "base_value": "5",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "trade": "Có"
       },
       "source": "nguyen_lieu.csv"
@@ -4789,7 +4811,7 @@
         "rarity": "Phổ thông",
         "use": "Luyện khí",
         "base_value": "12",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "trade": "Có"
       },
       "source": "nguyen_lieu.csv"
@@ -4807,7 +4829,7 @@
         "rarity": "Phổ thông",
         "use": "Vẽ phù",
         "base_value": "4",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "trade": "Có"
       },
       "source": "nguyen_lieu.csv"
@@ -4825,7 +4847,7 @@
         "rarity": "Tốt",
         "use": "Pháp bảo/đan",
         "base_value": "30",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "trade": "Có"
       },
       "source": "nguyen_lieu.csv"
@@ -4843,7 +4865,7 @@
         "rarity": "Tốt",
         "use": "Rèn kiếm",
         "base_value": "45",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "trade": "Có"
       },
       "source": "nguyen_lieu.csv"
@@ -4861,7 +4883,7 @@
         "rarity": "Tốt",
         "use": "Luyện thể/ma công",
         "base_value": "40",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "trade": "Có"
       },
       "source": "nguyen_lieu.csv"
@@ -4879,7 +4901,7 @@
         "rarity": "Hiếm",
         "use": "Đổi đan phương",
         "base_value": "80",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -4897,7 +4919,7 @@
         "rarity": "Hiếm",
         "use": "Phi thăng",
         "base_value": "120",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -4915,7 +4937,7 @@
         "rarity": "Tốt",
         "use": "Lôi pháp",
         "base_value": "35",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "trade": "Có"
       },
       "source": "nguyen_lieu.csv"
@@ -4933,7 +4955,7 @@
         "rarity": "Tốt",
         "use": "Hỏa/luyện khí",
         "base_value": "35",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "trade": "Có"
       },
       "source": "nguyen_lieu.csv"
@@ -4951,7 +4973,7 @@
         "rarity": "Tốt",
         "use": "Băng/thủy",
         "base_value": "35",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "trade": "Có"
       },
       "source": "nguyen_lieu.csv"
@@ -4969,7 +4991,7 @@
         "rarity": "Tốt",
         "use": "Phong/thân pháp",
         "base_value": "35",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "trade": "Có"
       },
       "source": "nguyen_lieu.csv"
@@ -4987,7 +5009,7 @@
         "rarity": "Hiếm",
         "use": "Affinity/craft",
         "base_value": "75",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5005,7 +5027,7 @@
         "rarity": "Phổ thông",
         "use": "Craft",
         "base_value": "15",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "trade": "Có"
       },
       "source": "nguyen_lieu.csv"
@@ -5023,7 +5045,7 @@
         "rarity": "Phổ thông",
         "use": "Craft",
         "base_value": "15",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "trade": "Có"
       },
       "source": "nguyen_lieu.csv"
@@ -5041,7 +5063,7 @@
         "rarity": "Phổ thông",
         "use": "Craft",
         "base_value": "12",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "trade": "Có"
       },
       "source": "nguyen_lieu.csv"
@@ -5059,7 +5081,7 @@
         "rarity": "Hiếm",
         "use": "Luyện thể",
         "base_value": "90",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5077,7 +5099,7 @@
         "rarity": "Tốt",
         "use": "Trận pháp",
         "base_value": "30",
-        "currency": "LS",
+        "currency": "Linh Thạch hạ phẩm",
         "trade": "Có"
       },
       "source": "nguyen_lieu.csv"
@@ -5095,7 +5117,7 @@
         "rarity": "Tốt",
         "use": "Không gian/trận pháp",
         "base_value": "4",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "trade": "Có"
       },
       "source": "nguyen_lieu.csv"
@@ -5113,7 +5135,7 @@
         "rarity": "Hiếm",
         "use": "Nâng pháp tướng",
         "base_value": "18",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5131,7 +5153,7 @@
         "rarity": "Hiếm",
         "use": "Thần thức",
         "base_value": "16",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5149,7 +5171,7 @@
         "rarity": "Cực hiếm",
         "use": "Phi thăng",
         "base_value": "80",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5167,7 +5189,7 @@
         "rarity": "Hiếm",
         "use": "Trận pháp/lore",
         "base_value": "20",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5185,7 +5207,7 @@
         "rarity": "Hiếm",
         "use": "Rèn Linh Bảo",
         "base_value": "28",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5203,7 +5225,7 @@
         "rarity": "Tốt",
         "use": "Craft",
         "base_value": "8",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "trade": "Có"
       },
       "source": "nguyen_lieu.csv"
@@ -5221,7 +5243,7 @@
         "rarity": "Tốt",
         "use": "Craft",
         "base_value": "8",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "trade": "Có"
       },
       "source": "nguyen_lieu.csv"
@@ -5239,7 +5261,7 @@
         "rarity": "Tốt",
         "use": "Ma công",
         "base_value": "10",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "trade": "Có"
       },
       "source": "nguyen_lieu.csv"
@@ -5257,7 +5279,7 @@
         "rarity": "Tốt",
         "use": "Kiếm đạo",
         "base_value": "10",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "trade": "Có"
       },
       "source": "nguyen_lieu.csv"
@@ -5275,7 +5297,7 @@
         "rarity": "Tốt",
         "use": "Trận pháp",
         "base_value": "9",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "trade": "Có"
       },
       "source": "nguyen_lieu.csv"
@@ -5293,7 +5315,7 @@
         "rarity": "Tốt",
         "use": "Thần hồn",
         "base_value": "9",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "trade": "Có"
       },
       "source": "nguyen_lieu.csv"
@@ -5311,7 +5333,7 @@
         "rarity": "Hiếm",
         "use": "Sát khí",
         "base_value": "18",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5329,7 +5351,7 @@
         "rarity": "Hiếm",
         "use": "Affinity",
         "base_value": "22",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5347,7 +5369,7 @@
         "rarity": "Cực hiếm",
         "use": "Phi thăng",
         "base_value": "75",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5365,7 +5387,7 @@
         "rarity": "Hiếm",
         "use": "Pháp tướng",
         "base_value": "15",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5383,7 +5405,7 @@
         "rarity": "Tốt",
         "use": "Phù/trận",
         "base_value": "7",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "trade": "Có"
       },
       "source": "nguyen_lieu.csv"
@@ -5401,7 +5423,7 @@
         "rarity": "Cực hiếm",
         "use": "Mở bí cảnh cao cấp",
         "base_value": "60",
-        "currency": "LT",
+        "currency": "Linh Thạch thượng phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5419,7 +5441,7 @@
         "rarity": "Tốt",
         "use": "Tiên linh lực",
         "base_value": "3",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "trade": "Có"
       },
       "source": "nguyen_lieu.csv"
@@ -5437,7 +5459,7 @@
         "rarity": "Hiếm",
         "use": "Pháp tắc",
         "base_value": "14",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5455,7 +5477,7 @@
         "rarity": "Cực hiếm",
         "use": "Đại đạo skill tree",
         "base_value": "60",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5473,7 +5495,7 @@
         "rarity": "Hiếm",
         "use": "Rèn Tiên Khí",
         "base_value": "20",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5491,7 +5513,7 @@
         "rarity": "Hiếm",
         "use": "Đan chống suy",
         "base_value": "16",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5509,7 +5531,7 @@
         "rarity": "Hiếm",
         "use": "Khắc trang bị",
         "base_value": "18",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5527,7 +5549,7 @@
         "rarity": "Tốt",
         "use": "Craft",
         "base_value": "6",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "trade": "Có"
       },
       "source": "nguyen_lieu.csv"
@@ -5545,7 +5567,7 @@
         "rarity": "Hiếm",
         "use": "Không gian",
         "base_value": "18",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5563,7 +5585,7 @@
         "rarity": "Cực hiếm",
         "use": "Thời Gian",
         "base_value": "65",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5581,7 +5603,7 @@
         "rarity": "Cực hiếm",
         "use": "Luân Hồi",
         "base_value": "65",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5599,7 +5621,7 @@
         "rarity": "Hiếm",
         "use": "Thần hồn",
         "base_value": "18",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5617,7 +5639,7 @@
         "rarity": "Hiếm",
         "use": "Lôi pháp",
         "base_value": "18",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5635,7 +5657,7 @@
         "rarity": "Hiếm",
         "use": "Ngũ hành",
         "base_value": "20",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5653,7 +5675,7 @@
         "rarity": "Cực hiếm",
         "use": "Nâng Linh Vực",
         "base_value": "55",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5671,7 +5693,7 @@
         "rarity": "Hiếm",
         "use": "Tiên khiếu",
         "base_value": "16",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5689,7 +5711,7 @@
         "rarity": "Cực hiếm",
         "use": "Tâm ma",
         "base_value": "50",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5707,7 +5729,7 @@
         "rarity": "Cực hiếm",
         "use": "Đại La",
         "base_value": "80",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "trade": "Hạn chế"
       },
       "source": "nguyen_lieu.csv"
@@ -5725,7 +5747,7 @@
         "rarity": "Đạo phẩm",
         "use": "Cốt truyện",
         "base_value": "0",
-        "currency": "TN",
+        "currency": "Tiên Ngọc thượng phẩm",
         "trade": "Không"
       },
       "source": "nguyen_lieu.csv"

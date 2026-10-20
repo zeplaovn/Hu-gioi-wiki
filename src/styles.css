@@ -8,3 +8,87 @@
 @media(max-width:890px){.sidebar{transform:translateX(-100%);transition:transform .22s}.sidebar.open{transform:translateX(0)}.layout-main{margin-left:0}.mobile-menu{display:grid}.menu-scrim{position:fixed;z-index:40;inset:0;display:block;border:0;background:#0009}.topbar{height:65px;padding:0 20px}.search-trigger{width:auto}.search-trigger span,.search-trigger kbd{display:none}.layout-main main{padding:26px 20px 65px}.footer{padding:24px 20px}.hero-orbit{right:0;opacity:.35}.hero-copy{max-width:620px}.world-grid{grid-template-columns:repeat(3,1fr)}.world-card{padding:17px}.world-card h2{font-size:23px}.world-card-bottom{flex-wrap:wrap;gap:5px}}
 @media(max-width:600px){.top-actions{gap:9px}.breadcrumb span{display:none}.topbar{gap:9px}.hero{min-height:460px;padding:40px 25px}.hero h1{font-size:clamp(32px,9vw,45px)}.hero-copy>p{font-size:13px}.hero-kicker{font-size:8px}.hero-orbit{width:240px;height:240px;right:-70px}.hero-vertical{display:none}.hero-actions{flex-direction:column;align-items:stretch}.hero-actions button{width:100%}.metrics{grid-template-columns:repeat(2,1fr)}.metrics>div{min-height:120px;padding:21px}.metrics>div:nth-child(2){border-right:0}.metrics>div:nth-child(-n+2){border-bottom:1px solid #304143}.metrics strong{font-size:27px}.shortcuts,.catalog-grid,.chapter-grid,.rule-grid,.note-grid,.world-grid{grid-template-columns:1fr}.shortcut{min-height:130px}.block-heading{align-items:start}.block-heading h2{font-size:23px}.heading h1{font-size:32px}.heading p{font-size:12px}.filters{display:grid}.filter-search{max-width:none;width:100%}.world-chips{gap:4px}.world-chips button{padding:9px}.count{margin-left:0}.realm-node{gap:12px;padding:13px}.realm-time{font-size:9px;text-align:right}.realm-info strong{font-size:13px}.system-banner{display:block;padding:25px}.system-banner>strong{display:block;margin-top:20px;font-size:38px}.system-banner>strong small{text-align:left}.footer{display:grid;gap:8px}.modal-shade,.search-shade{padding:8px}.detail-modal{max-height:96vh}.modal-top{padding:14px 18px}.modal-hero{padding:24px 18px 10px;gap:12px}.modal-glyph{width:50px;height:50px;border-radius:12px}.modal-hero h2{font-size:22px}.modal-summary{margin:10px 18px 19px;padding-bottom:17px}.modal-section{margin:0 18px 11px}.detail-list{margin:0 18px 18px}.detail-list>div{grid-template-columns:35% 1fr}.detail-list dt,.detail-list dd{padding:11px;font-size:11px}.tier-preview,.source-box{margin-left:18px;margin-right:18px}.tier-preview>div{grid-template-columns:repeat(5,1fr)}.modal-actions{padding:18px;flex-wrap:wrap}.search-shade{padding-top:55px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+
+/* v1.6.1 accessibility and readability refresh — 20/10/2026 */
+:root{font-size:16px}
+body{font-size:16px;line-height:1.7}
+.brand strong{font-size:17px}.brand span{font-size:10px}
+.side-label{font-size:11px}
+.sidebar nav button{font-size:15px;padding:14px 15px}
+.side-categories button{font-size:14px;padding:11px 15px}
+.side-categories button small,.side-bottom{font-size:12px}
+.breadcrumb span{font-size:12px}.breadcrumb strong{font-size:16px}
+.search-trigger{font-size:13px}
+.badge{font-size:11px;padding:6px 10px}
+.eyebrow{font-size:12px}
+.heading h1{font-size:clamp(38px,4vw,55px)}
+.heading p{font-size:16px;line-height:1.95}
+.hero-kicker{font-size:12px}.hero-copy>p{font-size:17px}
+.btn-primary,.btn-outline{font-size:14px}
+.disclaimer p{font-size:14px}
+.metrics small{font-size:11px}.metrics span{font-size:13px}
+.block-heading h2{font-size:clamp(26px,2.3vw,33px)}
+.shortcut h3{font-size:20px}.shortcut p{font-size:14px}.shortcut small{font-size:12px}
+.item-card{min-height:260px}
+.item-card h3{font-size:21px}
+.item-card p{font-size:14px;line-height:1.8}
+.item-top .badge{font-size:10px}
+.item-bottom,.item-bottom button{font-size:13px}
+.item-bottom button{display:inline-flex;align-items:center;gap:4px;padding:0;border:0;background:transparent;color:#a2e5c5;font-weight:800;text-align:right}
+.item-bottom button:hover{text-decoration:underline}
+.entry-title{display:inline;padding:0;border:0;background:transparent;font:inherit;line-height:1.45;text-align:left;color:inherit;transition:filter .15s}
+.entry-title:hover{text-decoration:underline;text-underline-offset:4px;filter:brightness(1.2)}
+.entry-realms,.realm-highlight{color:#a8d5ff!important}
+.entry-equipment,.entry-sets{color:#f3d39c!important}
+.entry-pills,.entry-herbs,.entry-materials{color:#adf0c7!important}
+.entry-npc,.entry-factions{color:#d5bdff!important}
+.entry-monsters{color:#ffb2a8!important}
+.entry-roots,.entry-techniques,.entry-skills{color:#a6e9ef!important}
+.entry-destiny,.entry-affixes{color:#f5d9a2!important}
+.term{font-weight:800;padding:1px 3px;border-radius:4px;border-bottom:1px solid currentColor;background:#7edbb918;color:#92edbc;text-decoration:none;line-height:1.9;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.term:hover{filter:brightness(1.25);box-shadow:0 0 0 1px currentColor}
+.term-realms{color:#a8d5ff;background:#5daaf427}
+.term-equipment,.term-sets{color:#f3d39c;background:#bc975b27}
+.term-pills,.term-herbs,.term-materials{color:#adf0c7;background:#55b98828}
+.term-npc,.term-factions{color:#d5bdff;background:#956bd329}
+.term-monsters{color:#ffb2a8;background:#ba555b23}
+.term-roots,.term-techniques,.term-skills{color:#a6e9ef;background:#439eaf28}
+.term-destiny,.term-affixes{color:#f5d9a2;background:#d0a35228}
+.item-card .term{font-size:inherit}
+.tabs button,.world-chips button{font-size:13px}
+.tabs small{font-size:11px}
+.filter-search input{font-size:14px}.count{font-size:13px}
+.world-card h2{font-size:32px}.world-card h3{font-size:16px}.world-card p{font-size:14px}
+.world-card-top,.world-card-bottom{font-size:13px}
+.realm-info strong{font-size:18px}.realm-info small{font-size:13px}.realm-time{font-size:13px}
+.note-grid h3{font-size:20px}.note-grid p{font-size:14px}
+.rule h3{font-size:21px}.rule p{font-size:15px}
+.system-banner h2{font-size:32px}.system-banner p{font-size:15px}
+.story-lead p{font-size:17px}
+.chapter>span{font-size:12px}.chapter h3{font-size:22px;min-height:80px}
+.chapter .badge{font-size:11px}
+.detail-modal{width:min(770px,100%)}
+.modal-top .eyebrow{font-size:11px}
+.modal-hero h2{font-size:clamp(26px,3.5vw,36px)}
+.modal-hero code{font-size:12px}
+.modal-summary{font-size:16px;line-height:1.95}
+.modal-section{font-size:19px}
+.detail-list dt,.detail-list dd{font-size:15px;line-height:1.85}
+.tier-preview>strong{font-size:12px}
+.tier-preview small{font-size:10px}
+.command-input input{font-size:17px}
+.command-results strong{font-size:15px}.command-results small{font-size:12px}
+.command-empty p{font-size:14px}
+.command-footer{font-size:12px}
+.currency-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.currency-card{padding:23px;border:1px solid #4a6c65;border-radius:12px;background:linear-gradient(145deg,#1a3230,#112324)}
+.currency-card.tone-blue{border-color:#496c8a;background:linear-gradient(145deg,#1b313d,#122229)}
+.currency-card.tone-gold{border-color:#947a53;background:linear-gradient(145deg,#342c25,#201e20)}
+.currency-card>span{color:#9cbaa9;font-size:12px;letter-spacing:.08em}
+.currency-card h3{margin:13px 0;color:#d1f0dc;font:600 21px/1.5 'Noto Serif',serif}
+.currency-card.tone-blue h3{color:#b3ddff}.currency-card.tone-gold h3{color:#f4d69b}
+.currency-card small{display:inline-block;margin-top:15px;padding:5px 8px;border:1px solid #829e9566;border-radius:5px;color:#bad4bd;font-size:12px}
+.currency-note{margin:13px 0 28px;color:#a5b7b4;font-size:14px;line-height:1.8}
+@media(max-width:890px){.sidebar nav button{font-size:15px}.topbar{padding:0 20px}.heading h1{font-size:38px}}
+@media(max-width:600px){.currency-grid{grid-template-columns:1fr}.item-card{min-height:225px}.item-card p{font-size:14px}.chapter h3{min-height:auto}.heading h1{font-size:34px}.heading p{font-size:15px}.hero-copy>p{font-size:15px}.world-card h2{font-size:27px}.world-card p{font-size:14px}.detail-list dt,.detail-list dd{font-size:13px;padding:11px}.modal-summary{font-size:15px}.sidebar nav button{font-size:15px}.topbar .breadcrumb strong{font-size:14px}.realm-info strong{font-size:16px}.realm-time{font-size:11px}}
