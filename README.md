@@ -41,3 +41,12 @@ Các module canon v1.2, snapshot game cũ, trang React không còn dùng, assets
 - **Tiên Giới:** Tiên Ngọc thượng phẩm (TNTP) và Tiên Ngọc cực phẩm (TNCP).
 
 Các bản ghi giá gốc LS/LT/TN đã được đổi tên đơn vị phù hợp từng giới, **không thay đổi trị số giá** và không tự suy ra tỷ lệ quy đổi. Tiên Ngọc cực phẩm là đơn vị được giới thiệu tại Tiên Giới; chưa tự gán nó cho món hàng khi thiết kế không chỉ rõ.
+
+
+## Thang màu cảnh giới & ảnh minh họa (20/10/2026)
+
+- 15 cảnh giới có 15 sắc độ riêng theo lộ trình từ **Phàm Nhân** đến cảnh giới cuối, hiển thị nhất quán ở danh sách, hồ sơ, tìm kiếm và thuật ngữ được tô sáng. Mục “Ba giới & cảnh giới” có thang màu tham chiếu.
+- Ảnh tĩnh đặt trong thư mục public/assets/wiki/, được Vite phục vụ qua /assets/wiki/. Gồm ba tranh phong cảnh giới và sáu atlas minh họa: trang bị, đan dược, linh dược, NPC, yêu thú và vật phẩm tổng hợp.
+- Ảnh chọn lọc từ bộ assets(1).zip cùng các sprite atlas đã có trong Library của dự án, **không đưa toàn bộ ZIP và asset gameplay nội bộ lên web**.
+- Atlas được hiển thị bằng CSS theo ô ảnh; những mục chưa có tạo hình riêng dùng tranh **minh họa chủ đề**, không được coi là chân dung hoặc vật phẩm canon chính thức.
+- Danh sách tài sản và quy ước hiển thị: docs/ILLUSTRATIONS.md.
